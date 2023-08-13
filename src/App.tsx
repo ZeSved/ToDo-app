@@ -1,38 +1,40 @@
+import { useState } from 'react'
 import './App.css'
 import Mainapp, { itemsType } from './components/Mainapp'
 
 function App() {
+	const [checked, setChecked] = useState(false)
+
 	const items: itemsType[] = [
 		{
 			content: 'something',
 			deleteBtn: () => {},
-			checked: () => {},
 		},
 		{
 			content: 'something',
 			deleteBtn: () => {},
-			checked: () => {},
 		},
 		{
 			content: 'something',
 			deleteBtn: () => {},
-			checked: () => {},
 		},
 		{
 			content: 'something',
 			deleteBtn: () => {},
-			checked: () => {},
 		},
 		{
 			content: 'something',
 			deleteBtn: () => {},
-			checked: () => {},
 		},
 	]
 
 	return (
 		<div className='wrapper'>
-			<Mainapp items={items} />
+			<Mainapp
+				items={items}
+				setChecked={setChecked}
+				checked={checked}
+			/>
 		</div>
 	)
 }
