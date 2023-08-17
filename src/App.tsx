@@ -1,40 +1,42 @@
-import { useState } from 'react'
 import './App.css'
-import Mainapp, { itemsType } from './components/Mainapp'
+
+import ItemList, { Item } from './components/ItemList'
+
+import { useState } from 'react'
 
 function App() {
-	const [checked, setChecked] = useState(false)
-
-	const items: itemsType[] = [
+	const [items, setItems] = useState<Item[]>([
 		{
 			content: 'something',
-			deleteBtn: () => {},
+			checked: false,
 		},
 		{
-			content: 'something',
-			deleteBtn: () => {},
+			content: 'something2',
+			checked: false,
 		},
 		{
-			content: 'something',
-			deleteBtn: () => {},
+			content: 'something3',
+			checked: false,
 		},
 		{
-			content: 'something',
-			deleteBtn: () => {},
+			content: 'something4',
+			checked: false,
 		},
 		{
-			content: 'something',
-			deleteBtn: () => {},
+			content: 'something5',
+			checked: false,
 		},
-	]
+	])
 
 	return (
 		<div className='wrapper'>
-			<Mainapp
-				items={items}
-				setChecked={setChecked}
-				checked={checked}
-			/>
+			<div className='main'>
+				<textarea className='itemInput' />
+				<ItemList
+					items={items}
+					setItems={setItems}
+				/>
+			</div>
 		</div>
 	)
 }
