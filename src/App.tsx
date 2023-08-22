@@ -2,6 +2,8 @@ import './App.css'
 
 import ItemList, { Item } from './components/ItemList'
 
+import ItemInput from './components/ItemInput'
+
 import { useState } from 'react'
 
 function App() {
@@ -31,7 +33,10 @@ function App() {
 	return (
 		<div className='wrapper'>
 			<div className='main'>
-				<textarea className='itemInput' />
+				<ItemInput
+					items={items}
+					setItems={setItems}
+				/>
 				<ItemList
 					items={items}
 					setItems={setItems}
