@@ -13,19 +13,6 @@ body {
   height: 100vh;
 }
 
-.itemInput {
-  background: transparent;
-  height: 100%;
-  display: block;
-  padding: 0;
-  outline: none;
-  color: white;
-
-  border-image: linear-gradient(73deg, rgba(250, 0, 255, 1) 12%, rgb(0, 0, 0) 50%, rgba(250, 0, 255, 1) 88%);
-  border-image-slice: 1;
-  border-width: 4px;
-}
-
 .main {
   display: grid;
   align-items: center;

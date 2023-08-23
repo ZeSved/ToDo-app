@@ -1,27 +1,28 @@
-import { useRef } from 'react'
+import styles from './styles/ItemInput.module.css'
+import { useState } from 'react'
 import { ItemListProps } from './ItemList'
 
 export default function ItemInput({ items, setItems }: ItemListProps) {
-	const ref = useRef(null)
+	const [input, setInput] = useState('')
+
 	return (
 		<div>
 			<textarea
-				ref={ref}
-				className='itemInput'
+				placeholder='Type here to begin...'
+				onChange={(e) => setInput(e.target.value)}
+				onKeyDown={(e) => {
+					if (e.key === 'Enter') {
+						setItems([
+							...items,
+							{
+								content: `${input}`,
+								checked: false,
+							},
+						])
+					}
+				}}
+				className={styles.itemInput}
 			/>
-			<button
-				onClick={() => {
-					setItems([
-						...items,
-						{
-							content: `try`,
-							checked: false,
-						},
-					])
-					console.log()
-				}}>
-				click me
-			</button>
 		</div>
 	)
 }

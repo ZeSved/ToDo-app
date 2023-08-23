@@ -4,7 +4,7 @@ import ItemList, { Item } from './components/ItemList'
 
 import ItemInput from './components/ItemInput'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 function App() {
 	const [items, setItems] = useState<Item[]>([
@@ -29,6 +29,12 @@ function App() {
 			checked: false,
 		},
 	])
+
+	useEffect(() => {
+		const itemData = JSON.stringify(items)
+		localStorage.setItem('itemData', itemData)
+		console.log(itemData)
+	}, [items])
 
 	return (
 		<div className='wrapper'>
