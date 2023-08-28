@@ -7,33 +7,17 @@ import ItemInput from './components/ItemInput'
 import { useEffect, useState } from 'react'
 
 function App() {
-	const [items, setItems] = useState<Item[]>([
-		{
-			content: 'something',
-			checked: false,
-		},
-		{
-			content: 'something2',
-			checked: false,
-		},
-		{
-			content: 'something3',
-			checked: false,
-		},
-		{
-			content: 'something4',
-			checked: false,
-		},
-		{
-			content: 'something5',
-			checked: false,
-		},
-	])
+	const [items, setItems] = useState<Item[]>([])
+
+	useEffect(() => {
+		const itemDataLoad = localStorage.getItem('itemData')
+		setItems(JSON.parse(itemDataLoad!))
+		console.log(JSON.parse(itemDataLoad!))
+	}, [])
 
 	useEffect(() => {
 		const itemData = JSON.stringify(items)
 		localStorage.setItem('itemData', itemData)
-		console.log(itemData)
 	}, [items])
 
 	return (
