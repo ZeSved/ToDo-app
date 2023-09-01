@@ -44,7 +44,7 @@ export default function ItemList({ items, setItems }: ItemListProps) {
 
 export interface ItemListProps {
 	items: Item[]
-	setItems: React.Dispatch<React.SetStateAction<Item[]>>
+	setItems: React.Dispatch<React.SetStateAction<Item[] | undefined>>
 }
 
 export type Item = {
