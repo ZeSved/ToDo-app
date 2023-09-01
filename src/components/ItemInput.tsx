@@ -12,6 +12,7 @@ export default function ItemInput({ items, setItems }: ItemListProps) {
 				onChange={(e) => setInput(e.target.value)}
 				onKeyDown={(e) => {
 					if (e.key === 'Enter') {
+						e.preventDefault()
 						setItems([
 							...items,
 							{
@@ -19,6 +20,7 @@ export default function ItemInput({ items, setItems }: ItemListProps) {
 								checked: false,
 							},
 						])
+						e.currentTarget.value = ''
 					}
 				}}
 				className={styles.itemInput}
