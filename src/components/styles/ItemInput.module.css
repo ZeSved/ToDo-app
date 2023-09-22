@@ -1,11 +1,37 @@
-.itemInput {
-  background: transparent;
-  height: 100%;
-  display: block;
-  outline: none;
-  color: white;
-  resize: none;
+.itemInputWrapper {
+  width: 90%;
+  margin-inline: auto;
 
-  border: 4px solid #FA00FF;
-  border-radius: 1rem;
+  border-radius: 7px;
+  border: 2px solid #fa00ff;
+  overflow: hidden;
+
+  display: flex;
+}
+
+.itemInputWrapper > input {
+  background: transparent;
+  display: block;
+  border: none;
+
+  flex-grow: 1;
+
+  color: white;
+
+  padding: 1rem;
+}
+
+.send {
+  height: 100%;
+  border: none;
+
+  aspect-ratio: 1;
+  background-color: #fa00ff;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+
+  cursor: pointer;
 }
