@@ -13,6 +13,7 @@ export default function ItemInput({ items, setItems }: ItemListProps) {
 			{
 				content: `${input}`,
 				checked: false,
+				favorite: false,
 			},
 		])
 
