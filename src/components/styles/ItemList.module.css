@@ -19,6 +19,7 @@
 .itemContent {
   color: white;
   flex-grow: 1;
+  overflow-wrap: anywhere;
 
   padding: 1rem;
 }
