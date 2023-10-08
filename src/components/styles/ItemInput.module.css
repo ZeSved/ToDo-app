@@ -9,7 +9,7 @@
   display: flex;
 }
 
-.itemInputWrapper > input {
+.itemInputWrapper>input {
   background: transparent;
   display: block;
   border: none;
@@ -34,4 +34,27 @@
   outline: none;
 
   cursor: pointer;
+}
+
+.clear {
+  background-color: #fa00ff;
+  border: none;
+  cursor: pointer;
+
+  padding: 0.5rem;
+
+  /* aspect-ratio: 1; */
+  height: 100%;
+}
+
+.divider {
+  height: 100%;
+  width: 1px;
+  background: linear-gradient(180deg,
+      #000 0%,
+      rgba(0, 0, 0, 0) 0.01%,
+      rgba(0, 0, 0, 0.61) 20.83%,
+      #000 52.08%,
+      rgba(0, 0, 0, 0.59) 86.46%,
+      rgba(0, 0, 0, 0) 100%);
 }

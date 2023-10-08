@@ -4,11 +4,13 @@ import ItemList, { Item } from './components/ItemList'
 import { useEffect, useState } from 'react'
 
 import ItemInput from './components/ItemInput'
+import ClearItems from './components/ClearItems'
 
 const DEFAULT_VALUE: Item[] = []
 
 function App() {
 	const [items, setItems] = useState<Item[] | undefined>(undefined)
+	const [display, setDisplay] = useState<boolean>(false)
 
 	useEffect(() => {
 		const itemDataLoad = JSON.parse(
@@ -29,12 +31,19 @@ function App() {
 				{items ? (
 					<>
 						<ItemInput
+							display={display}
+							setDisplay={setDisplay}
 							items={items}
 							setItems={setItems}
 						/>
 						<div className='divider' />
 						<ItemList
 							items={items}
+							setItems={setItems}
+						/>
+						<ClearItems
+							display={display}
+							setDisplay={setDisplay}
 							setItems={setItems}
 						/>
 					</>

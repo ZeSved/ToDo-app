@@ -1,0 +1,54 @@
+.clear_popup {
+  background-color: black;
+  display: flex;
+  z-index: 10;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  border: 2px solid #fa00ff;
+  border-radius: 7px;
+}
+
+h2 {
+  color: white;
+}
+
+
+.clearBtn,
+.cancelBtn {
+  padding: 1rem 2rem;
+  color: white;
+  font-size: 2rem;
+  border-radius: 1.6rem;
+  cursor: pointer;
+}
+
+.clearBtn {
+  background-color: black;
+  border: 2px solid #fa00ff;
+}
+
+.cancelBtn {
+  background-color: #fa00ff;
+}
+
+.blur {
+  backdrop-filter: blur(5px);
+  z-index: 9;
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnContainer {
+  margin-top: 2rem;
+  display: flex;
+  gap: 2rem;
+}
+
+.display {
+  display: none;
+}
