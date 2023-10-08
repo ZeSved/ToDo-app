@@ -1,7 +1,7 @@
 import { Item } from './ItemList'
 import styles from './styles/ItemInput.module.css'
 import { useState } from 'react'
-import clear_symbol from '../images/_clear_ symbol.svg'
+import clear_symbol from '../images/svg/_clear_ symbol.svg'
 
 export default function ItemInput({ items, setItems, display, setDisplay }: ItemInputProps) {
 	const [input, setInput] = useState('')
