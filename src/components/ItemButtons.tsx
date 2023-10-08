@@ -1,8 +1,8 @@
 import checked_image from '../images/svg/_checked_ symbol.svg'
 import delete_image from '../images/svg/_delete_ symbol.svg'
 import unchecked_image from '../images/svg/_unchecked_ symbol.svg'
-import favorite_image from '../images/svg/_favorite_ symbol.svg'
-import unfavorite_image from '../images/svg/_unfavorite_ symbol.svg'
+import favorite_image from '../images/svg/favorite logo.svg'
+import unfavorite_image from '../images/svg/un-favorite logo (1).svg'
 
 import styles from './styles/ItemList.module.css'
 
