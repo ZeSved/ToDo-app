@@ -9,7 +9,9 @@ export default function ItemList({ items, setItems }: ItemListProps) {
 				<div
 					className={styles.itemContainer}
 					key={i}>
-					<p className={styles.itemContent}>{item.content}</p>
+					<p className={item.checked ? styles.itemContentChecked : styles.itemContent}>
+						{item.content}
+					</p>
 					<div className={styles.controls}>
 						<ItemButtons
 							items={items}

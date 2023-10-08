@@ -24,6 +24,19 @@
   padding: 1rem;
 }
 
+.itemContentChecked {
+  color: white;
+  flex-grow: 1;
+  overflow-wrap: anywhere;
+
+  padding: 1rem;
+
+  background: linear-gradient(90deg,
+      rgba(250, 0, 255, 0)60%,
+      rgba(250, 0, 255, 0.5) 85%,
+      rgba(250, 0, 255, 1) 100%);
+}
+
 .controls {
   background: #fa00ff;
 
