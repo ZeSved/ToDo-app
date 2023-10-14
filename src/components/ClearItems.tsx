@@ -11,7 +11,7 @@ export default function ClearItems({ setItems, display, setDisplay }: ClearItems
 					<button
 						onClick={() => setDisplay(!display)}
 						className={styles.cancelBtn}>
-						Cancel
+						No
 					</button>
 					<button
 						onClick={() => {
@@ -19,7 +19,7 @@ export default function ClearItems({ setItems, display, setDisplay }: ClearItems
 							setItems([])
 						}}
 						className={styles.clearBtn}>
-						Clear
+						Yes, delete all
 					</button>
 				</div>
 			</div>
