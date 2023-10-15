@@ -7,9 +7,31 @@ import unfavorite_image from '../images/svg/un-favorite logo (1).svg'
 import styles from './styles/ItemList.module.css'
 
 import { Item } from './ItemList'
+import { useEffect } from 'react'
 
 export default function ItemButtons({ item, items, setItems, i }: ItemButtonsProps) {
-	function symbolChange(index: boolean, i: number, item: Item) {
+	useEffect(() => {
+		const newArr = [...items]
+
+		// if (newArr[i].favorite === true && newArr[0].favorite === true) return
+
+		if (item.favorite === true) {
+			newArr.splice(0, 0, newArr[i])
+			newArr.splice(i + 1, 1)
+		}
+
+		// else if (item.favorite === false) {
+		// 	newArr.splice(newArr.length, 0, newArr[i])
+		// 	newArr.splice(i, 1)
+		// }
+		// console.log(i)
+		// console.log(items.length)
+		// console.log(item.favorite)
+
+		setItems(newArr)
+	}, [item.favorite])
+
+	function symbolChange(index: boolean) {
 		const newArr = [...items]
 
 		if (index) {
@@ -38,7 +60,9 @@ export default function ItemButtons({ item, items, setItems, i }: ItemButtonsPro
 			<div className={styles.divider} />
 			<button
 				className={styles.favoriteBtn}
-				onClick={() => symbolChange(true, i, item)}>
+				onClick={() => {
+					symbolChange(true)
+				}}>
 				<img
 					src={item.favorite ? favorite_image : unfavorite_image}
 					alt={item.favorite ? 'Favorite' : 'Not favorite'}
@@ -46,7 +70,9 @@ export default function ItemButtons({ item, items, setItems, i }: ItemButtonsPro
 			</button>
 			<div className={styles.divider} />
 			<button
-				onClick={() => symbolChange(false, i, item)}
+				onClick={() => {
+					symbolChange(false)
+				}}
 				className={styles.checkBtn}>
 				<img
 					src={item.checked ? checked_image : unchecked_image}

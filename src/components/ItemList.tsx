@@ -14,9 +14,9 @@ export default function ItemList({ items, setItems }: ItemListProps) {
 					</p>
 					<div className={styles.controls}>
 						<ItemButtons
+							item={item}
 							items={items}
 							setItems={setItems}
-							item={item}
 							i={i}
 						/>
 					</div>
