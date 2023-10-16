@@ -2,22 +2,14 @@ import { Item } from './ItemList'
 import styles from './styles/ItemInput.module.css'
 import { useState } from 'react'
 import clear_symbol from '../images/svg/_clear_ symbol.svg'
+import { addItem } from '../util/addItem'
 
 export default function ItemInput({ items, setItems, display, setDisplay }: ItemInputProps) {
 	const [input, setInput] = useState('')
 
-	function addItem() {
+	function checker() {
 		if (input.trim().length === 0) return
-
-		setItems([
-			...items,
-			{
-				content: `${input}`,
-				checked: false,
-				favorite: false,
-			},
-		])
-
+		addItem(setItems, items, input, false)
 		setInput('')
 	}
 
@@ -33,12 +25,12 @@ export default function ItemInput({ items, setItems, display, setDisplay }: Item
 						if (e.key === 'Enter') {
 							e.preventDefault()
 
-							addItem()
+							checker()
 						}
 					}}
 				/>
 				<button
-					onClick={() => addItem()}
+					onClick={() => checker()}
 					className={styles.send}>
 					<svg
 						xmlns='http://www.w3.org/2000/svg'

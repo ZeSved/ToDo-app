@@ -8,25 +8,17 @@ import styles from './styles/ItemList.module.css'
 
 import { Item } from './ItemList'
 import { useEffect } from 'react'
+import { addItem } from '../util/addItem'
 
 export default function ItemButtons({ item, items, setItems, i }: ItemButtonsProps) {
 	useEffect(() => {
 		const newArr = [...items]
 
-		// if (newArr[i].favorite === true && newArr[0].favorite === true) return
-
 		if (item.favorite === true) {
 			newArr.splice(0, 0, newArr[i])
 			newArr.splice(i + 1, 1)
+			console.log(addItem(setItems, items, item.content, item.checked))
 		}
-
-		// else if (item.favorite === false) {
-		// 	newArr.splice(newArr.length, 0, newArr[i])
-		// 	newArr.splice(i, 1)
-		// }
-		// console.log(i)
-		// console.log(items.length)
-		// console.log(item.favorite)
 
 		setItems(newArr)
 	}, [item.favorite])
