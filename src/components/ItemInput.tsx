@@ -7,13 +7,21 @@ import { useState } from 'react'
 import clear_symbol from '../images/svg/_clear_ symbol.svg'
 import { addItem } from '../util/addItem'
 
-export default function ItemInput({ items, setItems, display, setDisplay, favorite, setFavorite }: ItemInputProps) {
+export default function ItemInput({
+	items,
+	setItems,
+	display,
+	setDisplay,
+	favorite,
+	setFavorite,
+}: ItemInputProps) {
 	const [input, setInput] = useState('')
 
 	function checker() {
 		if (input.trim().length === 0) return
 		addItem(setItems, items, input, false, favorite)
 		setInput('')
+		favorite && setFavorite(!favorite)
 	}
 
 	return (
@@ -48,8 +56,13 @@ export default function ItemInput({ items, setItems, display, setDisplay, favori
 					</svg>
 				</button>
 				<div className={styles.divider} />
-				<button className={styles.set_favorite} onClick={() => setFavorite(!favorite)}>
-					<img src={favorite ? favorite_image : unfavorite_image} alt="" />
+				<button
+					className={styles.set_favorite}
+					onClick={() => setFavorite(!favorite)}>
+					<img
+						src={favorite ? favorite_image : unfavorite_image}
+						alt=''
+					/>
 				</button>
 				<div className={styles.divider} />
 				<button

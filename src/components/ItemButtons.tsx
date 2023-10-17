@@ -8,17 +8,23 @@ import styles from './styles/ItemList.module.css'
 
 import { Item } from './ItemList'
 import { useEffect } from 'react'
-import { addItem } from '../util/addItem'
+//import { addItem } from '../util/addItem'
 import { symbolChange } from '../util/symbolChange'
 
-export default function ItemButtons({ item, items, setItems, i, setFavorite, favorite }: ItemButtonsProps) {
+export default function ItemButtons({
+	item,
+	items,
+	setItems,
+	i,
+	setFavorite,
+	favorite,
+}: ItemButtonsProps) {
 	useEffect(() => {
 		const newArr = [...items]
 
 		if (item.favorite === true) {
 			newArr.splice(0, 0, newArr[i])
 			newArr.splice(i + 1, 1)
-			addItem(setItems, items, item.content, item.checked, false)
 		}
 
 		setItems(newArr)
@@ -66,7 +72,7 @@ export default function ItemButtons({ item, items, setItems, i, setFavorite, fav
 
 interface ItemButtonsProps {
 	setItems: React.Dispatch<React.SetStateAction<Item[] | undefined>>
-	setFavorite: React.Dispatch<React.SetStateAction<boolean>>,
+	setFavorite: React.Dispatch<React.SetStateAction<boolean>>
 	favorite: boolean
 	item: Item
 	items: Item[]

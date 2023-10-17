@@ -5,7 +5,7 @@ export function addItem(
   items: Item[],
   content: string,
   checked: boolean,
-  favorite: boolean, 
+  favorite: boolean,
   setFavorite?: React.Dispatch<React.SetStateAction<boolean | undefined>>
 ) {
   if (favorite) {
@@ -15,8 +15,9 @@ export function addItem(
         checked: checked,
         favorite: favorite,
       },
-    ...items,
-  ])} else {
+      ...items,
+    ])
+  } else {
     setItems([
       ...items,
       {
@@ -24,8 +25,9 @@ export function addItem(
         checked: checked,
         favorite: favorite,
       },
-  ])}
-  
+    ])
+  }
+
 
   if (setFavorite === undefined) return
 
