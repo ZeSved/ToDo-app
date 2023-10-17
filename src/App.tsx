@@ -11,6 +11,7 @@ const DEFAULT_VALUE: Item[] = []
 function App() {
 	const [items, setItems] = useState<Item[] | undefined>(undefined)
 	const [display, setDisplay] = useState<boolean>(false)
+	const [favorite, setFavorite] = useState<boolean>(false)
 
 	useEffect(() => {
 		const itemDataLoad = JSON.parse(
@@ -32,9 +33,11 @@ function App() {
 					<>
 						<ItemInput
 							display={display}
-							setDisplay={setDisplay}
 							items={items}
+							favorite={favorite}
+							setDisplay={setDisplay}
 							setItems={setItems}
+							setFavorite={setFavorite}
 						/>
 						<div className='divider' />
 						<ItemList

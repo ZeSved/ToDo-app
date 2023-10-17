@@ -1,15 +1,18 @@
+import favorite_image from '../images/svg/favorite logo.svg'
+import unfavorite_image from '../images/svg/un-favorite logo (1).svg'
+
 import { Item } from './ItemList'
 import styles from './styles/ItemInput.module.css'
 import { useState } from 'react'
 import clear_symbol from '../images/svg/_clear_ symbol.svg'
 import { addItem } from '../util/addItem'
 
-export default function ItemInput({ items, setItems, display, setDisplay }: ItemInputProps) {
+export default function ItemInput({ items, setItems, display, setDisplay, favorite, setFavorite }: ItemInputProps) {
 	const [input, setInput] = useState('')
 
 	function checker() {
 		if (input.trim().length === 0) return
-		addItem(setItems, items, input, false)
+		addItem(setItems, items, input, false, favorite)
 		setInput('')
 	}
 
@@ -45,6 +48,10 @@ export default function ItemInput({ items, setItems, display, setDisplay }: Item
 					</svg>
 				</button>
 				<div className={styles.divider} />
+				<button className={styles.set_favorite} onClick={() => setFavorite(!favorite)}>
+					<img src={favorite ? favorite_image : unfavorite_image} alt="" />
+				</button>
+				<div className={styles.divider} />
 				<button
 					onClick={() => setDisplay(!display)}
 					className={styles.clear}>
@@ -59,8 +66,12 @@ export default function ItemInput({ items, setItems, display, setDisplay }: Item
 }
 
 interface ItemInputProps {
-	items: Item[]
 	setItems: React.Dispatch<React.SetStateAction<Item[] | undefined>>
 	setDisplay: React.Dispatch<React.SetStateAction<boolean>>
+	setFavorite: React.Dispatch<React.SetStateAction<boolean>>
+
+	items: Item[]
+
 	display: boolean
+	favorite: boolean
 }

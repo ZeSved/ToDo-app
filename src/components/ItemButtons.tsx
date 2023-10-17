@@ -9,31 +9,20 @@ import styles from './styles/ItemList.module.css'
 import { Item } from './ItemList'
 import { useEffect } from 'react'
 import { addItem } from '../util/addItem'
+import { symbolChange } from '../util/symbolChange'
 
-export default function ItemButtons({ item, items, setItems, i }: ItemButtonsProps) {
+export default function ItemButtons({ item, items, setItems, i, setFavorite, favorite }: ItemButtonsProps) {
 	useEffect(() => {
 		const newArr = [...items]
 
 		if (item.favorite === true) {
 			newArr.splice(0, 0, newArr[i])
 			newArr.splice(i + 1, 1)
-			console.log(addItem(setItems, items, item.content, item.checked))
+			addItem(setItems, items, item.content, item.checked, false)
 		}
 
 		setItems(newArr)
 	}, [item.favorite])
-
-	function symbolChange(index: boolean) {
-		const newArr = [...items]
-
-		if (index) {
-			newArr[i].favorite = !item.favorite
-		} else {
-			newArr[i].checked = !item.checked
-		}
-
-		setItems(newArr)
-	}
 
 	return (
 		<>
@@ -53,7 +42,7 @@ export default function ItemButtons({ item, items, setItems, i }: ItemButtonsPro
 			<button
 				className={styles.favoriteBtn}
 				onClick={() => {
-					symbolChange(true)
+					symbolChange(setItems, setFavorite, items, item, favorite, 'favorite', i)
 				}}>
 				<img
 					src={item.favorite ? favorite_image : unfavorite_image}
@@ -63,7 +52,7 @@ export default function ItemButtons({ item, items, setItems, i }: ItemButtonsPro
 			<div className={styles.divider} />
 			<button
 				onClick={() => {
-					symbolChange(false)
+					symbolChange(setItems, setFavorite, items, item, favorite, 'checked', i)
 				}}
 				className={styles.checkBtn}>
 				<img
@@ -77,6 +66,8 @@ export default function ItemButtons({ item, items, setItems, i }: ItemButtonsPro
 
 interface ItemButtonsProps {
 	setItems: React.Dispatch<React.SetStateAction<Item[] | undefined>>
+	setFavorite: React.Dispatch<React.SetStateAction<boolean | undefined>>,
+	favorite: boolean
 	item: Item
 	items: Item[]
 	i: number

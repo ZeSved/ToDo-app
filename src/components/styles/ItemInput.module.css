@@ -36,7 +36,8 @@
   cursor: pointer;
 }
 
-.clear {
+.clear,
+.set_favorite {
   background-color: #fa00ff;
   border: none;
   cursor: pointer;
