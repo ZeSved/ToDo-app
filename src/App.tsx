@@ -11,7 +11,7 @@ const DEFAULT_VALUE: Item[] = []
 function App() {
 	const [items, setItems] = useState<Item[] | undefined>(undefined)
 	const [display, setDisplay] = useState<boolean>(false)
-	const [favorite, setFavorite] = useState<boolean>(false)
+	const [favorite, setFavorite] = useState(false)
 
 	useEffect(() => {
 		const itemDataLoad = JSON.parse(
@@ -43,6 +43,8 @@ function App() {
 						<ItemList
 							items={items}
 							setItems={setItems}
+							setFavorite={setFavorite}
+							favorite={favorite}
 						/>
 						<ClearItems
 							display={display}

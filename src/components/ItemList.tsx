@@ -2,7 +2,7 @@ import ItemButtons from './ItemButtons'
 
 import styles from './styles/ItemList.module.css'
 
-export default function ItemList({ items, setItems }: ItemListProps) {
+export default function ItemList({ items, setItems, setFavorite, favorite }: ItemListProps) {
 	return (
 		<div className={styles.container}>
 			{items.map((item, i) => (
@@ -18,6 +18,8 @@ export default function ItemList({ items, setItems }: ItemListProps) {
 							items={items}
 							setItems={setItems}
 							i={i}
+							setFavorite={setFavorite}
+							favorite={favorite}
 						/>
 					</div>
 				</div>
@@ -29,6 +31,8 @@ export default function ItemList({ items, setItems }: ItemListProps) {
 export interface ItemListProps {
 	items: Item[]
 	setItems: React.Dispatch<React.SetStateAction<Item[] | undefined>>
+	setFavorite: React.Dispatch<React.SetStateAction<boolean>>
+	favorite: boolean
 }
 
 export type Item = {

@@ -2,7 +2,7 @@ import { Item } from "../components/ItemList"
 
 export function symbolChange(
     setItems: React.Dispatch<React.SetStateAction<Item[] | undefined>>,
-    setFavorite: React.Dispatch<React.SetStateAction<boolean | undefined>>,
+    setFavorite: React.Dispatch<React.SetStateAction<boolean>>,
     items: Item[], 
     item: Item, 
     favorite: boolean,

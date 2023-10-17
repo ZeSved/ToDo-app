@@ -66,7 +66,7 @@ export default function ItemButtons({ item, items, setItems, i, setFavorite, fav
 
 interface ItemButtonsProps {
 	setItems: React.Dispatch<React.SetStateAction<Item[] | undefined>>
-	setFavorite: React.Dispatch<React.SetStateAction<boolean | undefined>>,
+	setFavorite: React.Dispatch<React.SetStateAction<boolean>>,
 	favorite: boolean
 	item: Item
 	items: Item[]
