@@ -1,4 +1,4 @@
-import { Item } from "../components/ItemList"
+import { Item } from '../types'
 
 export function symbolChange(
     setItems: React.Dispatch<React.SetStateAction<Item[] | undefined>>,

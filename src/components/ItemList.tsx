@@ -2,6 +2,8 @@ import ItemButtons from './ItemButtons'
 
 import styles from './styles/ItemList.module.css'
 
+import { Item } from '../types'
+
 export default function ItemList({ items, setItems, setFavorite, favorite }: ItemListProps) {
 	return (
 		<div className={styles.container}>
@@ -32,11 +34,5 @@ export interface ItemListProps {
 	items: Item[]
 	setItems: React.Dispatch<React.SetStateAction<Item[] | undefined>>
 	setFavorite: React.Dispatch<React.SetStateAction<boolean>>
-	favorite: boolean
-}
-
-export type Item = {
-	checked: boolean
-	content: string
 	favorite: boolean
 }

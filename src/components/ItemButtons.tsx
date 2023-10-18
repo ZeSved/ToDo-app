@@ -6,7 +6,7 @@ import unfavorite_image from '../images/svg/un-favorite logo (1).svg'
 
 import styles from './styles/ItemList.module.css'
 
-import { Item } from './ItemList'
+import { Item } from '../types'
 import { useEffect } from 'react'
 //import { addItem } from '../util/addItem'
 import { symbolChange } from '../util/symbolChange'
@@ -26,6 +26,11 @@ export default function ItemButtons({
 			newArr.splice(0, 0, newArr[i])
 			newArr.splice(i + 1, 1)
 		}
+
+	//	if (items[i + 1].favorite) {
+	//		addItem(setItems, items, item.content, false, favorite, setFavorite)
+	//		return
+	//	}
 
 		setItems(newArr)
 	}, [item.favorite])

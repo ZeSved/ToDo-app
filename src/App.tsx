@@ -1,10 +1,13 @@
 import './App.css'
 
-import ItemList, { Item } from './components/ItemList'
 import { useEffect, useState } from 'react'
 
 import ItemInput from './components/ItemInput'
 import ClearItems from './components/ClearItems'
+import ItemList from './components/ItemList'
+import Toast from './components/Toast'
+
+import { Item } from '../src/types'
 
 const DEFAULT_VALUE: Item[] = []
 
@@ -51,6 +54,7 @@ function App() {
 							setDisplay={setDisplay}
 							setItems={setItems}
 						/>
+						<Toast />
 					</>
 				) : (
 					<p>Loading...</p>

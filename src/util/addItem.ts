@@ -1,4 +1,4 @@
-import { Item } from "../components/ItemList"
+import { Item } from '../types'
 
 export function addItem(
   setItems: React.Dispatch<React.SetStateAction<Item[] | undefined>>,
@@ -6,7 +6,7 @@ export function addItem(
   content: string,
   checked: boolean,
   favorite: boolean,
-  setFavorite?: React.Dispatch<React.SetStateAction<boolean | undefined>>
+  setFavorite: React.Dispatch<React.SetStateAction<boolean>>
 ) {
   if (favorite) {
     setItems([

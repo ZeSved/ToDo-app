@@ -1,11 +1,13 @@
 import favorite_image from '../images/svg/favorite logo.svg'
 import unfavorite_image from '../images/svg/un-favorite logo (1).svg'
-
-import { Item } from './ItemList'
-import styles from './styles/ItemInput.module.css'
-import { useState } from 'react'
 import clear_symbol from '../images/svg/_clear_ symbol.svg'
+
+import styles from './styles/ItemInput.module.css'
+
+import { Item } from '../types'
 import { addItem } from '../util/addItem'
+
+import { useState } from 'react'
 
 export default function ItemInput({
 	items,
@@ -19,7 +21,7 @@ export default function ItemInput({
 
 	function checker() {
 		if (input.trim().length === 0) return
-		addItem(setItems, items, input, false, favorite)
+		addItem(setItems, items, input, false, favorite, setFavorite)
 		setInput('')
 		favorite && setFavorite(!favorite)
 	}
