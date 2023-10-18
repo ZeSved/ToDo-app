@@ -1,5 +1,5 @@
 import styles from './styles/ClearItems.module.css'
-import { Item } from './ItemList'
+import { Item } from '../types'
 
 export default function ClearItems({ setItems, display, setDisplay }: ClearItemsProps) {
 	return (
