@@ -5,7 +5,7 @@ export default function ClearItems({ setItems, display, setDisplay }: ClearItems
 	return (
 		<div className={display ? styles.blur : styles.display}>
 			<div className={styles.clear_popup}>
-				<h2>Are you sure you want to proceed? </h2>
+				<h2>Are you sure you want to proceed?</h2>
 				<h2>This will delete all items permanently.</h2>
 				<div className={styles.btnContainer}>
 					<button
