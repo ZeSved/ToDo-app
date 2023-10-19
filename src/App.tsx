@@ -57,6 +57,7 @@ function App() {
 							display={display}
 							setDisplay={setDisplay}
 							setItems={setItems}
+							items={items}
 						/>
 					</>
 				) : (

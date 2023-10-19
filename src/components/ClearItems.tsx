@@ -1,12 +1,15 @@
 import styles from './styles/ClearItems.module.css'
 import { Item } from '../types'
 
-export default function ClearItems({ setItems, display, setDisplay }: ClearItemsProps) {
+export default function ClearItems({ setItems, display, setDisplay, items }: ClearItemsProps) {
+	const tempArr: Item[] = items.filter(items => items.favorite === true)
+
 	return (
 		<div className={display ? styles.blur : styles.display}>
 			<div className={styles.clear_popup}>
 				<h2>Are you sure you want to proceed?</h2>
 				<h2>This will delete all items permanently.</h2>
+				<p>NOTE: There are {tempArr.length} favorites!</p>
 				<div className={styles.btnContainer}>
 					<button
 						onClick={() => setDisplay(!display)}
@@ -31,4 +34,5 @@ interface ClearItemsProps {
 	setItems: React.Dispatch<React.SetStateAction<Item[] | undefined>>
 	setDisplay: React.Dispatch<React.SetStateAction<boolean>>
 	display: boolean
+	items: Item[]
 }

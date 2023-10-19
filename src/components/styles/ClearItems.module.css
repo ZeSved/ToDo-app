@@ -14,6 +14,15 @@ h2 {
   color: white;
 }
 
+p {
+  color: red;
+  padding: 1rem;
+  border: 2px solid white;
+  border-radius: 1rem;
+  margin-top: 1rem;
+  font-weight: 700;
+}
+
 
 .clearBtn,
 .cancelBtn {
@@ -45,7 +54,7 @@ h2 {
 }
 
 .btnContainer {
-  margin-top: 2rem;
+  margin-top: 1rem;
   display: flex;
   gap: 2rem;
 }
