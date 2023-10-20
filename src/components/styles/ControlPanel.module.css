@@ -1,0 +1,26 @@
+.controlPanelContainer {
+  display: flex;
+  flex-direction: row;
+  margin-inline: auto;
+  gap: 0.5rem;
+}
+
+.info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 1rem;
+  background-color: #fa00ff;
+  gap: 5rem;
+}
+
+.optionsDropdown {
+  padding: 1rem 4rem;
+  background-color: #fa00ff;
+  border-radius: 1rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}

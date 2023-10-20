@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+import styles from './styles/ControlPanel.module.css'
+
 import { Item } from '../types'
 
 export default function ControlPanel({ items }: ControlPanelType) {
@@ -13,10 +15,13 @@ export default function ControlPanel({ items }: ControlPanelType) {
 	}, [items])
 
 	return (
-		<div>
-			<p>Items: {items.length}</p>
-			<p>Favorites: {controlPanelInfo}</p>
-			<p>Checked: {controlPanelInfo}</p>
+		<div className={styles.controlPanelContainer}>
+			<div className={styles.info}>
+				<p>Items: {items.length}</p>
+				<p>Favorites: {controlPanelInfo[0]}</p>
+				<p>Checked: {controlPanelInfo[1]}</p>
+			</div>
+			<button className={styles.optionsDropdown}></button>
 		</div>
 	)
 }
