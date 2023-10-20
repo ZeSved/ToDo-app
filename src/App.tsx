@@ -6,6 +6,7 @@ import ItemInput from './components/ItemInput'
 import ClearItems from './components/ClearItems'
 import ItemList from './components/ItemList'
 import Toast from './components/Toast'
+import ControlPanel from './components/ControlPanel'
 
 import { Item } from '../src/types'
 
@@ -55,6 +56,9 @@ function App() {
 							display={display}
 							setDisplay={setDisplay}
 							setItems={setItems}
+							items={items}
+						/>
+						<ControlPanel 
 							items={items}
 						/>
 						<Toast toast={toast}/>
