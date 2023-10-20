@@ -14,10 +14,10 @@ h2 {
   color: white;
 }
 
-p {
-  color: red;
+.warningDisplay {
+  background-color: #fa00ff;
+  color: black;
   padding: 1rem;
-  border: 2px solid white;
   border-radius: 1rem;
   margin-top: 1rem;
   font-weight: 700;
@@ -39,6 +39,7 @@ p {
 }
 
 .cancelBtn {
+  border: none;
   color: black;
   background-color: #fa00ff;
 }

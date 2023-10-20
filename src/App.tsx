@@ -10,13 +10,12 @@ import Toast from './components/Toast'
 import { Item } from '../src/types'
 
 const DEFAULT_VALUE: Item[] = []
-const TOAST_TIMEOUT: number = 100
 
 function App() {
 	const [items, setItems] = useState<Item[] | undefined>(undefined)
 	const [display, setDisplay] = useState<boolean>(false)
 	const [favorite, setFavorite] = useState<boolean>(false)
-	const [toast, setToast] = useState<boolean | undefined>(undefined)
+	const [toast, setToast] = useState(false)
 
 	useEffect(() => {
 		const itemDataLoad = JSON.parse(
@@ -30,8 +29,6 @@ function App() {
 			localStorage.setItem('itemDat', JSON.stringify(items ?? DEFAULT_VALUE))
 		}
 	}, [items])
-
-	useEffect(() => {}, [display, items])
 
 	return (
 		<div className='wrapper'>
@@ -54,16 +51,17 @@ function App() {
 							favorite={favorite}
 						/>
 						<ClearItems
+							setToast={setToast}
 							display={display}
 							setDisplay={setDisplay}
 							setItems={setItems}
 							items={items}
 						/>
+						<Toast toast={toast}/>
 					</>
 				) : (
 					<p>Loading...</p>
 					)}
-					{toast ?? <Toast />}
 			</main>
 			<div className='blurSheet' />
 			<div className='colorSheet' />

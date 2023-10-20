@@ -1,9 +1,13 @@
-export default function Toast(){
+import styles from './styles/Toast.module.css'
+
+export default function Toast({toast}: Toast){
     return (
-        <>
-            <div>
-                <p>All items have been cleared and the database reset.</p>
-            </div>
-        </>
+        <div className={toast ? styles.toast : styles.display}>
+            <p>All items have been cleared and the database reset.</p>
+        </div>
     )
+}
+
+type Toast = {
+    toast: boolean
 }

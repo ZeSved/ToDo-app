@@ -1,7 +1,7 @@
 import styles from './styles/ClearItems.module.css'
 import { Item } from '../types'
 
-export default function ClearItems({ setItems, display, setDisplay, items }: ClearItemsProps) {
+export default function ClearItems({ setItems, display, setDisplay, items, setToast }: ClearItemsProps) {
 	const tempArr: Item[] = items.filter(items => items.favorite === true)
 
 	return (
@@ -9,7 +9,10 @@ export default function ClearItems({ setItems, display, setDisplay, items }: Cle
 			<div className={styles.clear_popup}>
 				<h2>Are you sure you want to proceed?</h2>
 				<h2>This will delete all items permanently.</h2>
-				<p>NOTE: There are {tempArr.length} favorites!</p>
+				<div className={tempArr.length ? styles.warningDisplay : styles.display}>
+					<p>NOTE: There are {tempArr.length} favorites!</p>
+				</div>
+				<p ></p>
 				<div className={styles.btnContainer}>
 					<button
 						onClick={() => setDisplay(!display)}
@@ -20,6 +23,8 @@ export default function ClearItems({ setItems, display, setDisplay, items }: Cle
 						onClick={() => {
 							setDisplay(!display)
 							setItems([])
+							setTimeout(() => setToast(true), 50)
+							setTimeout(() => setToast(false), 1500)
 						}}
 						className={styles.clearBtn}>
 						Yes, delete all
@@ -33,6 +38,7 @@ export default function ClearItems({ setItems, display, setDisplay, items }: Cle
 interface ClearItemsProps {
 	setItems: React.Dispatch<React.SetStateAction<Item[] | undefined>>
 	setDisplay: React.Dispatch<React.SetStateAction<boolean>>
+	setToast: React.Dispatch<React.SetStateAction<boolean>>
 	display: boolean
 	items: Item[]
 }
