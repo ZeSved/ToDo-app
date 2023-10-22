@@ -1,26 +1,40 @@
 .controlPanelContainer {
+  width: 90%;
   display: flex;
-  flex-direction: row;
+  justify-content: center;
   margin-inline: auto;
-  gap: 0.5rem;
 }
 
 .info {
   display: flex;
-  flex-direction: row;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  padding: 1rem;
-  border-radius: 1rem;
+}
+
+.info>p {
+  padding: 1rem 4rem;
   background-color: #fa00ff;
-  gap: 5rem;
+  border-radius: 0.7rem;
+}
+
+.infoDivider {
+  height: 2rem;
+  width: 1rem;
+  background-color: #fa00ff;
 }
 
 .optionsDropdown {
-  padding: 1rem 4rem;
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  padding: 1rem 3rem;
   background-color: #fa00ff;
-  border-radius: 1rem;
+  border-radius: 0.7rem;
   border: none;
   outline: none;
   cursor: pointer;
+}
+
+.optionsDropdown>p {
+  font-size: 1rem;
 }

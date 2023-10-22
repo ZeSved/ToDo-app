@@ -17,6 +17,7 @@ function App() {
 	const [display, setDisplay] = useState<boolean>(false)
 	const [favorite, setFavorite] = useState<boolean>(false)
 	const [toast, setToast] = useState(false)
+	const [controlDropDown, setControlDropDown] = useState(false)
 
 	useEffect(() => {
 		const itemDataLoad = JSON.parse(
@@ -58,14 +59,16 @@ function App() {
 							setItems={setItems}
 							items={items}
 						/>
-						<ControlPanel 
+						<ControlPanel
+							controlDropDown={controlDropDown}
+							setControlDropDown={setControlDropDown}
 							items={items}
 						/>
-						<Toast toast={toast}/>
+						<Toast toast={toast} />
 					</>
 				) : (
 					<p>Loading...</p>
-					)}
+				)}
 			</main>
 			<div className='blurSheet' />
 			<div className='colorSheet' />

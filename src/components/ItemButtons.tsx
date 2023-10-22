@@ -8,7 +8,6 @@ import styles from './styles/ItemList.module.css'
 
 import { Item } from '../types'
 import { useEffect } from 'react'
-//import { addItem } from '../util/addItem'
 import { symbolChange } from '../util/symbolChange'
 
 export default function ItemButtons({
@@ -27,10 +26,10 @@ export default function ItemButtons({
 			newArr.splice(i + 1, 1)
 		}
 
-	//	if (items[i + 1].favorite) {
-	//		addItem(setItems, items, item.content, false, favorite, setFavorite)
-	//		return
-	//	}
+		if (item.favorite === false) {
+			newArr.splice(newArr.length, 0, newArr[i])
+			newArr.splice(i, 1)
+		}
 
 		setItems(newArr)
 	}, [item.favorite])
