@@ -52,16 +52,17 @@ function App() {
 							setFavorite={setFavorite}
 							favorite={favorite}
 						/>
+						<div className='divider' />
+						<ControlPanel
+							controlDropDown={controlDropDown}
+							setControlDropDown={setControlDropDown}
+							items={items}
+						/>
 						<ClearItems
 							setToast={setToast}
 							display={display}
 							setDisplay={setDisplay}
 							setItems={setItems}
-							items={items}
-						/>
-						<ControlPanel
-							controlDropDown={controlDropDown}
-							setControlDropDown={setControlDropDown}
 							items={items}
 						/>
 						<Toast toast={toast} />

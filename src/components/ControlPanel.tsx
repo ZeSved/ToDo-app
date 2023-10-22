@@ -21,15 +21,32 @@ export default function ControlPanel({
 		setControlPanelInfo([tempArrChecked.length, tempArrFavorite.length])
 	}, [items])
 
+	const infoArr: InfoArr[] = [
+		{
+			property: 'Items: ',
+			value: items.length,
+		},
+		{
+			property: 'Favorites: ',
+			value: controlPanelInfo[1],
+		},
+		{
+			property: 'Checked: ',
+			value: controlPanelInfo[0],
+		},
+	]
+
 	return (
 		<div className={styles.controlPanelContainer}>
 			<div className={styles.info}>
-				<p>Items: {items.length}</p>
-				<div className={styles.infoDivider}></div>
-				<p>Favorites: {controlPanelInfo[1]}</p>
-				<div className={styles.infoDivider}></div>
-				<p>Checked: {controlPanelInfo[0]}</p>
-				<div className={styles.infoDivider}></div>
+				{infoArr.map((info) => (
+					<>
+						<p>
+							{info.property} {info.value}
+						</p>
+						<div className={styles.infoDivider} />
+					</>
+				))}
 			</div>
 			<button
 				onClick={() => setControlDropDown(!controlDropDown)}
@@ -48,4 +65,9 @@ type ControlPanelType = {
 	items: Item[]
 	controlDropDown: boolean
 	setControlDropDown: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+type InfoArr = {
+	property: string
+	value: number
 }
