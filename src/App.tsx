@@ -2,11 +2,11 @@ import './App.css'
 
 import { useEffect, useState } from 'react'
 
-import ItemInput from './components/ItemInput'
-import ClearItems from './components/ClearItems'
-import ItemList from './components/ItemList'
-import Toast from './components/Toast'
-import ControlPanel from './components/ControlPanel'
+import ItemInput from './components/ItemInput/ItemInput'
+import ClearItems from './components/ClearItems/ClearItems'
+import ItemList from './components/ItemList/ItemList'
+import Toast from './components/Toast/Toast'
+import ControlPanel from './components/ControlPanel/ControlPanel'
 
 import { Item } from '../src/types'
 

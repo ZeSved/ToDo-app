@@ -1,8 +1,8 @@
-import ItemButtons from './ItemButtons'
+import ItemButtons from './ItemButtons/ItemButtons'
 
-import styles from './styles/ItemList.module.css'
+import styles from './ItemList.module.css'
 
-import { Item } from '../types'
+import { Item } from '../../types'
 
 export default function ItemList({ items, setItems, setFavorite, favorite }: ItemListProps) {
 	return (

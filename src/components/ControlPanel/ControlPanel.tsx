@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 
-import opened from '../images/svg/dropdown_open.svg'
-import closed from '../images/svg/dropdown_closed.svg'
+import opened from '../../images/svg/dropdown_open.svg'
+import closed from '../../images/svg/dropdown_closed.svg'
 
-import styles from './styles/ControlPanel.module.css'
+import styles from './ControlPanel.module.css'
 
-import { Item } from '../types'
+import { Item } from '../../types'
 
 export default function ControlPanel({
 	items,

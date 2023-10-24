@@ -1,11 +1,11 @@
-import favorite_image from '../images/svg/favorite logo.svg'
-import unfavorite_image from '../images/svg/un-favorite logo (1).svg'
-import clear_symbol from '../images/svg/_clear_ symbol.svg'
+import favorite_image from '../../images/svg/favorite logo.svg'
+import unfavorite_image from '../../images/svg/un-favorite logo (1).svg'
+import clear_symbol from '../../images/svg/_clear_ symbol.svg'
 
-import styles from './styles/ItemInput.module.css'
+import styles from './ItemInput.module.css'
 
-import { Item } from '../types'
-import { addItem } from '../util/addItem'
+import { Item } from '../../types'
+import { addItem } from '../../util/addItem'
 
 import { useState } from 'react'
 

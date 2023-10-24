@@ -1,5 +1,5 @@
-import styles from './styles/ClearItems.module.css'
-import { Item } from '../types'
+import styles from './ClearItems.module.css'
+import { Item } from '../../types'
 
 export default function ClearItems({ setItems, display, setDisplay, items, setToast }: ClearItemsProps) {
 	const tempArr: Item[] = items.filter(items => items.favorite === true)

@@ -1,4 +1,4 @@
-import styles from './styles/Toast.module.css'
+import styles from './Toast.module.css'
 
 export default function Toast({toast}: Toast){
     return (
