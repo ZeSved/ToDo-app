@@ -13,14 +13,18 @@ import { Item, Custom } from '../src/types'
 
 const DEFAULT_VALUE: Item[] = []
 
-const DEFAULT_CUSTOM_SETTINGS: Custom[] = [
+const settings: Custom[] = [
 	{
 		name: 'mainColor',
 		color: '#000000',
 	},
 	{
+		name: 'secondaryColor',
+		color: '#3f3f3f',
+	},
+	{
 		name: 'callToActionColor',
-		color: '#fa00ff',
+		color: '#0c00ff',
 	},
 	{
 		name: 'textColor',
@@ -55,6 +59,7 @@ function App() {
 				{items ? (
 					<>
 						<ItemInput
+							settings={settings}
 							display={display}
 							items={items}
 							favorite={favorite}
@@ -62,28 +67,43 @@ function App() {
 							setItems={setItems}
 							setFavorite={setFavorite}
 						/>
-						<div className='divider' />
+						<div
+							className='divider'
+							style={{ background: settings[2].color }}
+						/>
 						<ItemList
+							settings={settings}
 							items={items}
 							setItems={setItems}
 							setFavorite={setFavorite}
 							favorite={favorite}
 						/>
-						<div className='divider' />
+						<div
+							className='divider'
+							style={{ background: settings[2].color }}
+						/>
 						<ControlPanel
+							settings={settings}
 							controlDropDown={controlDropDown}
 							setControlDropDown={setControlDropDown}
 							items={items}
 						/>
-						<Settings DEFAULT_CUSTOM_SETTINGS={DEFAULT_CUSTOM_SETTINGS} />
+						<Settings
+							settings={settings}
+							controlDropDown={controlDropDown}
+						/>
 						<ClearItems
+							settings={settings}
 							setToast={setToast}
 							display={display}
 							setDisplay={setDisplay}
 							setItems={setItems}
 							items={items}
 						/>
-						<Toast toast={toast} />
+						<Toast
+							settings={settings}
+							toast={toast}
+						/>
 					</>
 				) : (
 					<p>Loading...</p>

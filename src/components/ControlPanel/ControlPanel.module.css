@@ -1,8 +1,11 @@
 .controlPanelContainer {
   width: 90%;
+
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+
   margin-inline: auto;
+  border-radius: 0.4rem;
 }
 
 .info {
@@ -13,25 +16,19 @@
 
 .info>p {
   padding: 1rem 4rem;
-  background-color: #fa00ff;
-  border-radius: 0.7rem;
-}
-
-.infoDivider {
-  height: 2rem;
-  width: 1rem;
-  background-color: #fa00ff;
 }
 
 .optionsDropdown {
   display: flex;
   flex-direction: row;
+
   gap: 1rem;
-  padding: 1rem 3rem;
-  background-color: #fa00ff;
-  border-radius: 0.7rem;
+
+  padding: 1rem 4rem;
+
   border: none;
   outline: none;
+
   cursor: pointer;
 }
 

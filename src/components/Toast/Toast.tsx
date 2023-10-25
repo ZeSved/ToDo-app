@@ -1,13 +1,19 @@
+import { Custom } from '../../types'
 import styles from './Toast.module.css'
 
-export default function Toast({toast}: Toast){
-    return (
-        <div className={toast ? styles.toast : styles.display}>
-            <p>All items have been cleared and the database reset.</p>
-        </div>
-    )
+export default function Toast({ toast, settings }: Toast) {
+	return (
+		<div
+			className={toast ? styles.toast : styles.display}
+			style={{ backgroundColor: settings[1].color }}>
+			<p style={{ backgroundColor: settings[3].color }}>
+				All items have been cleared and the database reset.
+			</p>
+		</div>
+	)
 }
 
 type Toast = {
-    toast: boolean
+	toast: boolean
+	settings: Custom[]
 }

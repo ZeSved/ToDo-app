@@ -2,7 +2,7 @@ import { Custom } from '../../types'
 
 import styles from './Settings.module.css'
 
-export default function Settings({ DEFAULT_CUSTOM_SETTINGS }: SettingsProps) {
+export default function Settings({ settings, controlDropDown }: SettingsProps) {
 	let labelName: string
 
 	function nameSwitch(settings: Custom) {
@@ -10,8 +10,11 @@ export default function Settings({ DEFAULT_CUSTOM_SETTINGS }: SettingsProps) {
 			case 'mainColor':
 				labelName = 'Main color: '
 				break
-			case 'callToActionColor':
+			case 'secondaryColor':
 				labelName = 'Secondary color: '
+				break
+			case 'callToActionColor':
+				labelName = 'Button color: '
 				break
 			case 'textColor':
 				labelName = 'Text color: '
@@ -23,32 +26,40 @@ export default function Settings({ DEFAULT_CUSTOM_SETTINGS }: SettingsProps) {
 
 	return (
 		<>
-			<div className={styles.settingsContainer}>
-				{DEFAULT_CUSTOM_SETTINGS.map((settings) => (
+			<div
+				style={{ background: settings[1].color }}
+				className={controlDropDown ? styles.settingsContainer : styles.display}>
+				{settings.map((setting) => (
 					<div className={styles.inputContainer}>
 						<label
+							style={{ color: settings[3].color }}
 							className={styles.inputLabel}
-							htmlFor={settings.name}>
-							{nameSwitch(settings)}
+							htmlFor={setting.name}>
+							{nameSwitch(setting)}
 						</label>
 						<input
 							className={styles.settingsInput}
-							name={settings.name}
+							name={setting.name}
 							type='text'
-							placeholder={settings.name}
+							placeholder={setting.color}
 						/>
 						<div
 							className={styles.colorDisplay}
-							style={{ backgroundColor: settings.color }}
+							style={{ backgroundColor: setting.color }}
 						/>
 					</div>
 				))}
-				<button className={styles.saveBtn}>Save</button>
+				<button
+					style={{ background: settings[2].color }}
+					className={styles.saveBtn}>
+					Save
+				</button>
 			</div>
 		</>
 	)
 }
 
 type SettingsProps = {
-	DEFAULT_CUSTOM_SETTINGS: Custom[]
+	settings: Custom[]
+	controlDropDown: boolean
 }

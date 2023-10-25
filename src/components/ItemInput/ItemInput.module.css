@@ -26,7 +26,6 @@
   border: none;
 
   aspect-ratio: 1;
-  background-color: #fa00ff;
 
   display: flex;
   align-items: center;
@@ -38,7 +37,6 @@
 
 .clear,
 .set_favorite {
-  background-color: #fa00ff;
   border: none;
   cursor: pointer;
 

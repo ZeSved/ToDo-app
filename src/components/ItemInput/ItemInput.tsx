@@ -4,7 +4,7 @@ import clear_symbol from '../../images/svg/_clear_ symbol.svg'
 
 import styles from './ItemInput.module.css'
 
-import { Item } from '../../types'
+import { Custom, Item } from '../../types'
 import { addItem } from '../../util/addItem'
 
 import { useState } from 'react'
@@ -16,6 +16,7 @@ export default function ItemInput({
 	setDisplay,
 	favorite,
 	setFavorite,
+	settings,
 }: ItemInputProps) {
 	const [input, setInput] = useState('')
 
@@ -28,7 +29,9 @@ export default function ItemInput({
 
 	return (
 		<>
-			<div className={styles.itemInputWrapper}>
+			<div
+				style={{ border: `2px solid ${settings[1].color}` }}
+				className={styles.itemInputWrapper}>
 				<input
 					type='text'
 					placeholder='Type here to begin...'
@@ -43,6 +46,7 @@ export default function ItemInput({
 					}}
 				/>
 				<button
+					style={{ backgroundColor: settings[1].color }}
 					onClick={() => checker()}
 					className={styles.send}>
 					<svg
@@ -59,6 +63,7 @@ export default function ItemInput({
 				</button>
 				<div className={styles.divider} />
 				<button
+					style={{ backgroundColor: settings[1].color }}
 					className={styles.set_favorite}
 					onClick={() => setFavorite(!favorite)}>
 					<img
@@ -68,6 +73,7 @@ export default function ItemInput({
 				</button>
 				<div className={styles.divider} />
 				<button
+					style={{ backgroundColor: settings[1].color }}
 					onClick={() => setDisplay(!display)}
 					className={styles.clear}>
 					<img
@@ -84,9 +90,8 @@ interface ItemInputProps {
 	setItems: React.Dispatch<React.SetStateAction<Item[] | undefined>>
 	setDisplay: React.Dispatch<React.SetStateAction<boolean>>
 	setFavorite: React.Dispatch<React.SetStateAction<boolean>>
-
 	items: Item[]
-
 	display: boolean
 	favorite: boolean
+	settings: Custom[]
 }

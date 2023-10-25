@@ -1,12 +1,12 @@
-import checked_image from '../../../images/svg/_checked_ symbol.svg'
 import delete_image from '../../../images/svg/_delete_ symbol.svg'
+import checked_image from '../../../images/svg/_checked_ symbol.svg'
 import unchecked_image from '../../../images/svg/_unchecked_ symbol.svg'
 import favorite_image from '../../../images/svg/favorite logo.svg'
 import unfavorite_image from '../../../images/svg/un-favorite logo (1).svg'
 
-import styles from '../ItemList.module.css'
+import styles from './ItemButtons.module.css'
 
-import { Item } from '../../../types'
+import { Custom, Item } from '../../../types'
 import { useEffect } from 'react'
 import { symbolChange } from '../../../util/symbolChange'
 
@@ -67,7 +67,7 @@ export default function ItemButtons({
 				className={styles.checkBtn}>
 				<img
 					src={item.checked ? checked_image : unchecked_image}
-					alt={item.checked ? 'Checked' : 'Unchecked'}
+					alt=''
 				/>
 			</button>
 		</>
@@ -81,4 +81,5 @@ interface ItemButtonsProps {
 	item: Item
 	items: Item[]
 	i: number
+	settings: Custom[]
 }

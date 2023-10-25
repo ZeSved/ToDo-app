@@ -5,12 +5,13 @@ import closed from '../../images/svg/dropdown_closed.svg'
 
 import styles from './ControlPanel.module.css'
 
-import { Item } from '../../types'
+import { Custom, Item } from '../../types'
 
 export default function ControlPanel({
 	items,
 	controlDropDown,
 	setControlDropDown,
+	settings,
 }: ControlPanelType) {
 	const [controlPanelInfo, setControlPanelInfo] = useState<number[]>([])
 
@@ -38,21 +39,23 @@ export default function ControlPanel({
 
 	return (
 		<>
-			<div className={styles.controlPanelContainer}>
+			<div
+				style={{ backgroundColor: settings[1].color }}
+				className={styles.controlPanelContainer}>
 				<div className={styles.info}>
 					{infoArr.map((info) => (
 						<>
-							<p>
+							<p style={{ color: settings[3].color }}>
 								{info.property} {info.value}
 							</p>
-							<div className={styles.infoDivider} />
 						</>
 					))}
 				</div>
 				<button
+					style={{ backgroundColor: settings[1].color }}
 					onClick={() => setControlDropDown(!controlDropDown)}
 					className={styles.optionsDropdown}>
-					<p>More</p>
+					<p style={{ color: settings[3].color }}>More</p>
 					<img
 						src={controlDropDown ? opened : closed}
 						alt=''
@@ -67,6 +70,7 @@ type ControlPanelType = {
 	items: Item[]
 	controlDropDown: boolean
 	setControlDropDown: React.Dispatch<React.SetStateAction<boolean>>
+	settings: Custom[]
 }
 
 type InfoArr = {
