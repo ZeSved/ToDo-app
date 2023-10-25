@@ -37,27 +37,29 @@ export default function ControlPanel({
 	]
 
 	return (
-		<div className={styles.controlPanelContainer}>
-			<div className={styles.info}>
-				{infoArr.map((info) => (
-					<>
-						<p>
-							{info.property} {info.value}
-						</p>
-						<div className={styles.infoDivider} />
-					</>
-				))}
+		<>
+			<div className={styles.controlPanelContainer}>
+				<div className={styles.info}>
+					{infoArr.map((info) => (
+						<>
+							<p>
+								{info.property} {info.value}
+							</p>
+							<div className={styles.infoDivider} />
+						</>
+					))}
+				</div>
+				<button
+					onClick={() => setControlDropDown(!controlDropDown)}
+					className={styles.optionsDropdown}>
+					<p>More</p>
+					<img
+						src={controlDropDown ? opened : closed}
+						alt=''
+					/>
+				</button>
 			</div>
-			<button
-				onClick={() => setControlDropDown(!controlDropDown)}
-				className={styles.optionsDropdown}>
-				<p>More</p>
-				<img
-					src={controlDropDown ? opened : closed}
-					alt=''
-				/>
-			</button>
-		</div>
+		</>
 	)
 }
 

@@ -3,3 +3,8 @@ export type Item = {
 	content: string
 	favorite: boolean
 }
+
+export type Custom = {
+	name: string
+	color: string
+}
