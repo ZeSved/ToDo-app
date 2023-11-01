@@ -19,7 +19,19 @@ export default function ItemList({
 					style={{ border: `2px solid ${settings[1].color}` }}
 					key={i}>
 					<p
-						style={{ color: settings[3].color }}
+						style={
+							item.checked
+								? {
+										color: settings[3].color,
+										background: `linear-gradient(90deg,
+							${settings[0].color} 60%,
+							${settings[2].color + '50'} 80%,
+							${settings[2].color} 100%)`,
+								  }
+								: {
+										color: settings[3].color,
+								  }
+						}
 						className={item.checked ? styles.itemContentChecked : styles.itemContent}>
 						{item.content}
 					</p>

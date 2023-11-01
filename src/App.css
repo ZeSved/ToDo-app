@@ -31,19 +31,6 @@ body {
   left: 0;
   right: 0;
   top: 75%;
-
-  background: radial-gradient(16.87% 66.86% at 54.69% 85.38%,
-      #fa00ff 0%,
-      #fa00ff 23.96%,
-      rgba(250, 0, 255, 0) 100%),
-    radial-gradient(102.37% 59.14% at 78.61% 108.2%,
-      #fa00ff 0%,
-      rgba(250, 0, 255, 0.96) 29.69%,
-      rgba(250, 0, 255, 0) 100%),
-    radial-gradient(54.02% 32.14% at 27.26% 56.83%,
-      #fa00ff 0%,
-      rgba(250, 0, 255, 0.95) 67.19%,
-      rgba(250, 0, 255, 0) 100%);
 }
 
 .main {
@@ -56,6 +43,6 @@ body {
 }
 
 .divider {
-  height: 1px;
+  height: 2px;
   width: 100%;
 }

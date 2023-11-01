@@ -1,11 +1,21 @@
 .settingsContainer {
   display: flex;
   align-items: center;
+  justify-content: space-around;
   padding: 1rem;
   border-radius: 0.4rem;
   width: 90%;
   margin-inline: auto;
   gap: 0.5rem;
+}
+
+.colorContainer {
+  display: grid;
+  grid-template-columns: 6rem 6rem;
+
+  justify-content: space-around;
+
+  gap: 1rem 4rem;
 }
 
 .inputContainer {
@@ -34,14 +44,32 @@
 }
 
 .saveBtn {
-  padding: 0.7rem;
-  border-radius: 0.4rem;
-  outline: none;
-  border: none;
+  border-radius: 0.4rem 0 0 0.4rem;
+}
 
-  cursor: pointer;
+.resetBtn {
+  border-radius: 0 0.4rem 0.4rem 0;
+}
+
+.divider {
+  width: 1px;
+  height: 2rem;
 }
 
 .display {
   display: none;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+  border-radius: 0.4rem;
+}
+
+.buttonContainer>button {
+  padding: 0.7rem;
+  outline: none;
+  border: none;
+
+  cursor: pointer;
 }
