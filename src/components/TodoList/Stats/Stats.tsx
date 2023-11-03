@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import styles from './Stats.module.scss'
 
-import { Custom, Item, Mode } from '../../types'
+import { Custom, Item, Mode } from '../../../types'
 
 export default function Stats({ items, currentTheme, mode }: StatsType) {
 	const [stats, setStats] = useState<number[]>([])

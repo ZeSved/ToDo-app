@@ -2,24 +2,22 @@ import './Main styles/App.scss'
 
 import { useEffect, useState } from 'react'
 
-import ItemInput from './components/ItemInput/ItemInput'
-import ItemList from './components/ItemList/ItemList'
 import Toast from './components/Toast/Toast'
-import Stats from './components/Stats/Stats'
 
 import { Item, Custom, Mode, ProfileType } from '../src/types'
 
 import { appearance, customProfiles } from './util/lists'
 import { manageStorage } from './util/manageStorage'
 import SettingsPanel from './components/SettingsPanel/SettingsPanel'
+import TodoList from './components/TodoList/TodoList'
 
 const DEFAULT_VALUE: Item[] = []
 
 function App() {
 	const [items, setItems] = useState<Item[] | undefined>(undefined)
-	const [display, setDisplay] = useState<boolean>(false)
+	const [warningDisplay, setWarningDisplay] = useState<string | undefined>(undefined)
 	const [favorite, setFavorite] = useState<boolean>(false)
-	const [toast, setToast] = useState(false)
+	const [toast, setToast] = useState<string | undefined>(undefined)
 	const [controlDropDown, setControlDropDown] = useState(false)
 	const [mode, setMode] = useState<Mode>(appearance.mode)
 	const [currentTheme, setCurrentTheme] = useState<Custom[]>(appearance.darkModeTheme)
@@ -51,35 +49,16 @@ function App() {
 			<main className='main'>
 				{items ? (
 					<>
-						<ItemInput
+						<TodoList
+							setToast={setToast}
 							currentTheme={currentTheme}
-							display={display}
+							warningDisplay={warningDisplay}
 							items={items}
 							favorite={favorite}
-							setDisplay={setDisplay}
+							setWarningDisplay={setWarningDisplay}
 							setItems={setItems}
 							setFavorite={setFavorite}
-						/>
-						<div
-							className='dividerMain'
-							style={{ background: currentTheme[1].color }}
-						/>
-						<ItemList
 							mode={mode}
-							currentTheme={currentTheme}
-							items={items}
-							setItems={setItems}
-							setFavorite={setFavorite}
-							favorite={favorite}
-						/>
-						<div
-							className='dividerMain'
-							style={{ background: currentTheme[1].color }}
-						/>
-						<Stats
-							mode={mode}
-							currentTheme={currentTheme}
-							items={items}
 						/>
 						<SettingsPanel
 							setCustomOptions={setCustomOptions}
@@ -89,9 +68,6 @@ function App() {
 							controlDropDown={controlDropDown}
 							currentTheme={currentTheme}
 							setCurrentTheme={setCurrentTheme}
-							setToast={setToast}
-							display={display}
-							setDisplay={setDisplay}
 							setItems={setItems}
 							items={items}
 						/>

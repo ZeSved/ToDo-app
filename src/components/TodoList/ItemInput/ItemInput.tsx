@@ -1,18 +1,20 @@
 import styles from './ItemInput.module.scss'
 
-import { Custom, Item } from '../../types'
-import { addItem } from '../../util/addItem'
+import { Custom, Item } from '../../../types'
+import { addItem } from '../../../util/addItem'
 
 import { useState } from 'react'
+import ClearItems from './ClearItems/ClearItems'
 
 export default function ItemInput({
 	items,
 	setItems,
-	display,
-	setDisplay,
+	warningDisplay,
+	setWarningDisplay,
 	favorite,
 	setFavorite,
 	currentTheme,
+	setToast,
 }: ItemInputProps) {
 	const [input, setInput] = useState('')
 
@@ -93,37 +95,14 @@ export default function ItemInput({
 					)}
 				</button>
 				<div className={styles.divider} />
-				<button
-					style={{ backgroundColor: currentTheme[1].color }}
-					onClick={() => setDisplay(!display)}
-					className={styles.clear}>
-					{
-						<svg
-							width='32'
-							height='32'
-							viewBox='0 0 49 49'
-							fill='none'
-							xmlns='http://www.w3.org/2000/svg'>
-							<rect
-								y='5.65686'
-								width='8'
-								height='60'
-								rx='4'
-								transform='rotate(-45 0 5.65686)'
-								fill={currentTheme[2].color}
-							/>
-							<rect
-								x='5.65686'
-								y='48.0833'
-								width='8'
-								height='60'
-								rx='4'
-								transform='rotate(-135 5.65686 48.0833)'
-								fill={currentTheme[2].color}
-							/>
-						</svg>
-					}
-				</button>
+				<ClearItems
+					currentTheme={currentTheme}
+					setToast={setToast}
+					warningDisplay={warningDisplay}
+					setWarningDisplay={setWarningDisplay}
+					setItems={setItems}
+					items={items}
+				/>
 			</div>
 		</>
 	)
@@ -131,10 +110,11 @@ export default function ItemInput({
 
 interface ItemInputProps {
 	setItems: React.Dispatch<React.SetStateAction<Item[] | undefined>>
-	setDisplay: React.Dispatch<React.SetStateAction<boolean>>
+	setWarningDisplay: React.Dispatch<React.SetStateAction<string | undefined>>
 	setFavorite: React.Dispatch<React.SetStateAction<boolean>>
 	items: Item[]
-	display: boolean
+	warningDisplay: string | undefined
 	favorite: boolean
 	currentTheme: Custom[]
+	setToast: React.Dispatch<React.SetStateAction<string | undefined>>
 }

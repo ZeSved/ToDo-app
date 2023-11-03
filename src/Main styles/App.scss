@@ -37,7 +37,7 @@ body {
 
 .main {
 	z-index: 2;
-	padding: min(5%, 5rem);
+	padding: var(--main-padding);
 	width: 100%;
 	display: grid;
 

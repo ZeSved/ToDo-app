@@ -1,8 +1,8 @@
 import styles from './ItemButtons.module.scss'
 
-import { Custom, Item } from '../../../types'
+import { Custom, Item } from '../../../../types'
 import { useEffect } from 'react'
-import { symbolChange } from '../../../util/symbolChange'
+import { symbolChange } from '../../../../util/symbolChange'
 
 export default function ItemButtons({
 	item,

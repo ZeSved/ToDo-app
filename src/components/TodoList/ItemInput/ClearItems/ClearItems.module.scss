@@ -1,0 +1,98 @@
+@import '../../../../Main styles/root.scss';
+
+.clear_popup {
+	display: flex;
+	z-index: 10;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 2rem;
+	border-radius: 7px;
+}
+
+.warningDisplay {
+	padding: 1rem;
+	border-radius: 1rem;
+	margin-top: 1rem;
+	font-weight: 700;
+}
+
+.clearBtn,
+.cancelBtn {
+	padding: 1rem 2rem;
+	font-size: 2rem;
+	border-radius: 1.6rem;
+	cursor: pointer;
+}
+
+.cancelBtn {
+	border: none;
+}
+
+.blur {
+	backdrop-filter: blur(5px);
+	z-index: 9;
+	position: absolute;
+	inset: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btnContainer {
+	margin-top: 1rem;
+	display: flex;
+	gap: 2rem;
+}
+
+.display {
+	display: none;
+}
+
+.clearButtonsContainer {
+	display: flex;
+	gap: 0.5rem;
+
+	border: var(--input-border);
+	border-radius: var(--border-radius);
+	cursor: var(--input-cursor);
+	outline: var(--input-outline);
+
+	position: absolute;
+	top: calc(var(--main-padding) + 0.6%);
+	right: 17%;
+	z-index: 5;
+
+	padding: 0.2rem;
+	margin: 0;
+
+	color: black;
+
+	width: fit-content;
+	height: 55px;
+
+	> button {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+
+		margin: 0;
+		padding: 0.5rem 1rem;
+		font-size: 1rem;
+
+		border-radius: var(--border-radius);
+		border: var(--input-border);
+		cursor: var(--input-cursor);
+		outline: var(--input-outline);
+	}
+}
+
+.clear {
+	border: var(--input-border);
+	cursor: var(--input-cursor);
+	outline: var(--input-outline);
+
+	padding: 0.5rem;
+
+	height: 100%;
+}

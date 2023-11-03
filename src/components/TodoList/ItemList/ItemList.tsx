@@ -2,7 +2,7 @@ import ItemButtons from './ItemButtons/ItemButtons'
 
 import styles from './ItemList.module.scss'
 
-import { Custom, Item, Mode } from '../../types'
+import { Custom, Item, Mode } from '../../../types'
 
 export default function ItemList({
 	items,

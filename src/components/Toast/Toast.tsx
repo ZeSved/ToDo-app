@@ -6,14 +6,12 @@ export default function Toast({ toast, currentTheme }: Toast) {
 		<div
 			className={toast ? styles.toast : styles.display}
 			style={{ backgroundColor: currentTheme[1].color }}>
-			<p style={{ backgroundColor: currentTheme[3].color }}>
-				All items have been cleared and the database reset.
-			</p>
+			<p style={{ backgroundColor: currentTheme[3].color }}>{toast}</p>
 		</div>
 	)
 }
 
 type Toast = {
-	toast: boolean
+	toast: string | undefined
 	currentTheme: Custom[]
 }
