@@ -1,4 +1,4 @@
-import styles from './ClearItems.module.css'
+import styles from './ClearItems.module.scss'
 import { Custom, Item } from '../../types'
 
 export default function ClearItems({
@@ -7,25 +7,25 @@ export default function ClearItems({
 	setDisplay,
 	items,
 	setToast,
-	settings,
+	currentTheme,
 }: ClearItemsProps) {
 	const tempArr: Item[] = items.filter((items) => items.favorite === true)
 
 	return (
 		<div className={display ? styles.blur : styles.display}>
 			<div
-				style={{ border: `2px solid ${settings[1].color}`, background: settings[0].color }}
+				style={{ border: `2px solid ${currentTheme[1].color}`, background: currentTheme[0].color }}
 				className={styles.clear_popup}>
-				<h2 style={{ color: settings[3].color }}>Are you sure you want to proceed?</h2>
-				<h2 style={{ color: settings[3].color }}>This will delete all items permanently.</h2>
+				<h2 style={{ color: currentTheme[3].color }}>Are you sure you want to proceed?</h2>
+				<h2 style={{ color: currentTheme[3].color }}>This will delete all items permanently.</h2>
 				<div
-					style={{ backgroundColor: settings[2].color, color: settings[3].color }}
+					style={{ backgroundColor: currentTheme[2].color, color: currentTheme[3].color }}
 					className={tempArr.length ? styles.warningDisplay : styles.display}>
 					<p>NOTE: There are {tempArr.length} favorites!</p>
 				</div>
 				<div className={styles.btnContainer}>
 					<button
-						style={{ backgroundColor: settings[2].color, color: settings[3].color }}
+						style={{ backgroundColor: currentTheme[2].color, color: currentTheme[3].color }}
 						onClick={() => setDisplay(!display)}
 						className={styles.cancelBtn}>
 						No
@@ -38,9 +38,9 @@ export default function ClearItems({
 							setTimeout(() => setToast(false), 1500)
 						}}
 						style={{
-							border: `2px solid ${settings[2].color}`,
-							background: settings[0].color,
-							color: settings[3].color,
+							border: `2px solid ${currentTheme[2].color}`,
+							background: currentTheme[0].color,
+							color: currentTheme[3].color,
 						}}
 						className={styles.clearBtn}>
 						Yes, delete all
@@ -57,5 +57,5 @@ interface ClearItemsProps {
 	setToast: React.Dispatch<React.SetStateAction<boolean>>
 	display: boolean
 	items: Item[]
-	settings: Custom[]
+	currentTheme: Custom[]
 }

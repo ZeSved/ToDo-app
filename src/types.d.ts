@@ -5,6 +5,18 @@ export type Item = {
 }
 
 export type Custom = {
-	name: string
-	color: string
+	name: string;
+	color: string;
+	content: string
+}
+
+export type Mode = {
+	lightMode: boolean;
+	darkMode: boolean;
+	customMode: boolean;
+}
+
+export type ProfileType = {
+	value: Custom[];
+	name: string;
 }

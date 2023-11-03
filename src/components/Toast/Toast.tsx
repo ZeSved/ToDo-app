@@ -1,12 +1,12 @@
 import { Custom } from '../../types'
-import styles from './Toast.module.css'
+import styles from './Toast.module.scss'
 
-export default function Toast({ toast, settings }: Toast) {
+export default function Toast({ toast, currentTheme }: Toast) {
 	return (
 		<div
 			className={toast ? styles.toast : styles.display}
-			style={{ backgroundColor: settings[1].color }}>
-			<p style={{ backgroundColor: settings[3].color }}>
+			style={{ backgroundColor: currentTheme[1].color }}>
+			<p style={{ backgroundColor: currentTheme[3].color }}>
 				All items have been cleared and the database reset.
 			</p>
 		</div>
@@ -15,5 +15,5 @@ export default function Toast({ toast, settings }: Toast) {
 
 type Toast = {
 	toast: boolean
-	settings: Custom[]
+	currentTheme: Custom[]
 }

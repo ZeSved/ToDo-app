@@ -1,0 +1,21 @@
+:root {
+	--border-radius: 0.4rem;
+	--input-border: none;
+	--input-outline: none;
+	--input-cursor: pointer;
+}
+
+.dividerMain {
+	height: 2px;
+	width: 100%;
+}
+
+.dividerVertical {
+	width: 1px;
+	height: 80%;
+}
+
+.dividerHorizontal {
+	height: 1px;
+	width: 80%;
+}

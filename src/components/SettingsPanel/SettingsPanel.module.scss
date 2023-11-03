@@ -1,0 +1,37 @@
+@import '../../Main styles/root.scss';
+
+.settingsContainer {
+	display: flex;
+	flex-direction: column;
+	border-radius: var(--border-radius);
+	z-index: 4;
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 16rem;
+	height: fit-content;
+
+	.appearance {
+		padding: 0;
+		margin: 0;
+		height: fit-content;
+		width: 100%;
+		border: var(--border-radius);
+	}
+
+	.settingsDropdown {
+		padding: 1rem 0;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 1rem;
+
+		border: var(--input-border);
+		border-bottom-left-radius: var(--border-radius);
+		outline: var(--input-outline);
+
+		cursor: var(--input-cursor);
+
+		width: 100%;
+	}
+}
