@@ -4,7 +4,7 @@ import opened from '../../../images/svg/dropdown_open.svg'
 import closed from '../../../images/svg/dropdown_closed.svg'
 
 import { customProfiles, defaultProfiles } from '../../../util/lists'
-import { Custom, ProfileType } from '../../../types'
+import { Custom, Mode, ProfileType } from '../../../types'
 
 import { useEffect, useState } from 'react'
 
@@ -13,6 +13,7 @@ export default function Profiles({
 	loadDropdown,
 	currentTheme,
 	setCustomOptions,
+	setMode,
 }: Profile) {
 	const [showDefaults, setShowDefaults] = useState(false)
 	const [showCustoms, setShowCustoms] = useState(false)
@@ -53,7 +54,10 @@ export default function Profiles({
 										color: currentTheme[0].color,
 									}}
 									className={styles.load}
-									onClick={() => setCurrentTheme(option.value)}>
+									onClick={() => {
+										setCurrentTheme(option.value)
+										setMode
+									}}>
 									Load profile
 								</button>
 							</div>
@@ -122,4 +126,5 @@ type Profile = {
 	setCustomOptions: React.Dispatch<React.SetStateAction<ProfileType[]>>
 	loadDropdown: boolean
 	currentTheme: Custom[]
+	setMode: React.Dispatch<React.SetStateAction<Mode>>
 }

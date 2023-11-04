@@ -1,4 +1,4 @@
-import { Item, Custom, ProfileType } from '../../types'
+import { Custom, Mode, ProfileType } from '../../types'
 
 import styles from './SettingsPanel.module.scss'
 
@@ -16,6 +16,7 @@ export default function SettingsPanel({
 	currentTheme,
 	controlDropDown,
 	loadDropdown,
+	setMode,
 }: SettingsPanelType) {
 	return (
 		<div
@@ -50,6 +51,7 @@ export default function SettingsPanel({
 					setCurrentTheme={setCurrentTheme}
 				/>
 				<Profiles
+					setMode={setMode}
 					setCustomOptions={setCustomOptions}
 					currentTheme={currentTheme}
 					loadDropdown={loadDropdown}
@@ -61,12 +63,11 @@ export default function SettingsPanel({
 }
 
 type SettingsPanelType = {
-	setItems: React.Dispatch<React.SetStateAction<Item[] | undefined>>
+	setMode: React.Dispatch<React.SetStateAction<Mode>>
 	setCurrentTheme: React.Dispatch<React.SetStateAction<Custom[]>>
 	setLoadDropdown: React.Dispatch<React.SetStateAction<boolean>>
 	setControlDropDown: React.Dispatch<React.SetStateAction<boolean>>
 	setCustomOptions: React.Dispatch<React.SetStateAction<ProfileType[]>>
-	items: Item[]
 	currentTheme: Custom[]
 	controlDropDown: boolean
 	loadDropdown: boolean

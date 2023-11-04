@@ -6,20 +6,20 @@ import styles from './ClearItems.module.scss'
 
 import ClearButtons from './fragment/ClearButtons'
 
-const TOAST_MESSAGE: string = 'All items have been reset and the database reset.'
+// const TOAST_MESSAGE: string = 'All items have been reset and the database reset.'
 
 export default function ClearItems({
-	setItems,
+	// setItems,
 	warningDisplay,
 	setWarningDisplay,
 	items,
-	setToast,
+	// setToast,
 	currentTheme,
 }: ClearItemsProps) {
-	const [warning, setWarning] = useState<string | undefined>(undefined)
+	// const [warning, setWarning] = useState<string | undefined>(undefined)
 	const [clearButtons, setClearButtons] = useState(false)
 
-	const tempArr: Item[] = items.filter((items) => items.favorite === true)
+	// const tempArr: Item[] = items.filter((items) => items.favorite === true)
 
 	return (
 		<>

@@ -36,6 +36,12 @@ function App() {
 		)
 
 		setCurrentTheme(appearanceLoad)
+
+		const customOptionsLoad = JSON.parse(
+			manageStorage('get', 'customOptions') ?? JSON.stringify(customOptions)
+		)
+
+		setCustomOptions(customOptionsLoad)
 	}, [])
 
 	useEffect(() => {
@@ -61,6 +67,7 @@ function App() {
 							mode={mode}
 						/>
 						<SettingsPanel
+							setMode={setMode}
 							setCustomOptions={setCustomOptions}
 							loadDropdown={loadDropdown}
 							setControlDropDown={setControlDropDown}
@@ -68,8 +75,6 @@ function App() {
 							controlDropDown={controlDropDown}
 							currentTheme={currentTheme}
 							setCurrentTheme={setCurrentTheme}
-							setItems={setItems}
-							items={items}
 						/>
 						<Toast
 							currentTheme={currentTheme}
