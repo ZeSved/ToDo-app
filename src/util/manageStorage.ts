@@ -1,13 +1,13 @@
-export function manageStorage(
+export default function manageStorage(
   operation: string,
   key: string,
-  value?: string
+  value?: string,
 ) {
   switch (operation) {
     case 'set':
-      localStorage.setItem(key, value ?? '')
+      window.localStorage.setItem(key, value ?? '')
       break
     case 'get':
-      return localStorage.getItem(key)
+      return window.localStorage.getItem(key)
   }
 }

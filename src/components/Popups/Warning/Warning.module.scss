@@ -1,0 +1,50 @@
+@import '../../../Main styles/root.scss';
+
+.clear_popup {
+	display: flex;
+	z-index: 10;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	padding: 2rem;
+	border-radius: var(--border-radius);
+}
+
+.warning {
+	padding: 1rem;
+	border-radius: var(--border-radius);
+	margin-top: 1rem;
+	font-weight: 700;
+}
+
+.clearBtn,
+.cancelBtn {
+	padding: 1rem 2rem;
+	font-size: 2rem;
+	border-radius: var(--border-radius);
+	cursor: var(--input-cursor);
+}
+
+.cancelBtn {
+	border: none;
+}
+
+.blur {
+	backdrop-filter: blur(5px);
+	z-index: 9;
+	position: absolute;
+	inset: 0;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btnContainer {
+	margin-top: 1rem;
+	display: flex;
+	gap: 2rem;
+}
+
+.display {
+	display: none;
+}

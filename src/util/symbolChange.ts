@@ -1,27 +1,25 @@
-import { Item } from '../types'
+import { Action, Item, List } from '../types/types'
 
 export function symbolChange(
-    setItems: React.Dispatch<React.SetStateAction<Item[] | undefined>>,
-    setFavorite: React.Dispatch<React.SetStateAction<boolean>>,
-    items: Item[], 
-    item: Item, 
-    favorite: boolean,
-    index: string, 
-    i: number
-    ) {
-    const newArr = [...items]
+    item: Item,
+    index: string,
+    i: number,
+    dispatch: React.Dispatch<Action>,
+    list: List
+) {
+    const newArr = [...list.items]
 
     switch (index) {
         case 'favorite':
             newArr[i].favorite = !item.favorite
-            setItems(newArr)
+            dispatch({ type: 'set-items', payload: newArr })
             break;
         case 'checked':
             newArr[i].checked = !item.checked
-            setItems(newArr)
+            dispatch({ type: 'set-items', payload: newArr })
             break;
         case 'input':
-            setFavorite(!favorite)
+            dispatch({ type: 'set-favorite', payload: !list.favorite })
             break;
     }
 }

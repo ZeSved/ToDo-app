@@ -1,29 +1,23 @@
 import { useEffect } from 'react'
 
-import { Custom } from '../../../types'
+import { Action, Custom, List } from '../../../types/types'
 
 import opened from '../../../images/svg/dropdown_open.svg'
 import closed from '../../../images/svg/dropdown_closed.svg'
 
-import { manageStorage } from '../../../util/manageStorage'
+import manageStorage from '../../../util/manageStorage'
 
 import styles from './Appearance.module.scss'
 
-export default function Appearance({
-	currentTheme,
-	controlDropDown,
-	setCurrentTheme,
-	setLoadDropdown,
-	loadDropdown,
-}: SettingsProps) {
+export default function Appearance({ list, dispatch }: SettingsProps) {
 	useEffect(() => {
-		if (!controlDropDown) setLoadDropdown(false)
-	}, [controlDropDown])
+		if (!list.settingsDropdown) dispatch({ type: 'set-profile-dropdown', payload: false })
+	}, [list.settingsDropdown])
 
 	let labelName: string
 
-	function nameSwitch(settings: Custom) {
-		switch (settings.name) {
+	function nameSwitch(theme: Custom) {
+		switch (theme.name) {
 			case 'mainColor':
 				labelName = 'Main color'
 				break
@@ -42,7 +36,7 @@ export default function Appearance({
 	}
 
 	function colorSwitch(e: React.ChangeEvent<HTMLInputElement>, i: number) {
-		const newArr = [...currentTheme]
+		const newArr = [...list.currentTheme]
 
 		if (e.target.value === '') {
 			switch (i) {
@@ -64,18 +58,18 @@ export default function Appearance({
 			newArr[i].content = newArr[i].color
 		}
 
-		return newArr
+		dispatch({ type: 'set-current-theme', payload: newArr })
 	}
 
 	return (
 		<div
-			className={controlDropDown ? styles.appearance : styles.display}
-			style={{ background: currentTheme[1].color }}>
+			className={list.settingsDropdown ? styles.appearance : styles.display}
+			style={{ background: list.currentTheme[1].color }}>
 			<div className={styles.colorContainer}>
-				{currentTheme.map((theme, i) => (
+				{list.currentTheme.map((theme, i) => (
 					<div className={styles.inputContainer}>
 						<label
-							style={{ color: currentTheme[3].color }}
+							style={{ color: list.currentTheme[3].color }}
 							className={styles.inputLabel}
 							htmlFor={theme.name}>
 							{nameSwitch(theme)}
@@ -90,9 +84,9 @@ export default function Appearance({
 									if (e.target.value === '#') {
 										e.target.value = ''
 									}
-									setCurrentTheme(colorSwitch(e, i))
+									colorSwitch(e, i)
 								}}
-								style={{ background: currentTheme[1].color }}
+								style={{ background: list.currentTheme[1].color }}
 								className={styles.settingsInput}
 								name={theme.name}
 								type='text'
@@ -107,52 +101,49 @@ export default function Appearance({
 				))}
 			</div>
 			<div
-				style={{ background: currentTheme[0].color }}
+				style={{ background: list.currentTheme[0].color }}
 				className={styles.mainDivider}
 			/>
 			<div
-				style={{ background: currentTheme[2].color }}
+				style={{ background: list.currentTheme[2].color }}
 				className={styles.buttonContainer}>
 				<button
 					style={{
-						background: currentTheme[2].color,
-						color: currentTheme[0].color,
+						background: list.currentTheme[2].color,
+						color: list.currentTheme[0].color,
 					}}
 					onClick={() => {
-						manageStorage('set', 'settings', JSON.stringify(currentTheme))
+						manageStorage('set', 'settings', JSON.stringify(list.currentTheme))
 					}}>
 					Save Profile
 				</button>
 				<div
 					className={styles.divider}
-					style={{ background: currentTheme[0].color }}
+					style={{ background: list.currentTheme[0].color }}
 				/>
 				<button
 					style={{
-						background: currentTheme[2].color,
-						color: currentTheme[0].color,
+						background: list.currentTheme[2].color,
+						color: list.currentTheme[0].color,
 					}}
-					onClick={() => setLoadDropdown(!loadDropdown)}
+					onClick={() => dispatch({ type: 'set-profile-dropdown', payload: !list.profileDropdown })}
 					className={styles.loadDropdown}>
 					Select profile
 					<img
-						src={loadDropdown ? opened : closed}
+						src={list.profileDropdown ? opened : closed}
 						alt=''
 					/>
 				</button>
 			</div>
 			<div
-				style={{ background: currentTheme[0].color }}
-				className={loadDropdown ? styles.dividerHorizontal : styles.display}
+				style={{ background: list.currentTheme[0].color }}
+				className={list.profileDropdown ? styles.dividerHorizontal : styles.display}
 			/>
 		</div>
 	)
 }
 
 type SettingsProps = {
-	currentTheme: Custom[]
-	controlDropDown: boolean
-	setCurrentTheme: React.Dispatch<React.SetStateAction<Custom[]>>
-	setLoadDropdown: React.Dispatch<React.SetStateAction<boolean>>
-	loadDropdown: boolean
+	dispatch: React.Dispatch<Action>
+	list: List
 }

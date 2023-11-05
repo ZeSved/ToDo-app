@@ -58,3 +58,55 @@
 		rgba(0, 0, 0, 0) 100%
 	);
 }
+
+.clearButtonsContainer {
+	display: flex;
+	gap: 0.5rem;
+
+	border: var(--input-border);
+	border-radius: var(--border-radius);
+	cursor: var(--input-cursor);
+	outline: var(--input-outline);
+
+	position: absolute;
+	top: calc(var(--main-padding) + 0.6%);
+	right: 17%;
+	z-index: 5;
+
+	padding: 0.2rem;
+	margin: 0;
+
+	color: black;
+
+	width: fit-content;
+	height: 55px;
+
+	> button {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+
+		margin: 0;
+		padding: 0.5rem 1rem;
+		font-size: 1rem;
+
+		border-radius: var(--border-radius);
+		border: var(--input-border);
+		cursor: var(--input-cursor);
+		outline: var(--input-outline);
+	}
+}
+
+.clear {
+	border: var(--input-border);
+	cursor: var(--input-cursor);
+	outline: var(--input-outline);
+
+	padding: 0.5rem;
+
+	height: 100%;
+}
+
+.display {
+	display: none;
+}

@@ -1,6 +1,6 @@
-import { manageStorage } from "./manageStorage"
+import manageStorage from "./manageStorage"
 
-import { Custom, ProfileType } from "../types"
+import { Custom, ProfileType } from "../types/types"
 
 export const appearance = {
   mode: {
@@ -72,12 +72,12 @@ export const appearance = {
 
 export const defaultProfiles: ProfileType[] = [
   {
+    name: 'Light',
     value: appearance.lightModeTheme,
-    name: 'Light mode',
   },
   {
+    name: 'Dark',
     value: appearance.darkModeTheme,
-    name: 'Dark mode',
   },
 ]
 

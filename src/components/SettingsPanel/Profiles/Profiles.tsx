@@ -4,34 +4,28 @@ import opened from '../../../images/svg/dropdown_open.svg'
 import closed from '../../../images/svg/dropdown_closed.svg'
 
 import { customProfiles, defaultProfiles } from '../../../util/lists'
-import { Custom, Mode, ProfileType } from '../../../types'
+import { Action, List } from '../../../types/types'
 
 import { useEffect, useState } from 'react'
 
-export default function Profiles({
-	setCurrentTheme,
-	loadDropdown,
-	currentTheme,
-	setCustomOptions,
-	setMode,
-}: Profile) {
+export default function Profiles({ list, dispatch }: Profile) {
 	const [showDefaults, setShowDefaults] = useState(false)
 	const [showCustoms, setShowCustoms] = useState(false)
 
 	useEffect(() => {
-		if (!loadDropdown) {
+		if (!list.profileDropdown) {
 			setShowCustoms(!showCustoms)
 			setShowDefaults(!showDefaults)
 		}
-	}, [loadDropdown])
+	}, [list.profileDropdown])
 
 	return (
 		<div
-			style={{ background: currentTheme[1].color, color: currentTheme[3].color }}
-			className={loadDropdown ? styles.profilesContainer : styles.display}>
+			style={{ background: list.currentTheme[1].color, color: list.currentTheme[3].color }}
+			className={list.profileDropdown ? styles.profilesContainer : styles.display}>
 			<div className={styles.defaultProfiles}>
 				<button
-					style={{ background: currentTheme[1].color, color: currentTheme[3].color }}
+					style={{ background: list.currentTheme[1].color, color: list.currentTheme[3].color }}
 					onClick={() => setShowDefaults(!showDefaults)}>
 					Default profiles
 					<img
@@ -40,23 +34,25 @@ export default function Profiles({
 					/>
 				</button>
 				<div
-					style={{ background: currentTheme[0].color }}
+					style={{ background: list.currentTheme[0].color }}
 					className={showDefaults ? styles.dividerHorizontal : styles.display}
 				/>
 				{showDefaults &&
-					defaultProfiles.map((option) => (
+					defaultProfiles.map((option, i) => (
 						<>
-							<div className={styles.profile}>
+							<div
+								key={i}
+								className={styles.profile}>
 								<p>{option.name}</p>
 								<button
 									style={{
-										background: currentTheme[2].color,
-										color: currentTheme[0].color,
+										background: list.currentTheme[2].color,
+										color: list.currentTheme[0].color,
 									}}
 									className={styles.load}
 									onClick={() => {
-										setCurrentTheme(option.value)
-										setMode
+										dispatch({ type: 'set-current-theme', payload: option.value })
+										dispatch({ type: 'set-mode', payload: option.name })
 									}}>
 									Load profile
 								</button>
@@ -65,11 +61,11 @@ export default function Profiles({
 					))}
 				<div
 					className={styles.dividerHorizontal}
-					style={{ background: currentTheme[0].color, margin: '1rem 0' }}
+					style={{ background: list.currentTheme[0].color, margin: '1rem 0' }}
 				/>
 				<div className={styles.customProfiles}>
 					<button
-						style={{ background: currentTheme[1].color, color: currentTheme[3].color }}
+						style={{ background: list.currentTheme[1].color, color: list.currentTheme[3].color }}
 						onClick={() => setShowCustoms(!showCustoms)}>
 						Custom profiles
 						<img
@@ -78,7 +74,7 @@ export default function Profiles({
 						/>
 					</button>
 					<div
-						style={{ background: currentTheme[0].color }}
+						style={{ background: list.currentTheme[0].color }}
 						className={showCustoms ? styles.dividerHorizontal : styles.display}
 					/>
 					{showCustoms &&
@@ -91,23 +87,25 @@ export default function Profiles({
 									<div className={styles.buttonContainer}>
 										<button
 											style={{
-												background: currentTheme[2].color,
-												color: currentTheme[0].color,
+												background: list.currentTheme[2].color,
+												color: list.currentTheme[0].color,
 											}}
 											className={styles.load}
-											onClick={() => setCurrentTheme(option.value)}>
+											onClick={() =>
+												dispatch({ type: 'set-current-theme', payload: option.value })
+											}>
 											Load profile
 										</button>
 										<button
 											style={{
-												background: currentTheme[2].color,
-												color: currentTheme[0].color,
+												background: list.currentTheme[2].color,
+												color: list.currentTheme[0].color,
 											}}
 											className={styles.delete}
 											onClick={() => {
-												const newArr = [...customProfiles]
+												const newArr = [...list.customProfile]
 												newArr.splice(i, 1)
-												setCustomOptions(newArr)
+												dispatch({ type: 'set-custom-profile', payload: newArr })
 											}}>
 											Delete profile
 										</button>
@@ -122,9 +120,6 @@ export default function Profiles({
 }
 
 type Profile = {
-	setCurrentTheme: React.Dispatch<React.SetStateAction<Custom[]>>
-	setCustomOptions: React.Dispatch<React.SetStateAction<ProfileType[]>>
-	loadDropdown: boolean
-	currentTheme: Custom[]
-	setMode: React.Dispatch<React.SetStateAction<Mode>>
+	dispatch: React.Dispatch<Action>
+	list: List
 }

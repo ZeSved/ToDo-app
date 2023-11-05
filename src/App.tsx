@@ -1,84 +1,79 @@
+import { useEffect, useReducer } from 'react'
+
 import './Main styles/App.scss'
 
-import { useEffect, useState } from 'react'
+import { List, ToastMessage } from './types/types'
 
-import Toast from './components/Toast/Toast'
+import manageStorage from './util/manageStorage'
+import reducer from './util/reducer'
 
-import { Item, Custom, Mode, ProfileType } from '../src/types'
-
-import { appearance, customProfiles } from './util/lists'
-import { manageStorage } from './util/manageStorage'
 import SettingsPanel from './components/SettingsPanel/SettingsPanel'
 import TodoList from './components/TodoList/TodoList'
+import Popups from './components/Popups/Popups'
+import { appearance } from './util/lists'
 
-const DEFAULT_VALUE: Item[] = []
+const DEFAULT_LIST: List = {
+	items: [],
+	input: '',
+	warning: undefined,
+	favorite: false,
+	toast: '',
+	settingsDropdown: false,
+	mode: 'dark',
+	currentTheme: appearance.darkModeTheme,
+	profileDropdown: false,
+	customProfile: [],
+	onlyChecked: false,
+	clearButtons: false,
+}
 
 function App() {
-	const [items, setItems] = useState<Item[] | undefined>(undefined)
-	const [warningDisplay, setWarningDisplay] = useState<string | undefined>(undefined)
-	const [favorite, setFavorite] = useState<boolean>(false)
-	const [toast, setToast] = useState<string | undefined>(undefined)
-	const [controlDropDown, setControlDropDown] = useState(false)
-	const [mode, setMode] = useState<Mode>(appearance.mode)
-	const [currentTheme, setCurrentTheme] = useState<Custom[]>(appearance.darkModeTheme)
-	const [loadDropdown, setLoadDropdown] = useState(false)
-	const [customOptions, setCustomOptions] = useState<ProfileType[]>(customProfiles)
+	const [list, dispatch] = useReducer(reducer, DEFAULT_LIST)
 
 	useEffect(() => {
-		const itemDataLoad = JSON.parse(
-			manageStorage('get', 'itemDat') ?? JSON.stringify(DEFAULT_VALUE)
-		)
-
-		setItems(itemDataLoad)
+		const itemDataLoad = JSON.parse(manageStorage('get', 'itemDat') ?? JSON.stringify(list.items))
 
 		const appearanceLoad = JSON.parse(
-			manageStorage('get', 'settings') ?? JSON.stringify(currentTheme)
+			manageStorage('get', 'settings') ?? JSON.stringify(list.currentTheme)
 		)
-
-		setCurrentTheme(appearanceLoad)
-
 		const customOptionsLoad = JSON.parse(
-			manageStorage('get', 'customOptions') ?? JSON.stringify(customOptions)
+			manageStorage('get', 'customOptions') ?? JSON.stringify(list.customProfile)
 		)
 
-		setCustomOptions(customOptionsLoad)
+		dispatch({ type: 'set-items', payload: itemDataLoad })
+		dispatch({ type: 'set-current-theme', payload: appearanceLoad })
+		dispatch({ type: 'set-custom-profile', payload: customOptionsLoad })
 	}, [])
 
 	useEffect(() => {
-		if (items) {
-			manageStorage('set', 'itemDat', JSON.stringify(items ?? DEFAULT_VALUE))
+		if (list.items) {
+			manageStorage('set', 'itemDat', JSON.stringify(list.items))
 		}
-	}, [items])
+	}, [list.items])
+
+	const toastMessage: ToastMessage = {
+		clearedChecked: 'All checked items have been cleared and the database updated.',
+		clearedAll: 'All items have been cleared and the database reset.',
+		appliedTheme: `Successfully applied theme.`,
+	}
 
 	return (
 		<div className='wrapper'>
 			<main className='main'>
-				{items ? (
+				{list.items ? (
 					<>
 						<TodoList
-							setToast={setToast}
-							currentTheme={currentTheme}
-							warningDisplay={warningDisplay}
-							items={items}
-							favorite={favorite}
-							setWarningDisplay={setWarningDisplay}
-							setItems={setItems}
-							setFavorite={setFavorite}
-							mode={mode}
+							dispatch={dispatch}
+							list={list}
 						/>
 						<SettingsPanel
-							setMode={setMode}
-							setCustomOptions={setCustomOptions}
-							loadDropdown={loadDropdown}
-							setControlDropDown={setControlDropDown}
-							setLoadDropdown={setLoadDropdown}
-							controlDropDown={controlDropDown}
-							currentTheme={currentTheme}
-							setCurrentTheme={setCurrentTheme}
+							dispatch={dispatch}
+							list={list}
 						/>
-						<Toast
-							currentTheme={currentTheme}
-							toast={toast}
+						<Popups
+							dispatch={dispatch}
+							list={list}
+							toastMessage={toastMessage}
 						/>
 					</>
 				) : (
@@ -90,17 +85,17 @@ function App() {
 				className='colorSheet'
 				style={{
 					background: `radial-gradient(16.87% 66.86% at 54.69% 85.38%,
-						${currentTheme[2].color} 0%,
-						${currentTheme[2].color} 43.96%,
-						${currentTheme[0].color + '00'} 100%),
+						${list.currentTheme[2].color} 0%,
+						${list.currentTheme[2].color} 43.96%,
+						${list.currentTheme[0].color + '00'} 100%),
 					radial-gradient(102.37% 59.14% at 78.61% 108.2%,
-						${currentTheme[2].color} 0%,
-						${currentTheme[2].color + '96'} 29.69%,
-						${currentTheme[0].color + '00'} 100%),
+						${list.currentTheme[2].color} 0%,
+						${list.currentTheme[2].color + '96'} 29.69%,
+						${list.currentTheme[0].color + '00'} 100%),
 					radial-gradient(54.02% 32.14% at 27.26% 56.83%,
-						${currentTheme[2].color} 0%,
-						${currentTheme[2].color + '95'} 87.19%,
-						${currentTheme[0].color + '00'} 100%)`,
+						${list.currentTheme[2].color} 0%,
+						${list.currentTheme[2].color + '95'} 87.19%,
+						${list.currentTheme[0].color + '00'} 100%)`,
 				}}
 			/>
 		</div>

@@ -1,35 +1,34 @@
-import { Item } from '../types'
+import { Action, List } from '../types/types'
 
 export function addItem(
-  setItems: React.Dispatch<React.SetStateAction<Item[] | undefined>>,
-  items: Item[],
-  content: string,
-  checked: boolean,
-  favorite: boolean,
-  setFavorite: React.Dispatch<React.SetStateAction<boolean>>
+  dispatch: React.Dispatch<Action>,
+  list: List
 ) {
-  if (favorite) {
-    setItems([
-      {
-        content: `${content}`,
-        checked: checked,
-        favorite: favorite,
-      },
-      ...items,
-    ])
+  if (list.favorite) {
+    dispatch({
+      type: 'set-items',
+      payload: [
+        {
+          content: `${list.input}`,
+          checked: false,
+          favorite: list.favorite,
+        },
+        ...list.items,
+      ]
+    })
   } else {
-    setItems([
-      ...items,
-      {
-        content: `${content}`,
-        checked: checked,
-        favorite: favorite,
-      },
-    ])
+    dispatch({
+      type: 'set-items',
+      payload: [
+        ...list.items,
+        {
+          content: `${list.input}`,
+          checked: false,
+          favorite: list.favorite,
+        },
+      ]
+    })
   }
 
-
-  if (setFavorite === undefined) return
-
-  favorite && setFavorite(false)
+  list.favorite && dispatch({ type: 'set-favorite', payload: false })
 }

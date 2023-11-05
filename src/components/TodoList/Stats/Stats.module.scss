@@ -16,7 +16,9 @@
 	justify-content: space-around;
 	align-items: center;
 
-	> p {
-		padding: 1rem 3rem;
+	> div {
+		> p {
+			padding: 1rem 3rem;
+		}
 	}
 }
