@@ -28,7 +28,11 @@ export default function ItemButtons({ item, i, list, dispatch }: ItemButtonsProp
 				onClick={() => {
 					const newArr = [...list.items]
 					newArr.splice(i, 1)
-					dispatch({ type: 'set-items', payload: newArr })
+
+					if (newArr.length === 0) {
+						dispatch({ type: 'set-items', payload: [] })
+						window.localStorage.setItem('itemDat', '[]')
+					}
 				}}>
 				{
 					<svg
@@ -46,7 +50,7 @@ export default function ItemButtons({ item, i, list, dispatch }: ItemButtonsProp
 			</button>
 			<div
 				style={{ background: list.currentTheme[0].color }}
-				className={styles.divider}
+				className={styles.dividerVertical}
 			/>
 			<button
 				className={styles.favoriteBtn}
@@ -85,7 +89,7 @@ export default function ItemButtons({ item, i, list, dispatch }: ItemButtonsProp
 			</button>
 			<div
 				style={{ background: list.currentTheme[0].color }}
-				className={styles.divider}
+				className={styles.dividerVertical}
 			/>
 			<button
 				onClick={() => {

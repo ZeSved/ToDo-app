@@ -1,11 +1,9 @@
-import { Action, Item, List } from '../../../../types/types'
+import { Action, List } from '../../../../types/types'
+import { favorites, notChecked } from '../../../../util/sort'
 
 import styles from '../ItemInput.module.scss'
 
 export default function ClearButtons({ list, dispatch }: ClearButtonsType) {
-	const favArr: Item[] = list.items.filter((items) => items.favorite === true)
-	const checkArr: Item[] = list.items.filter((items) => items.checked !== true)
-
 	return (
 		<div
 			className={list.clearButtons ? styles.clearButtonsContainer : styles.display}
@@ -17,10 +15,11 @@ export default function ClearButtons({ list, dispatch }: ClearButtonsType) {
 						payload: [
 							'Are you sure you want to proceed?',
 							'This will delete all items permanently.',
-							`NOTE: There are ${favArr.length} favorites!`,
+							`NOTE: There are ${favorites(list).length} favorites!`,
 						],
 					})
 					dispatch({ type: 'set-clear-buttons', payload: false })
+					dispatch({ type: 'set-only-checked', payload: false })
 				}}
 				style={{ background: list.currentTheme[2].color }}>
 				All
@@ -32,8 +31,7 @@ export default function ClearButtons({ list, dispatch }: ClearButtonsType) {
 						payload: [
 							'Are you sure you want to proceed?',
 							'This will delete all checked items permanently.',
-							`NOTE: There are ${list.items.length - checkArr.length} checked items!`,
-							`${checkArr}`
+							`NOTE: There are ${list.items.length - notChecked(list)!.length} checked items!`,
 						],
 					})
 					dispatch({ type: 'set-clear-buttons', payload: false })

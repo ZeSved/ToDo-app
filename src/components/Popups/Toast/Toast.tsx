@@ -1,9 +1,7 @@
 import { Action, List } from '../../../types/types'
 import styles from './Toast.module.scss'
 
-export default function Toast({ list, dispatch }: Toast) {
-	setTimeout(() => dispatch({type: 'set-toast', payload: ''}), 9000)
-
+export default function Toast({ list }: Toast) {
 	return (
 		<div
 			className={list.toast ? styles.toast : styles.display}

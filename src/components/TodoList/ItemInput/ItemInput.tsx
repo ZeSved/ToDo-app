@@ -47,7 +47,10 @@ export default function ItemInput({ list, dispatch }: ItemInputProps) {
 						/>
 					</svg>
 				</button>
-				<div className={styles.divider} />
+				<div
+					style={{ background: list.currentTheme[0].color }}
+					className={styles.dividerVertical}
+				/>
 				<button
 					style={{ backgroundColor: list.currentTheme[1].color }}
 					className={styles.set_favorite}
@@ -82,10 +85,16 @@ export default function ItemInput({ list, dispatch }: ItemInputProps) {
 						</svg>
 					)}
 				</button>
-				<div className={styles.divider} />
+				<div
+					style={{ background: list.currentTheme[0].color }}
+					className={styles.dividerVertical}
+				/>
 				<button
 					style={{ backgroundColor: list.currentTheme[1].color }}
-					onClick={() => dispatch({ type: 'set-clear-buttons', payload: !list.clearButtons })}
+					onClick={() => {
+						dispatch({ type: 'set-clear-buttons', payload: !list.clearButtons })
+						dispatch({ type: 'set-only-checked', payload: false })
+					}}
 					className={styles.clear}>
 					{
 						<svg

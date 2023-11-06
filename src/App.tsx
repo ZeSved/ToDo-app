@@ -30,17 +30,24 @@ function App() {
 	const [list, dispatch] = useReducer(reducer, DEFAULT_LIST)
 
 	useEffect(() => {
-		dispatch({ type: 'set-items', payload: JSON.parse(
-			window.localStorage.getItem('itemDat') ?? JSON.stringify(list.items)
-		)})
+		dispatch({
+			type: 'set-items',
+			payload: JSON.parse(window.localStorage.getItem('itemDat') ?? JSON.stringify(list.items)),
+		})
 
-		dispatch({ type: 'set-current-theme', payload: JSON.parse(
-			window.localStorage.getItem('settings') ?? JSON.stringify(list.currentTheme)
-		)})
+		dispatch({
+			type: 'set-current-theme',
+			payload: JSON.parse(
+				window.localStorage.getItem('settings') ?? JSON.stringify(list.currentTheme)
+			),
+		})
 
-		dispatch({ type: 'set-custom-profile', payload: JSON.parse(
-			window.localStorage.getItem('customOptions') ?? JSON.stringify(list.customProfile)
-		) })
+		dispatch({
+			type: 'set-custom-profile',
+			payload: JSON.parse(
+				window.localStorage.getItem('customOptions') ?? JSON.stringify(list.customProfile)
+			),
+		})
 	}, [])
 
 	useEffect(() => {
@@ -53,7 +60,7 @@ function App() {
 		clearedChecked: 'All checked items have been cleared and the database updated.',
 		clearedAll: 'All items have been cleared and the database reset.',
 		appliedTheme: `Successfully applied theme.`,
-		savedProfile: 'Profile saved to custom profiles'
+		savedProfile: 'Profile saved to custom profiles',
 	}
 
 	return (

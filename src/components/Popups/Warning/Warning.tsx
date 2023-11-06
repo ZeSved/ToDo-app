@@ -1,4 +1,5 @@
 import { List, Action, ToastMessage } from '../../../types/types'
+import { notChecked } from '../../../util/sort'
 import styles from './Warning.module.scss'
 
 export default function Warning({ list, dispatch, toastMessage }: WarningProps) {
@@ -34,22 +35,26 @@ export default function Warning({ list, dispatch, toastMessage }: WarningProps) 
 						onClick={
 							list.onlyChecked
 								? () => {
-										dispatch({ type: 'set-items', payload: JSON.parse(list.warning![3]) })
 										dispatch({ type: 'set-warning', payload: undefined })
+										dispatch({ type: 'set-items', payload: notChecked(list)! })
 										setTimeout(
 											() => dispatch({ type: 'set-toast', payload: toastMessage.clearedChecked }),
 											50
 										)
 										dispatch({ type: 'set-only-checked', payload: false })
-									}
+										setTimeout(() => dispatch({ type: 'set-toast', payload: '' }), 2000)
+								  }
 								: () => {
 										dispatch({ type: 'set-warning', payload: undefined })
 										dispatch({ type: 'set-items', payload: [] })
+										window.localStorage.setItem('itemDat', '[]')
 										setTimeout(
 											() => dispatch({ type: 'set-toast', payload: toastMessage.clearedAll }),
 											50
 										)
-									}
+										dispatch({ type: 'set-only-checked', payload: false })
+										setTimeout(() => dispatch({ type: 'set-toast', payload: '' }), 2000)
+								  }
 						}
 						style={{
 							border: `2px solid ${list.currentTheme[2].color}`,

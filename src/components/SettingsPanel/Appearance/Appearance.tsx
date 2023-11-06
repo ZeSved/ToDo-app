@@ -62,8 +62,8 @@ export default function Appearance({ list, dispatch, toastMessage }: SettingsPro
 	return (
 		<div>
 			<div
-			className={list.settingsDropdown ? styles.appearance : styles.display}
-			style={{ background: list.currentTheme[1].color }}>
+				className={list.settingsDropdown ? styles.appearance : styles.display}
+				style={{ background: list.currentTheme[1].color }}>
 				<div className={styles.colorContainer}>
 					{list.currentTheme.map((theme, i) => (
 						<div className={styles.inputContainer}>
@@ -98,46 +98,49 @@ export default function Appearance({ list, dispatch, toastMessage }: SettingsPro
 						</div>
 					))}
 				</div>
-			<div
-				style={{ background: list.currentTheme[0].color }}
-				className={styles.mainDivider}
-			/>
-			<div
-				style={{ background: list.currentTheme[2].color }}
-				className={styles.buttonContainer}>
-				<button
-					style={{
-						background: list.currentTheme[2].color,
-						color: list.currentTheme[0].color,
-					}}
-					onClick={() => {
-						window.localStorage.setItem('settings', JSON.stringify(list.currentTheme))
-						dispatch({type: 'set-toast', payload: toastMessage.savedProfile})
-					}}>
-					Save Profile
-				</button>
 				<div
-					className={styles.divider}
 					style={{ background: list.currentTheme[0].color }}
+					className={styles.mainDivider}
 				/>
-				<button
-					style={{
-						background: list.currentTheme[2].color,
-						color: list.currentTheme[0].color,
-					}}
-					onClick={() => dispatch({ type: 'set-profile-dropdown', payload: !list.profileDropdown })}
-					className={styles.loadDropdown}>
-					Select profile
-					<img
-						src={list.profileDropdown ? opened : closed}
-						alt=''
+				<div
+					style={{ background: list.currentTheme[2].color }}
+					className={styles.buttonContainer}>
+					<button
+						style={{
+							background: list.currentTheme[2].color,
+							color: list.currentTheme[0].color,
+						}}
+						onClick={() => {
+							window.localStorage.setItem('settings', JSON.stringify(list.currentTheme))
+							dispatch({ type: 'set-toast', payload: toastMessage.savedProfile })
+							setTimeout(() => dispatch({ type: 'set-toast', payload: '' }), 2000)
+						}}>
+						Save Profile
+					</button>
+					<div
+						className={styles.divider}
+						style={{ background: list.currentTheme[0].color }}
 					/>
-				</button>
-			</div>
-			<div
-				style={{ background: list.currentTheme[0].color }}
-				className={list.profileDropdown ? styles.dividerHorizontal : styles.display}
-			/>
+					<button
+						style={{
+							background: list.currentTheme[2].color,
+							color: list.currentTheme[0].color,
+						}}
+						onClick={() =>
+							dispatch({ type: 'set-profile-dropdown', payload: !list.profileDropdown })
+						}
+						className={styles.loadDropdown}>
+						Select profile
+						<img
+							src={list.profileDropdown ? opened : closed}
+							alt=''
+						/>
+					</button>
+				</div>
+				<div
+					style={{ background: list.currentTheme[0].color }}
+					className={list.profileDropdown ? styles.dividerHorizontal : styles.display}
+				/>
 			</div>
 		</div>
 	)

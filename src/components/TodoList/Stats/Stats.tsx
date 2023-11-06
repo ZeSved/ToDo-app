@@ -49,7 +49,8 @@ export default function Stats({ list }: StatsProps) {
 							</p>
 							<div
 								className={styles.dividerVertical}
-								style={{ background: info.divider }}></div>
+								style={{ background: info.divider }}
+							/>
 						</div>
 					))}
 				</div>

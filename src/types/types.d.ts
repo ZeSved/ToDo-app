@@ -52,7 +52,7 @@ export type List = {
 	profileDropdown: boolean;
 	customProfile: ProfileType[] | [];
 	onlyChecked: boolean,
-	clearButtons: boolean
+	clearButtons: boolean,
 }
 
 export type Item = {
