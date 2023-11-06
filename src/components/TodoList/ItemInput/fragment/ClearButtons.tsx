@@ -33,6 +33,7 @@ export default function ClearButtons({ list, dispatch }: ClearButtonsType) {
 							'Are you sure you want to proceed?',
 							'This will delete all checked items permanently.',
 							`NOTE: There are ${list.items.length - checkArr.length} checked items!`,
+							`${checkArr}`
 						],
 					})
 					dispatch({ type: 'set-clear-buttons', payload: false })

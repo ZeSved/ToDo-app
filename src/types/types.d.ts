@@ -76,6 +76,7 @@ export type ToastMessage = {
 	clearedChecked: string;
 	clearedAll: string;
 	appliedTheme: string;
+	savedProfile: string
 }
 
 export type SavedData = {

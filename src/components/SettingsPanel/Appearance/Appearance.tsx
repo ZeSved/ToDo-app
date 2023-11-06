@@ -1,15 +1,13 @@
 import { useEffect } from 'react'
 
-import { Action, Custom, List } from '../../../types/types'
+import { Action, Custom, List, ToastMessage } from '../../../types/types'
 
 import opened from '../../../images/svg/dropdown_open.svg'
 import closed from '../../../images/svg/dropdown_closed.svg'
 
-import manageStorage from '../../../util/manageStorage'
-
 import styles from './Appearance.module.scss'
 
-export default function Appearance({ list, dispatch }: SettingsProps) {
+export default function Appearance({ list, dispatch, toastMessage }: SettingsProps) {
 	useEffect(() => {
 		if (!list.settingsDropdown) dispatch({ type: 'set-profile-dropdown', payload: false })
 	}, [list.settingsDropdown])
@@ -62,44 +60,44 @@ export default function Appearance({ list, dispatch }: SettingsProps) {
 	}
 
 	return (
-		<div
+		<div>
+			<div
 			className={list.settingsDropdown ? styles.appearance : styles.display}
 			style={{ background: list.currentTheme[1].color }}>
-			<div className={styles.colorContainer}>
-				{list.currentTheme.map((theme, i) => (
-					<div className={styles.inputContainer}>
-						<label
-							style={{ color: list.currentTheme[3].color }}
-							className={styles.inputLabel}
-							htmlFor={theme.name}>
-							{nameSwitch(theme)}
-						</label>
-						<div className={styles.inputColorContainer}>
-							<input
-								onChange={(e) => {
-									if (!e.target.value.startsWith('#')) {
-										e.target.value = '#' + e.target.value
-									}
-
-									if (e.target.value === '#') {
-										e.target.value = ''
-									}
-									colorSwitch(e, i)
-								}}
-								style={{ background: list.currentTheme[1].color }}
-								className={styles.settingsInput}
-								name={theme.name}
-								type='text'
-								placeholder={theme.color}
-							/>
-							<div
-								className={styles.colorDisplay}
-								style={{ backgroundColor: theme.color }}
-							/>
+				<div className={styles.colorContainer}>
+					{list.currentTheme.map((theme, i) => (
+						<div className={styles.inputContainer}>
+							<label
+								style={{ color: list.currentTheme[3].color }}
+								className={styles.inputLabel}
+								htmlFor={theme.name}>
+								{nameSwitch(theme)}
+							</label>
+							<div className={styles.inputColorContainer}>
+								<input
+									onChange={(e) => {
+										if (!e.target.value.startsWith('#')) {
+											e.target.value = '#' + e.target.value
+										}
+										if (e.target.value === '#') {
+											e.target.value = ''
+										}
+										colorSwitch(e, i)
+									}}
+									style={{ background: list.currentTheme[1].color }}
+									className={styles.settingsInput}
+									name={theme.name}
+									type='text'
+									placeholder={theme.color}
+								/>
+								<div
+									className={styles.colorDisplay}
+									style={{ backgroundColor: theme.color }}
+								/>
+							</div>
 						</div>
-					</div>
-				))}
-			</div>
+					))}
+				</div>
 			<div
 				style={{ background: list.currentTheme[0].color }}
 				className={styles.mainDivider}
@@ -113,7 +111,8 @@ export default function Appearance({ list, dispatch }: SettingsProps) {
 						color: list.currentTheme[0].color,
 					}}
 					onClick={() => {
-						manageStorage('set', 'settings', JSON.stringify(list.currentTheme))
+						window.localStorage.setItem('settings', JSON.stringify(list.currentTheme))
+						dispatch({type: 'set-toast', payload: toastMessage.savedProfile})
 					}}>
 					Save Profile
 				</button>
@@ -139,6 +138,7 @@ export default function Appearance({ list, dispatch }: SettingsProps) {
 				style={{ background: list.currentTheme[0].color }}
 				className={list.profileDropdown ? styles.dividerHorizontal : styles.display}
 			/>
+			</div>
 		</div>
 	)
 }
@@ -146,4 +146,5 @@ export default function Appearance({ list, dispatch }: SettingsProps) {
 type SettingsProps = {
 	dispatch: React.Dispatch<Action>
 	list: List
+	toastMessage: ToastMessage
 }

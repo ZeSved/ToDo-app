@@ -4,13 +4,12 @@ import './Main styles/App.scss'
 
 import { List, ToastMessage } from './types/types'
 
-import manageStorage from './util/manageStorage'
 import reducer from './util/reducer'
+import { appearance } from './util/lists'
 
 import SettingsPanel from './components/SettingsPanel/SettingsPanel'
 import TodoList from './components/TodoList/TodoList'
 import Popups from './components/Popups/Popups'
-import { appearance } from './util/lists'
 
 const DEFAULT_LIST: List = {
 	items: [],
@@ -31,30 +30,30 @@ function App() {
 	const [list, dispatch] = useReducer(reducer, DEFAULT_LIST)
 
 	useEffect(() => {
-		const itemDataLoad = JSON.parse(manageStorage('get', 'itemDat') ?? JSON.stringify(list.items))
+		dispatch({ type: 'set-items', payload: JSON.parse(
+			window.localStorage.getItem('itemDat') ?? JSON.stringify(list.items)
+		)})
 
-		const appearanceLoad = JSON.parse(
-			manageStorage('get', 'settings') ?? JSON.stringify(list.currentTheme)
-		)
-		const customOptionsLoad = JSON.parse(
-			manageStorage('get', 'customOptions') ?? JSON.stringify(list.customProfile)
-		)
+		dispatch({ type: 'set-current-theme', payload: JSON.parse(
+			window.localStorage.getItem('settings') ?? JSON.stringify(list.currentTheme)
+		)})
 
-		dispatch({ type: 'set-items', payload: itemDataLoad })
-		dispatch({ type: 'set-current-theme', payload: appearanceLoad })
-		dispatch({ type: 'set-custom-profile', payload: customOptionsLoad })
+		dispatch({ type: 'set-custom-profile', payload: JSON.parse(
+			window.localStorage.getItem('customOptions') ?? JSON.stringify(list.customProfile)
+		) })
 	}, [])
 
 	useEffect(() => {
-		if (list.items) {
-			manageStorage('set', 'itemDat', JSON.stringify(list.items))
-		}
+		if (list.items.length > 0 && window.localStorage.getItem('itemDat')!.length > 0) {
+			window.localStorage.setItem('itemDat', JSON.stringify(list.items))
+		} else return
 	}, [list.items])
 
 	const toastMessage: ToastMessage = {
 		clearedChecked: 'All checked items have been cleared and the database updated.',
 		clearedAll: 'All items have been cleared and the database reset.',
 		appliedTheme: `Successfully applied theme.`,
+		savedProfile: 'Profile saved to custom profiles'
 	}
 
 	return (
@@ -69,6 +68,7 @@ function App() {
 						<SettingsPanel
 							dispatch={dispatch}
 							list={list}
+							toastMessage={toastMessage}
 						/>
 						<Popups
 							dispatch={dispatch}

@@ -17,7 +17,7 @@ export default function Warning({ list, dispatch, toastMessage }: WarningProps) 
 						backgroundColor: list.currentTheme[2].color,
 						color: list.currentTheme[3].color,
 					}}
-					className={list.warning && list.warning[2] ? styles.warning : styles.display}>
+					className={list.warning ? styles.warning : styles.display}>
 					<p>{list.warning && list.warning[2]}</p>
 				</div>
 				<div className={styles.btnContainer}>
@@ -34,15 +34,14 @@ export default function Warning({ list, dispatch, toastMessage }: WarningProps) 
 						onClick={
 							list.onlyChecked
 								? () => {
+										dispatch({ type: 'set-items', payload: JSON.parse(list.warning![3]) })
 										dispatch({ type: 'set-warning', payload: undefined })
-										dispatch({ type: 'set-items', payload: [] })
 										setTimeout(
 											() => dispatch({ type: 'set-toast', payload: toastMessage.clearedChecked }),
 											50
 										)
-										setTimeout(() => dispatch({ type: 'set-toast', payload: '' }), 1500)
 										dispatch({ type: 'set-only-checked', payload: false })
-								  }
+									}
 								: () => {
 										dispatch({ type: 'set-warning', payload: undefined })
 										dispatch({ type: 'set-items', payload: [] })
@@ -50,8 +49,7 @@ export default function Warning({ list, dispatch, toastMessage }: WarningProps) 
 											() => dispatch({ type: 'set-toast', payload: toastMessage.clearedAll }),
 											50
 										)
-										setTimeout(() => dispatch({ type: 'set-toast', payload: '' }), 1500)
-								  }
+									}
 						}
 						style={{
 							border: `2px solid ${list.currentTheme[2].color}`,

@@ -1,5 +1,3 @@
-import manageStorage from "./manageStorage"
-
 import { Custom, ProfileType } from "../types/types"
 
 export const appearance = {
@@ -45,7 +43,7 @@ export const appearance = {
     },
     {
       name: 'callToActionColor',
-      color: '#000000',
+      color: '#ffffff',
       content: ''
     },
     {
@@ -58,7 +56,7 @@ export const appearance = {
   buttons: [
     {
       func: ((settings: Custom[]) => {
-        manageStorage('set', 'settings', JSON.stringify(settings))
+        window.localStorage.setItem('settings', JSON.stringify(settings))
       }),
 
       content: 'Save Profile'

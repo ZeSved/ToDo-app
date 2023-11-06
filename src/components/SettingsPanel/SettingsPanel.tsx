@@ -1,4 +1,4 @@
-import { Action, List } from '../../types/types'
+import { Action, List, ToastMessage } from '../../types/types'
 
 import styles from './SettingsPanel.module.scss'
 
@@ -8,7 +8,7 @@ import closed from '../../images/svg/dropdown_closed.svg'
 import Profiles from './Profiles/Profiles'
 import Appearance from './Appearance/Appearance'
 
-export default function SettingsPanel({ list, dispatch }: SettingsPanelType) {
+export default function SettingsPanel({ list, dispatch, toastMessage }: SettingsPanelType) {
 	return (
 		<div
 			style={{ background: list.currentTheme[1].color }}
@@ -37,6 +37,7 @@ export default function SettingsPanel({ list, dispatch }: SettingsPanelType) {
 				<Appearance
 					dispatch={dispatch}
 					list={list}
+					toastMessage={toastMessage}
 				/>
 				<Profiles
 					dispatch={dispatch}
@@ -50,4 +51,5 @@ export default function SettingsPanel({ list, dispatch }: SettingsPanelType) {
 type SettingsPanelType = {
 	dispatch: React.Dispatch<Action>
 	list: List
+	toastMessage: ToastMessage
 }

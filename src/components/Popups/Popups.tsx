@@ -6,7 +6,7 @@ import Warning from './Warning/Warning'
 export default function Popups({ list, dispatch, toastMessage }: PopupsProps) {
 	return (
 		<>
-			<Toast list={list} />
+			<Toast list={list} dispatch={dispatch} />
 			<Warning
 				toastMessage={toastMessage}
 				dispatch={dispatch}
