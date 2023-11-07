@@ -6,6 +6,7 @@ import opened from '../../../images/svg/dropdown_open.svg'
 import closed from '../../../images/svg/dropdown_closed.svg'
 
 import styles from './Appearance.module.scss'
+import storage from '../../../util/storage'
 
 export default function Appearance({ list, dispatch, toastMessage }: SettingsProps) {
 	useEffect(() => {
@@ -111,7 +112,7 @@ export default function Appearance({ list, dispatch, toastMessage }: SettingsPro
 							color: list.currentTheme[0].color,
 						}}
 						onClick={() => {
-							window.localStorage.setItem('settings', JSON.stringify(list.currentTheme))
+							storage(list, dispatch, false, 'settings')
 							dispatch({ type: 'set-toast', payload: toastMessage.savedProfile })
 							setTimeout(() => dispatch({ type: 'set-toast', payload: '' }), 2000)
 						}}>

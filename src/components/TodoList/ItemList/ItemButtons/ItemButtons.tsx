@@ -3,6 +3,7 @@ import styles from './ItemButtons.module.scss'
 import { Action, Item, List } from '../../../../types/types'
 import { useEffect } from 'react'
 import { symbolChange } from '../../../../util/symbolChange'
+import storage from '../../../../util/storage'
 
 export default function ItemButtons({ item, i, list, dispatch }: ItemButtonsProps) {
 	useEffect(() => {
@@ -31,7 +32,7 @@ export default function ItemButtons({ item, i, list, dispatch }: ItemButtonsProp
 
 					if (newArr.length === 0) {
 						dispatch({ type: 'set-items', payload: [] })
-						window.localStorage.setItem('itemDat', '[]')
+						storage(list, dispatch, true, 'force')
 					}
 				}}>
 				{

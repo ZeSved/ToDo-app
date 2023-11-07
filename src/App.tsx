@@ -6,6 +6,7 @@ import { List, ToastMessage } from './types/types'
 
 import reducer from './util/reducer'
 import { appearance } from './util/lists'
+import storage from './util/storage'
 
 import SettingsPanel from './components/SettingsPanel/SettingsPanel'
 import TodoList from './components/TodoList/TodoList'
@@ -29,32 +30,9 @@ const DEFAULT_LIST: List = {
 function App() {
 	const [list, dispatch] = useReducer(reducer, DEFAULT_LIST)
 
-	useEffect(() => {
-		dispatch({
-			type: 'set-items',
-			payload: JSON.parse(window.localStorage.getItem('itemDat') ?? JSON.stringify(list.items)),
-		})
+	useEffect(() => storage(list, dispatch, false), [])
 
-		dispatch({
-			type: 'set-current-theme',
-			payload: JSON.parse(
-				window.localStorage.getItem('settings') ?? JSON.stringify(list.currentTheme)
-			),
-		})
-
-		dispatch({
-			type: 'set-custom-profile',
-			payload: JSON.parse(
-				window.localStorage.getItem('customOptions') ?? JSON.stringify(list.customProfile)
-			),
-		})
-	}, [])
-
-	useEffect(() => {
-		if (list.items.length > 0 && window.localStorage.getItem('itemDat')!.length > 0) {
-			window.localStorage.setItem('itemDat', JSON.stringify(list.items))
-		} else return
-	}, [list.items])
+	useEffect(() => storage(list, dispatch, true, 'items'), [list.items])
 
 	const toastMessage: ToastMessage = {
 		clearedChecked: 'All checked items have been cleared and the database updated.',
