@@ -1,10 +1,10 @@
-import ItemButtons from './ItemButtons/ItemButtons'
+import ItemButtons from '../../fragments/ItemButtons/ItemButtons'
 
 import styles from './ItemList.module.scss'
 
 import { Action, List } from '../../../types/types'
 
-export default function ItemList({ list, dispatch }: ItemListProps) {
+export default function ItemList({ list, dispatch, onMobile }: ItemListProps) {
 	return (
 		<div className={styles.container}>
 			{list.items.map((item, i) => (
@@ -38,6 +38,7 @@ export default function ItemList({ list, dispatch }: ItemListProps) {
 							list={list}
 							item={item}
 							i={i}
+							onMobile={onMobile}
 						/>
 					</div>
 				</div>
@@ -49,4 +50,5 @@ export default function ItemList({ list, dispatch }: ItemListProps) {
 export interface ItemListProps {
 	dispatch: React.Dispatch<Action>
 	list: List
+	onMobile: boolean
 }

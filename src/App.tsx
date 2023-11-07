@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 
 import './Main styles/App.scss'
 
@@ -28,6 +28,7 @@ const DEFAULT_LIST: List = {
 }
 
 function App() {
+	const [onMobile, setOnMobile] = useState(false)
 	const [list, dispatch] = useReducer(reducer, DEFAULT_LIST)
 
 	useEffect(() => storage(list, dispatch, false), [])
@@ -49,6 +50,7 @@ function App() {
 						<TodoList
 							dispatch={dispatch}
 							list={list}
+							onMobile={onMobile}
 						/>
 						<SettingsPanel
 							dispatch={dispatch}

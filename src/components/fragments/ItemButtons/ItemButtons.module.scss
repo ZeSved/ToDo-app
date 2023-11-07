@@ -1,0 +1,39 @@
+@import '../../../Main styles/root.scss';
+
+.deleteBtn,
+.checkBtn,
+.favoriteBtn {
+	background-color: transparent;
+	border: none;
+	cursor: pointer;
+
+	padding: 0.5rem;
+
+	height: 100%;
+}
+
+.isOpen {
+	border: none;
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: var(--border-radius) 0 0 var(--border-radius);
+}
+
+.isOpenImg {
+	padding: 0.9rem;
+	border-radius: var(--border-radius);
+}
+
+.display {
+	display: none;
+}
+
+.mobileFrag {
+	display: flex;
+}
+
+.pcFrag {
+	display: flex;
+}

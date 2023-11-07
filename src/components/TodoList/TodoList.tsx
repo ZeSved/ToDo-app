@@ -4,7 +4,7 @@ import ItemInput from './ItemInput/ItemInput'
 import ItemList from './ItemList/ItemList'
 import Stats from './Stats/Stats'
 
-export default function TodoList({ list, dispatch }: TodoListType) {
+export default function TodoList({ list, dispatch, onMobile }: TodoListType) {
 	return (
 		<>
 			<ItemInput
@@ -18,6 +18,7 @@ export default function TodoList({ list, dispatch }: TodoListType) {
 			<ItemList
 				dispatch={dispatch}
 				list={list}
+				onMobile={onMobile}
 			/>
 			<div
 				className='dividerMain'
@@ -31,4 +32,5 @@ export default function TodoList({ list, dispatch }: TodoListType) {
 type TodoListType = {
 	dispatch: React.Dispatch<Action>
 	list: List
+	onMobile: boolean
 }

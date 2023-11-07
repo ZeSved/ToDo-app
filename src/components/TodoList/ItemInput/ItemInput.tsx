@@ -3,7 +3,7 @@ import styles from './ItemInput.module.scss'
 import { Action, List } from '../../../types/types'
 import { addItem } from '../../../util/addItem'
 
-import ClearButtons from './fragment/ClearButtons'
+import ClearButtons from '../../fragments/ClearButtons'
 
 export default function ItemInput({ list, dispatch }: ItemInputProps) {
 	function checker() {

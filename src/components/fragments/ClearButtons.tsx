@@ -1,7 +1,7 @@
-import { Action, List } from '../../../../types/types'
-import { favorites, notChecked } from '../../../../util/sort'
+import { Action, List } from '../../types/types'
+import { favorites, notChecked } from '../../util/sort'
 
-import styles from '../ItemInput.module.scss'
+import styles from '../TodoList/ItemInput/ItemInput.module.scss'
 
 export default function ClearButtons({ list, dispatch }: ClearButtonsType) {
 	return (
