@@ -59,7 +59,6 @@ export type Item = {
 	checked: boolean
 	content: string
 	favorite: boolean
-	isOpen: boolean
 }
 
 export type Custom = {
