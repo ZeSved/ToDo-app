@@ -34,30 +34,32 @@ export default function Appearance({ list, dispatch, toastMessage }: SettingsPro
 		return labelName
 	}
 
-	function colorSwitch(e: React.ChangeEvent<HTMLInputElement>, i: number) {
+	function colorSwitch(save: boolean, e?: React.ChangeEvent<HTMLInputElement>, i?: number) {
 		const newArr = [...list.currentTheme]
 
-		if (e.target.value === '') {
+		if (e!.target.value === '') {
 			switch (i) {
 				case 0:
-					newArr[i].color = '#000000'
+					newArr[i].color = list.currentTheme[i].color
 					break
 				case 1:
-					newArr[i].color = '#3f3f3f'
+					newArr[i].color = list.currentTheme[i].color
 					break
 				case 2:
-					newArr[i].color = '#00d1ff'
+					newArr[i].color = list.currentTheme[i].color
 					break
 				case 3:
-					newArr[i].color = '#ffffff'
+					newArr[i].color = list.currentTheme[i].color
 					break
 			}
 		} else {
-			newArr[i].color = e.target.value
-			newArr[i].content = newArr[i].color
+			newArr[i!].color = e!.target.value
+			newArr[i!].content = newArr[i!].color
 		}
 
 		dispatch({ type: 'set-current-theme', payload: newArr })
+
+		save && storage(list, dispatch, false, 'settings')
 	}
 
 	return (
@@ -83,7 +85,7 @@ export default function Appearance({ list, dispatch, toastMessage }: SettingsPro
 										if (e.target.value === '#') {
 											e.target.value = ''
 										}
-										colorSwitch(e, i)
+										colorSwitch(false, e, i)
 									}}
 									style={{ background: list.currentTheme[1].color }}
 									className={styles.settingsInput}
@@ -112,7 +114,7 @@ export default function Appearance({ list, dispatch, toastMessage }: SettingsPro
 							color: list.currentTheme[0].color,
 						}}
 						onClick={() => {
-							storage(list, dispatch, false, 'settings')
+							colorSwitch(true)
 							dispatch({ type: 'set-toast', payload: toastMessage.savedProfile })
 							setTimeout(() => dispatch({ type: 'set-toast', payload: '' }), 2000)
 						}}>

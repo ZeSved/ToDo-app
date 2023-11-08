@@ -8,6 +8,10 @@
   font-family: sans-serif;
 }
 
+#root {
+  height: 100%;
+}
+
 button:focus-visible {
   outline: #05ff00 solid 2px;
   outline-offset: -2px;

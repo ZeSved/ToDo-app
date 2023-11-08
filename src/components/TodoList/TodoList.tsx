@@ -10,6 +10,7 @@ export default function TodoList({ list, dispatch, onMobile }: TodoListType) {
 			<ItemInput
 				dispatch={dispatch}
 				list={list}
+				onMobile={onMobile}
 			/>
 			<div
 				className='dividerMain'

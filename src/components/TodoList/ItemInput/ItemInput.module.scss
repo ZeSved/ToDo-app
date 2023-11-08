@@ -5,10 +5,23 @@
 	margin-inline: auto;
 
 	border-radius: 7px;
-	border: 2px solid #fa00ff;
 	overflow: hidden;
 
 	display: flex;
+}
+
+.itemInputWrapperMobile {
+	z-index: 4;
+
+	width: 100%;
+
+	border-radius: 7px;
+	overflow: hidden;
+
+	display: flex;
+	position: fixed;
+
+	top: 10rem;
 }
 
 .itemInputWrapper > input {

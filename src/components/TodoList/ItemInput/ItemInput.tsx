@@ -5,7 +5,7 @@ import { addItem } from '../../../util/addItem'
 
 import ClearButtons from '../../fragments/ClearButtons'
 
-export default function ItemInput({ list, dispatch }: ItemInputProps) {
+export default function ItemInput({ list, dispatch, onMobile }: ItemInputProps) {
 	function checker() {
 		if (list.input.trim().length === 0) return
 		addItem(dispatch, list)
@@ -17,7 +17,7 @@ export default function ItemInput({ list, dispatch }: ItemInputProps) {
 		<>
 			<div
 				style={{ border: `2px solid ${list.currentTheme[1].color}` }}
-				className={styles.itemInputWrapper}>
+				className={onMobile ? styles.itemInputWrapperMobile : styles.itemInputWrapper}>
 				<input
 					type='text'
 					placeholder='Type here to begin...'
@@ -135,4 +135,5 @@ export default function ItemInput({ list, dispatch }: ItemInputProps) {
 interface ItemInputProps {
 	dispatch: React.Dispatch<Action>
 	list: List
+	onMobile: boolean
 }

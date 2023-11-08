@@ -27,11 +27,25 @@ const DEFAULT_LIST: List = {
 	clearButtons: false,
 }
 
+const MOBILE_THRESHOLD = 420
+
 function App() {
 	const [onMobile, setOnMobile] = useState(false)
 	const [list, dispatch] = useReducer(reducer, DEFAULT_LIST)
 
-	useEffect(() => storage(list, dispatch, false), [])
+	useEffect(() => {
+		storage(list, dispatch, false)
+
+		function resize(){
+			const root = getComputedStyle(document.querySelector(':root')!)
+
+			setOnMobile(
+				parseInt(root.width.slice(0, root.width.length - 2)) < MOBILE_THRESHOLD
+			)
+		}
+
+		resize()
+	}, [])
 
 	useEffect(() => storage(list, dispatch, true, 'items'), [list.items])
 
