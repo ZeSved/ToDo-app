@@ -34,7 +34,7 @@ export default function Appearance({ list, dispatch, toastMessage }: SettingsPro
 		return labelName
 	}
 
-	function colorSwitch(save: boolean, e?: React.ChangeEvent<HTMLInputElement>, i?: number) {
+	function colorSwitch(e: React.ChangeEvent<HTMLInputElement>, i: number) {
 		const newArr = [...list.currentTheme]
 
 		if (e!.target.value === '') {
@@ -58,8 +58,6 @@ export default function Appearance({ list, dispatch, toastMessage }: SettingsPro
 		}
 
 		dispatch({ type: 'set-current-theme', payload: newArr })
-
-		save && storage(list, dispatch, false, 'settings')
 	}
 
 	return (
@@ -85,7 +83,7 @@ export default function Appearance({ list, dispatch, toastMessage }: SettingsPro
 										if (e.target.value === '#') {
 											e.target.value = ''
 										}
-										colorSwitch(false, e, i)
+										colorSwitch(e, i)
 									}}
 									style={{ background: list.currentTheme[1].color }}
 									className={styles.settingsInput}
@@ -114,7 +112,7 @@ export default function Appearance({ list, dispatch, toastMessage }: SettingsPro
 							color: list.currentTheme[0].color,
 						}}
 						onClick={() => {
-							colorSwitch(true)
+							storage(list, dispatch, false, 'settings')
 							dispatch({ type: 'set-toast', payload: toastMessage.savedProfile })
 							setTimeout(() => dispatch({ type: 'set-toast', payload: '' }), 2000)
 						}}>
