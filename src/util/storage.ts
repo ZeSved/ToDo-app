@@ -25,7 +25,7 @@ export default function storage(list: List, dispatch: React.Dispatch<Action>, sp
         case true:
             switch (operation) {
                 case 'items':
-                    if (list.items.length > 0 && window.localStorage.getItem('itemDat')!.length > 0) {
+                    if (list.items.length > 0 && (window.localStorage.getItem('itemDat') ?? list.items)!.length > 0) {
                         window.localStorage.setItem('itemDat', JSON.stringify(list.items))
                     } else return
                     break
