@@ -11,6 +11,7 @@ import storage from './util/storage'
 import SettingsPanel from './components/SettingsPanel/SettingsPanel'
 import TodoList from './components/TodoList/TodoList'
 import Popups from './components/Popups/Popups'
+// import { convert } from './util/ManageColors'
 
 const DEFAULT_LIST: List = {
 	items: [],
@@ -36,12 +37,10 @@ function App() {
 	useEffect(() => {
 		storage(list, dispatch, false)
 
-		function resize(){
+		function resize() {
 			const root = getComputedStyle(document.querySelector(':root')!)
 
-			setOnMobile(
-				parseInt(root.width.slice(0, root.width.length - 2)) < MOBILE_THRESHOLD
-			)
+			setOnMobile(parseInt(root.width.slice(0, root.width.length - 2)) < MOBILE_THRESHOLD)
 		}
 
 		resize()
@@ -55,6 +54,8 @@ function App() {
 		appliedTheme: `Successfully applied theme.`,
 		savedProfile: 'Profile saved to custom profiles',
 	}
+
+	// console.log(convert('#32cd32'))
 
 	return (
 		<div className='wrapper'>
