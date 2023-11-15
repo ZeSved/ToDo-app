@@ -40,6 +40,29 @@ export type Action =
 		payload: boolean
 	}
 
+export type DataAction = 
+	| {
+		type: 'get-items',
+	}
+	| {
+		type: 'get-theme'
+	}
+	| {
+		type: 'get-profile'
+	}
+	| {
+		type: 'set-items',
+		payload: Item[]
+	}
+	| {
+		type: 'set-theme',
+		payload: Custom[]
+	}
+	| {
+		type: 'set-profile',
+		payload: ProfileType[] | []
+	}
+
 export type List = {
 	items: Item[];
 	input: string,

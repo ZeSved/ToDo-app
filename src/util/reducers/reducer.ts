@@ -1,4 +1,4 @@
-import { Action, List } from "../types/types";
+import { Action, List } from "../../types/types";
 
 export default function reducer(list: List, action: Action): List {
   switch (action.type) {
