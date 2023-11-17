@@ -7,7 +7,6 @@ import { List, ToastMessage } from './types/types'
 import reducer from './util/reducers/reducer'
 import { appearance } from './util/lists'
 import storage from './util/storage'
-import savedDataReducer from './util/reducers/savedDataReducer'
 
 import SettingsPanel from './components/SettingsPanel/SettingsPanel'
 import TodoList from './components/TodoList/TodoList'
@@ -29,18 +28,11 @@ const DEFAULT_LIST: List = {
 	clearButtons: false,
 }
 
-const DEFAULT_SAVED_DATA = {
-	items: DEFAULT_LIST.items,
-	theme: DEFAULT_LIST.currentTheme,
-	customThemes: DEFAULT_LIST.customProfile
-}
-
 const MOBILE_THRESHOLD = 420
 
 function App() {
 	const [onMobile, setOnMobile] = useState(false)
 	const [list, dispatch] = useReducer(reducer, DEFAULT_LIST)
-	const [savedData, handleSavedData] = useReducer(savedDataReducer, DEFAULT_SAVED_DATA)
 
 	useEffect(() => {
 		storage(list, dispatch, false)
