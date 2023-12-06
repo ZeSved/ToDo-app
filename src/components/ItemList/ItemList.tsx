@@ -1,4 +1,4 @@
-import ItemButtons from '../fragments/ItemButtons/ItemButtons'
+import ItemButtons from '../ItemInput/fragments/ItemButtons'
 
 import styles from './ItemList.module.scss'
 
