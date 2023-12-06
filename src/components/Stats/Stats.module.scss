@@ -1,4 +1,4 @@
-@import '../../../Main styles/root.scss';
+@import '../../Main styles/root.scss';
 
 .controlPanelContainer {
 	width: 90%;
@@ -19,6 +19,7 @@
 	> div {
 		> p {
 			padding: 1rem 3rem;
+			color: #ffffff;
 		}
 	}
 }

@@ -10,6 +10,7 @@
 	padding: 0.5rem;
 
 	height: 100%;
+	
 }
 
 .isOpen {
@@ -19,11 +20,14 @@
 	justify-content: center;
 	align-items: center;
 	border-radius: var(--border-radius) 0 0 var(--border-radius);
+	background-color: #3f3f3f;
 }
 
 .isOpenImg {
 	padding: 0.9rem;
 	border-radius: var(--border-radius);
+	background-color: #3f3f3f;
+	rotate: 90deg;
 }
 
 .display {

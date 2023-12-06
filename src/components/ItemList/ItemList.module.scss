@@ -12,24 +12,34 @@
   width: 100%;
 
   border-radius: 0.4rem;
+  border: 2px solid #00d1ff;
 
   overflow: hidden;
 }
 
-.itemContent {
+
+.itemContent, .itemContentChecked {
   flex-grow: 1;
   overflow-wrap: anywhere;
-
+  
   padding: 1rem;
+  
+  color: #ffffff;
+}
+
+.itemContent {
+  background: #000000;
 }
 
 .itemContentChecked {
-  flex-grow: 1;
-  overflow-wrap: anywhere;
-
-  padding: 1rem;
+	background: linear-gradient(90deg,
+		#000000 60%,
+		#00d1ff50 80%,
+		#00d1ff 100%);							
 }
 
 .controls {
   display: flex;
+
+  background-color: #00d1ff;
 }
