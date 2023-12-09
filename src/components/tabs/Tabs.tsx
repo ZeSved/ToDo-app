@@ -6,32 +6,8 @@ import s from './tabs.module.scss'
 export default function Tabs() {
 	const tabArr = [
 		{
-			name: 'Mathilda',
-			isSelected: false,
-		},
-		{
-			name: 'Warren',
-			isSelected: false,
-		},
-		{
-			name: 'Hilda',
-			isSelected: false,
-		},
-		{
-			name: 'Kyle',
+			name: 'Untitled',
 			isSelected: true,
-		},
-		{
-			name: 'Frederick',
-			isSelected: false,
-		},
-		{
-			name: 'Leo',
-			isSelected: false,
-		},
-		{
-			name: 'Terry',
-			isSelected: false,
 		},
 	]
 
