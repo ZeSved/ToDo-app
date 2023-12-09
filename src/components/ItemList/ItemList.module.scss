@@ -1,45 +1,44 @@
-.container {
-  display: grid;
-  gap: 0.5rem;
+@import '../../Main\ styles/mixins.scss';
 
-  width: 90%;
-  margin-inline: auto;
+.container {
+	@include subWrapperItem;
+
+	padding: 0.5rem;
+	flex-direction: column;
+	gap: 1rem;
 }
 
 .itemContainer {
-  display: flex;
+	display: flex;
 
-  width: 100%;
+	width: 100%;
 
-  border-radius: 0.4rem;
-  border: 2px solid #00d1ff;
+	border-radius: 1rem;
+	border: 0.25rem solid #00d1ff;
 
-  overflow: hidden;
+	overflow: hidden;
 }
 
+.itemContent,
+.itemContentChecked {
+	flex-grow: 1;
+	overflow-wrap: anywhere;
 
-.itemContent, .itemContentChecked {
-  flex-grow: 1;
-  overflow-wrap: anywhere;
-  
-  padding: 1rem;
-  
-  color: #ffffff;
+	padding: 1rem;
+
+	color: #ffffff;
 }
 
 .itemContent {
-  background: #000000;
+	background: #000000;
 }
 
 .itemContentChecked {
-	background: linear-gradient(90deg,
-		#000000 60%,
-		#00d1ff50 80%,
-		#00d1ff 100%);							
+	background: linear-gradient(90deg, #000000 50%, #00d1ff50 70%, #00d1ff 100%);
 }
 
 .controls {
-  display: flex;
+	display: flex;
 
-  background-color: #00d1ff;
+	background-color: black;
 }

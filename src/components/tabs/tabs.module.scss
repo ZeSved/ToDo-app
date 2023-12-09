@@ -1,0 +1,30 @@
+.nav {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+
+	.selected,
+	.not_selected {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-grow: 1;
+		border-radius: 1rem 0 0 1rem;
+		padding: 0 2rem;
+
+		border: 0.25rem solid;
+		border-right: none;
+
+		> p {
+			color: white;
+		}
+	}
+
+	.selected {
+		border-color: #00d1ff;
+	}
+
+	.not_selected {
+		border-color: #00d1ff50;
+	}
+}

@@ -1,0 +1,21 @@
+@mixin subWrapperItem {
+	width: 100%;
+
+	border-radius: 1.5rem;
+	// border: 0.25rem solid #00d1ff;
+	overflow: hidden;
+
+	background-color: black;
+
+	display: flex;
+}
+
+@mixin button {
+	cursor: pointer;
+	border: none;
+	outline: none;
+	background: transparent;
+	padding: 0.5rem;
+	height: fit-content;
+	width: fit-content;
+}

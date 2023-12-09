@@ -1,35 +1,31 @@
 @import '../../Main styles/root.scss';
+@import '../../Main styles/mixins.scss';
 
 .itemInputWrapper {
-	width: 90%;
-	margin-inline: auto;
-
-	border-radius: 7px;
-	border: 2px solid #00d1ff;
-	overflow: hidden;
-
-	display: flex;
+	@include subWrapperItem;
 }
 
-.itemInputWrapperMobile {
-	z-index: 4;
+// .itemInputWrapperMobile {
+// 	z-index: 4;
 
-	width: 100%;
+// 	width: 100%;
 
-	border-radius: 7px;
-	border: 2px solid #3f3f3f;
-	overflow: hidden;
+// 	border-radius: 7px;
+// 	border: 2px solid #3f3f3f;
+// 	overflow: hidden;
 
-	display: flex;
-	position: fixed;
+// 	display: flex;
+// 	position: fixed;
 
-	top: 10rem;
-}
+// 	top: 10rem;
+// }
 
-.itemInputWrapper > input, .itemInputWrapperMobile > input {
+// .itemInputWrapperMobile > input,
+.itemInputWrapper > input {
 	background: transparent;
 	display: block;
 	border: none;
+	outline: none;
 
 	flex-grow: 1;
 
@@ -38,88 +34,8 @@
 	padding: 1rem;
 }
 
-.send {
-	height: 100%;
-	border: none;
-
-	aspect-ratio: 1;
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	outline: none;
-
-	cursor: pointer;
-
-	background-color: #00d1ff;
-}
-
+.send,
 .clear,
 .set_favorite {
-	border: none;
-	cursor: pointer;
-
-	padding: 0.5rem;
-
-	height: 100%;
-
-	background-color: #00d1ff;
-}
-
-.clearButtonsContainer {
-	display: flex;
-	gap: 0.5rem;
-
-	border: var(--input-border);
-	border-radius: var(--border-radius);
-	cursor: var(--input-cursor);
-	outline: var(--input-outline);
-
-	background-color: #00d1ff;
-
-	position: absolute;
-	top: calc(var(--main-padding) + 0.6%);
-	right: 17%;
-	z-index: 5;
-
-	padding: 0.2rem;
-	margin: 0;
-
-	color: black;
-
-	width: fit-content;
-	height: 55px;
-
-	> button {
-		display: flex;
-		align-items: center;
-		gap: 1rem;
-
-		margin: 0;
-		padding: 0.5rem 1rem;
-		font-size: 1rem;
-
-		border-radius: var(--border-radius);
-		border: var(--input-border);
-		cursor: var(--input-cursor);
-		outline: var(--input-outline);
-
-		background-color: #00d1ff;
-	}
-}
-
-.clear {
-	border: var(--input-border);
-	cursor: var(--input-cursor);
-	outline: var(--input-outline);
-
-	padding: 0.5rem;
-
-	height: 100%;
-
-	background-color: #00d1ff;
-}
-
-.display {
-	display: none;
+	@include button;
 }

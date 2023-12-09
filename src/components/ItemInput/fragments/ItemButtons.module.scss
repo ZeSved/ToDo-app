@@ -1,16 +1,10 @@
 @import '../../../Main styles/root.scss';
+@import '../../../Main styles/mixins.scss';
 
 .deleteBtn,
 .checkBtn,
 .favoriteBtn {
-	background-color: transparent;
-	border: none;
-	cursor: pointer;
-
-	padding: 0.5rem;
-
-	height: 100%;
-	
+	@include button;
 }
 
 .isOpen {

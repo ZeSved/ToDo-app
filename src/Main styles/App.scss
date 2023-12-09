@@ -13,6 +13,8 @@ body {
 	max-width: 70rem;
 
 	margin-inline: auto;
+
+	padding-top: 7%;
 }
 
 .blurSheet {
@@ -22,7 +24,7 @@ body {
 	inset: 0;
 
 	background: rgba(0, 0, 0, 0.7);
-	backdrop-filter: blur(240px);
+	// backdrop-filter: blur(70px);
 }
 
 .colorSheet {
@@ -32,27 +34,23 @@ body {
 	bottom: 0;
 	left: 0;
 	right: 0;
-	top: 75%;
-
-	background: radial-gradient(16.87% 66.86% at 54.69% 85.38%,
-		#00d1ff 0%,
-		#00d1ff 43.96%,
-		#000000 100%),
-	radial-gradient(102.37% 59.14% at 78.61% 108.2%,
-		#00d1ff 0%,
-		#00d1ff96 29.69%,
-		#00000000 100%),
-	radial-gradient(54.02% 32.14% at 27.26% 56.83%,
-		#00d1ff 0%,
-		#00d1ff95 87.19%,
-		#00000000 100%),
+	top: 0;
 }
 
 .main {
 	z-index: 2;
-	padding: var(--main-padding);
-	width: 100%;
-	display: grid;
 
-	gap: 1rem;
+	display: flex;
+	> section {
+		padding: 0.5rem;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		// background-color: transparent;
+		// border: 0.25rem solid var(--m-c);
+		background-color: var(--m-c);
+		border-radius: 0 2rem 2rem 0;
+
+		gap: 0.5rem;
+	}
 }

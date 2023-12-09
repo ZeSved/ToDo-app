@@ -1,24 +1,23 @@
 @import '../../Main styles/root.scss';
+@import '../../Main styles/mixins.scss';
 
 .controlPanelContainer {
-	width: 90%;
+	@include subWrapperItem;
 
-	display: flex;
-	justify-content: center;
-
-	margin-inline: auto;
-	border-radius: var(--border-radius);
+	background-color: black;
 }
 
 .info {
 	display: flex;
-	width: fit-content;
+	width: 100%;
 	justify-content: space-around;
 	align-items: center;
 
+	background: transparent;
+
 	> div {
 		> p {
-			padding: 1rem 3rem;
+			padding: 1rem 1.5rem;
 			color: #ffffff;
 		}
 	}

@@ -31,20 +31,22 @@ export default function Stats({ list }: StatsProps) {
 
 	return (
 		<>
-			<div
-				
-				className={styles.controlPanelContainer}>
+			<div className={styles.controlPanelContainer}>
 				<div className={styles.info}>
 					{infoArr.map((info, i) => (
 						<div key={i}>
 							<p>
 								{info.property} {info.value}
 							</p>
-							<div
-								className={styles.dividerVertical}
-							/>
+							<div className={styles.dividerVertical} />
 						</div>
 					))}
+					{list.items.length >= 8 && (
+						<p style={{ color: 'white' }}>
+							There are more than 8 items in this tab. Dividing items between multiple tabs is
+							recommended.
+						</p>
+					)}
 				</div>
 			</div>
 		</>

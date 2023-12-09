@@ -56,29 +56,50 @@ export default function ItemButtons({ item, i, list, dispatch, onMobile }: ItemB
 						}
 						setIsOpen(false)
 					}}>
-					{<img src={del} alt="" />}
+					{
+						<img
+							src={del}
+							alt=''
+						/>
+					}
 				</button>
-				<div
-					className={styles.dividerVertical}
-				/>
+				<div className={styles.dividerVertical} />
 				<button
 					className={styles.favoriteBtn}
 					onClick={() => {
 						symbolChange(item, 'favorite', i, dispatch, list)
 						setIsOpen(false)
 					}}>
-					{item.favorite ? <img src={fav} alt="" /> : <img src={nofav} alt="" />}
+					{item.favorite ? (
+						<img
+							src={fav}
+							alt=''
+						/>
+					) : (
+						<img
+							src={nofav}
+							alt=''
+						/>
+					)}
 				</button>
 			</div>
-			<div
-				className={styles.dividerVertical}
-			/>
+			<div className={styles.dividerVertical} />
 			<button
 				onClick={() => {
 					symbolChange(item, 'checked', i, dispatch, list)
 				}}
 				className={styles.checkBtn}>
-				{item.checked ? <img src={check} alt="" /> : <img src={uncheck} alt="" />}
+				{item.checked ? (
+					<img
+						src={check}
+						alt=''
+					/>
+				) : (
+					<img
+						src={uncheck}
+						alt=''
+					/>
+				)}
 			</button>
 		</>
 	)
