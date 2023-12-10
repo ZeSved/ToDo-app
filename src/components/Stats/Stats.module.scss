@@ -17,7 +17,7 @@
 
 	> div {
 		> p {
-			padding: 1rem 1.5rem;
+			padding: var(--gap-3) 1.5rem;
 			color: #ffffff;
 		}
 	}

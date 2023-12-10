@@ -1,25 +1,11 @@
 :root {
+	--gap-1: 0.25rem;
+	--gap-2: 0.5rem;
+	--gap-3: 1rem;
+	--gap-4: 2rem;
+
 	--border-radius: 0.4rem;
-	--input-border: none;
-	--input-outline: none;
-	--input-cursor: pointer;
-	--m-c: #00d1ff;
-}
 
-.dividerMain {
-	height: 2px;
-	width: 100%;
-	background-color: #00d1ff;
-}
-
-.dividerVertical {
-	width: 2px;
-	height: 100%;
-	background-color: #3f3f3f;
-}
-
-.dividerHorizontal {
-	height: 2px;
-	width: 100%;
-	background-color: #3f3f3f;
+	--main-color: #00d1ff;
+	--secondary-color: #00d1ff50;
 }

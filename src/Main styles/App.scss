@@ -10,7 +10,7 @@ body {
 
 .wrapper {
 	z-index: 1;
-	max-width: 70rem;
+	max-width: 75rem;
 
 	margin-inline: auto;
 
@@ -41,16 +41,24 @@ body {
 	z-index: 2;
 
 	display: flex;
-	> section {
-		padding: 0.5rem;
+	.main_app {
+		padding: var(--gap-3);
 		width: 100%;
 		display: flex;
 		flex-direction: column;
 		// background-color: transparent;
-		// border: 0.25rem solid var(--m-c);
-		background-color: var(--m-c);
-		border-radius: 0 2rem 2rem 0;
+		// border: var(--gap-1) solid var(--main-color);
+		background-color: var(--main-color);
+		border-radius: 0 var(--gap-4) var(--gap-4) 0;
 
-		gap: 0.5rem;
+		gap: var(--gap-3);
+	}
+
+	.tabs {
+		display: flex;
+		flex-direction: column;
+		width: fit-content;
+		flex-grow: 1;
+		gap: var(--gap-2);
 	}
 }

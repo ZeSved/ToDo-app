@@ -1,7 +1,48 @@
+@import '../../Main\ styles/root.scss';
+@import '../../Main\ styles/mixins.scss';
+
+.inputContainer {
+	background-color: var(--main-color);
+	padding: var(--gap-2);
+	border-radius: var(--gap-4) 0 0 var(--gap-4);
+	gap: var(--gap-1);
+
+	display: flex;
+
+	> input {
+		@include button;
+
+		cursor: text;
+		width: 10rem;
+
+		border-radius: var(--gap-3);
+
+		color: white;
+
+		background-color: black;
+		padding: var(--gap-1) var(--gap-2);
+	}
+
+	> button {
+		@include button;
+		border-radius: var(--gap-2);
+
+		color: white;
+		background-color: black;
+
+		display: flex;
+
+		gap: var(--gap-1);
+
+		padding: var(--gap-1);
+	}
+}
+
 .nav {
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
+	gap: var(--gap-2);
+	height: 100%;
 
 	.selected,
 	.not_selected {
@@ -9,10 +50,10 @@
 		align-items: center;
 		justify-content: center;
 		flex-grow: 1;
-		border-radius: 1rem 0 0 1rem;
+		border-radius: var(--gap-3) 0 0 var(--gap-3);
 		padding: 0 2rem;
 
-		border: 0.25rem solid;
+		border: var(--gap-1) solid;
 		border-right: none;
 
 		> p {
@@ -21,10 +62,10 @@
 	}
 
 	.selected {
-		border-color: #00d1ff;
+		border-color: var(--main-color);
 	}
 
 	.not_selected {
-		border-color: #00d1ff50;
+		border-color: var(--secondary-color);
 	}
 }

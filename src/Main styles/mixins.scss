@@ -1,8 +1,10 @@
+@import './root.scss';
+
 @mixin subWrapperItem {
 	width: 100%;
 
-	border-radius: 1.5rem;
-	// border: 0.25rem solid #00d1ff;
+	border-radius: var(--gap-3);
+	// border: var(--gap-1) solid var(--main-color);
 	overflow: hidden;
 
 	background-color: black;
@@ -15,7 +17,7 @@
 	border: none;
 	outline: none;
 	background: transparent;
-	padding: 0.5rem;
+	padding: var(--gap-2);
 	height: fit-content;
 	width: fit-content;
 }

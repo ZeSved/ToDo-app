@@ -2,7 +2,7 @@ import { useEffect, useReducer, useState } from 'react'
 
 import './Main styles/App.scss'
 
-import { MainApp, Tab } from './types/types'
+import { List } from './types/types'
 
 import reducer from './util/reducer'
 
@@ -11,13 +11,18 @@ import ItemList from './components/ItemList/ItemList'
 import Stats from './components/Stats/Stats'
 import Tabs from './components/tabs/Tabs'
 
-const DEFAULT_LIST: Tab = {
-	isSelected: true,
+const DEFAULT_LIST: List = {
 	favorite: false,
 	input: '',
 	items: [],
-	name: 'untitled',
 }
+
+const TABS = [
+	{
+		tabName: 'Untitled',
+		tabURL: 'https://todo.korell.dev/',
+	},
+]
 
 const MOBILE_THRESHOLD = 420
 const backgroundSVGLocation = 500
@@ -53,8 +58,10 @@ function App() {
 	return (
 		<div className='wrapper'>
 			<main className='main'>
-				<Tabs />
-				<section>
+				<section className='tabs'>
+					<Tabs />
+				</section>
+				<section className='main_app'>
 					<ItemInput
 						dispatch={dispatch}
 						list={list}

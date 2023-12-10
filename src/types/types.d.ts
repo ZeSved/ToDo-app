@@ -1,15 +1,7 @@
 export type Action =
 	| {
 		type: 'set-items'
-		payload:
-		// {
-		// 	type: 'parent'
-		// 	payload: Item[]
-		// } | {
-		// 	type: 'child'
-		// 	payload: SubItems[]
-		// }
-		Item[]
+		payload: Item[]
 	}
 	| {
 		type: 'set-input'
@@ -19,22 +11,8 @@ export type Action =
 		type: 'set-favorite'
 		payload: boolean
 	}
-	| {
-		type: 'set-name'
-		payload: string
-	}
-	| {
-		type: 'set-selected'
-		payload: boolean
-	}
 
-export type MainApp = {
-	tabs: Tab[]
-}
-
-export type Tab = {
-	name: string
-	isSelected: boolean
+export type List = {
 	items: Item[];
 	input: string,
 	favorite: boolean;
