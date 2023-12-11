@@ -1,4 +1,4 @@
-import ItemButtons from '../ItemInput/fragments/ItemButtons'
+import ItemButtons from './fragments/ItemButtons'
 
 import styles from './ItemList.module.scss'
 
@@ -11,12 +11,10 @@ export default function ItemList({ list, dispatch, onMobile }: ItemListProps) {
 				<div
 					className={styles.itemContainer}
 					key={i}>
-					<p
-						className={item.checked ? styles.itemContentChecked : styles.itemContent}>
+					<p className={item.checked ? styles.itemContentChecked : styles.itemContent}>
 						{item.content}
 					</p>
-					<div
-						className={styles.controls}>
+					<div className={styles.controls}>
 						<ItemButtons
 							dispatch={dispatch}
 							list={list}

@@ -17,10 +17,15 @@ export default function reducer(list: List, action: Action): List {
         ...list,
         favorite: action.payload
       }
-    case 'set-current-url':
+    case 'set-tab-input':
       return {
         ...list,
-        currentURL: action.payload
+        tabInput: action.payload
+      }
+    case 'set-tabs':
+      return {
+        ...list,
+        tabs: action.payload
       }
   }
 }

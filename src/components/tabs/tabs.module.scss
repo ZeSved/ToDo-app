@@ -3,14 +3,29 @@
 
 .inputContainer {
 	background-color: var(--main-color);
-	padding: var(--gap-2);
+	padding: var(--gap-3);
 	border-radius: var(--gap-4) 0 0 var(--gap-4);
 	gap: var(--gap-1);
 
 	display: flex;
 
-	> input {
+	.buttons {
+		display: flex;
+		gap: var(--gap-1);
+		background-color: black;
+		border-radius: var(--gap-3);
+	}
+	> button {
 		@include button;
+
+		background-color: black;
+	}
+
+	> input {
+		@include subWrapperItem;
+
+		outline: none;
+		border: none;
 
 		cursor: text;
 		width: 10rem;
@@ -20,21 +35,7 @@
 		color: white;
 
 		background-color: black;
-		padding: var(--gap-1) var(--gap-2);
-	}
-
-	> button {
-		@include button;
-		border-radius: var(--gap-2);
-
-		color: white;
-		background-color: black;
-
-		display: flex;
-
-		gap: var(--gap-1);
-
-		padding: var(--gap-1);
+		padding: var(--gap-3);
 	}
 }
 

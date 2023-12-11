@@ -14,15 +14,20 @@ export type Action =
 		payload: boolean
 	}
 	| {
-		type: 'set-current-url'
+		type: 'set-tab-input'
 		payload: string
+	}
+	| {
+		type: 'set-tabs'
+		payload: AppTabs[]
 	}
 
 export type List = {
 	items: Item[];
 	input: string,
 	favorite: boolean;
-	currentURL: string
+	tabInput: string,
+	tabs: AppTabs[]
 }
 
 export type AppTabs = {

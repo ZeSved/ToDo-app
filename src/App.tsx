@@ -2,7 +2,7 @@ import { useEffect, useReducer, useState } from 'react'
 
 import './Main styles/App.scss'
 
-import { List, AppTabs } from './types/types'
+import { List } from './types/types'
 
 import reducer from './util/reducer'
 
@@ -11,34 +11,18 @@ import ItemList from './components/ItemList/ItemList'
 import Stats from './components/Stats/Stats'
 import Tabs from './components/tabs/Tabs'
 
-const TABS: AppTabs[] = [
-	{
-		tabName: 'Untitled',
-		tabURL: 'https://todo.korell.dev/',
-		isSelected: true,
-	},
-	{
-		tabName: 'test',
-		tabURL: 'https://todo.korell.dev/',
-		isSelected: true,
-	},
-	{
-		tabName: 'yes',
-		tabURL: 'https://todo.korell.dev/',
-		isSelected: true,
-	},
-	{
-		tabName: 'no',
-		tabURL: 'https://todo.korell.dev/',
-		isSelected: true,
-	},
-]
-
 const DEFAULT_LIST: List = {
 	favorite: false,
 	input: '',
 	items: [],
-	currentURL: TABS[0].tabURL,
+	tabInput: '',
+	tabs: [
+		{
+			tabName: 'Untitled',
+			tabURL: 'https://todo.korell.dev/',
+			isSelected: true,
+		},
+	],
 }
 
 const MOBILE_THRESHOLD = 420
@@ -76,7 +60,10 @@ function App() {
 		<div className='wrapper'>
 			<main className='main'>
 				<section className='tabs'>
-					<Tabs tabArr={TABS} />
+					<Tabs
+						dispatch={dispatch}
+						list={list}
+					/>
 				</section>
 				<section className='main_app'>
 					<ItemInput

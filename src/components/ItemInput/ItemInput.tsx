@@ -1,26 +1,17 @@
 import styles from './ItemInput.module.scss'
 
 import { Action, List } from '../../types/types'
-import { addItem } from '../../util/addItem'
 
 import fav from '../../images/favorite logo.svg'
 import nofav from '../../images/un-favorite logo (1).svg'
 import clear from '../../images/_clear_ symbol.svg'
 import send from '../../images/send.svg'
+import { inputChecker } from '../../util/inputChecker'
 
 export default function ItemInput({ list, dispatch, onMobile }: ItemInputProps) {
-	function checker() {
-		if (list.input.trim().length === 0) return
-		addItem(dispatch, list)
-		dispatch({ type: 'set-input', payload: '' })
-		list.favorite && dispatch({ type: 'set-favorite', payload: false })
-	}
-
 	return (
 		<>
-			<div
-				// className={onMobile ? styles.itemInputWrapperMobile : styles.itemInputWrapper}
-				className={styles.itemInputWrapper}>
+			<div className={onMobile ? styles.itemInputWrapperMobile : styles.itemInputWrapper}>
 				<input
 					type='text'
 					placeholder='Type here to begin...'
@@ -30,12 +21,12 @@ export default function ItemInput({ list, dispatch, onMobile }: ItemInputProps) 
 						if (e.key === 'Enter') {
 							e.preventDefault()
 
-							checker()
+							inputChecker(list.input, dispatch, list)
 						}
 					}}
 				/>
 				<button
-					onClick={() => checker()}
+					onClick={() => inputChecker(list.input, dispatch, list)}
 					className={styles.send}>
 					<img
 						src={send}
