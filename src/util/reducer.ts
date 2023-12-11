@@ -17,5 +17,10 @@ export default function reducer(list: List, action: Action): List {
         ...list,
         favorite: action.payload
       }
+    case 'set-current-url':
+      return {
+        ...list,
+        currentURL: action.payload
+      }
   }
 }
