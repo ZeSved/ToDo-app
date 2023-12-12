@@ -9,33 +9,43 @@
 
 	display: flex;
 
-	.buttons {
+	.tabInput {
 		display: flex;
 		gap: var(--gap-1);
 		background-color: black;
 		border-radius: var(--gap-3);
-	}
-	> button {
-		@include button;
 
-		background-color: black;
-	}
+		> button {
+			@include button;
 
-	> input {
-		@include subWrapperItem;
+			background-color: black;
+			border-radius: var(--gap-3);
 
-		outline: none;
-		border: none;
+			&:disabled {
+				cursor: default;
 
-		cursor: text;
-		width: 10rem;
+				> img {
+					opacity: 0.6;
+				}
+			}
+		}
 
-		border-radius: var(--gap-3);
+		> input {
+			@include subWrapperItem;
 
-		color: white;
+			outline: none;
+			border: none;
 
-		background-color: black;
-		padding: var(--gap-3);
+			cursor: text;
+			width: 10rem;
+
+			border-radius: var(--gap-3);
+
+			color: white;
+
+			background-color: black;
+			padding: var(--gap-3);
+		}
 	}
 }
 
@@ -49,16 +59,34 @@
 	.not_selected {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-between;
 		flex-grow: 1;
 		border-radius: var(--gap-3) 0 0 var(--gap-3);
-		padding: 0 2rem;
+		padding: 0 var(--gap-3);
 
 		border: var(--gap-1) solid;
 		border-right: none;
 
 		> p {
 			color: white;
+		}
+
+		.buttons {
+			display: flex;
+			align-items: center;
+			gap: var(--gap-4);
+
+			> button {
+				@include button;
+
+				&:disabled {
+					cursor: default;
+
+					> img {
+						opacity: 0.6;
+					}
+				}
+			}
 		}
 	}
 
