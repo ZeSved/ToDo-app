@@ -11,7 +11,7 @@ import uncheck from '../../../images/_unchecked_ symbol.svg'
 import { Action, Item, List } from '../../../types/types'
 import { useEffect, useState } from 'react'
 import { symbolChange } from '../../../util/symbolChange'
-import { removeItem } from '../../../util/removeItem'
+// import { removeItem } from '../../../util/removeItem'
 
 export default function ItemButtons({
 	item,

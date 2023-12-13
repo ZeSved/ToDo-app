@@ -5,7 +5,7 @@ import { inputChecker } from '../../util/inputChecker'
 import send from '../../images/send.svg'
 import clear from '../../images/_clear_ symbol.svg'
 import deleteImg from '../../images/_delete_ symbol.svg'
-import { removeItem } from '../../util/removeItem'
+// import { removeItem } from '../../util/removeItem'
 
 export default function Tabs({ list, dispatch }: TabsProps) {
 	return (
