@@ -6,16 +6,12 @@ export type Action =
 		payload: Item[]
 	}
 	| {
-		type: 'set-input'
+		type: 'set-input' | 'set-tab-input'
 		payload: string
 	}
 	| {
 		type: 'set-favorite'
 		payload: boolean
-	}
-	| {
-		type: 'set-tab-input'
-		payload: string
 	}
 	| {
 		type: 'set-tabs'

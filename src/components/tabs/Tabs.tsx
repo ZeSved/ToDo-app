@@ -5,6 +5,7 @@ import { inputChecker } from '../../util/inputChecker'
 import send from '../../images/send.svg'
 import clear from '../../images/_clear_ symbol.svg'
 import deleteImg from '../../images/_delete_ symbol.svg'
+import { removeItem } from '../../util/removeItem'
 
 export default function Tabs({ list, dispatch }: TabsProps) {
 	return (
@@ -14,7 +15,12 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 					<input
 						type='text'
 						placeholder='New tab name...'
-						onChange={(e) => dispatch({ type: 'set-tab-input', payload: e.currentTarget.value })}
+						onChange={(e) =>
+							dispatch({
+								type: 'set-tab-input',
+								payload: e.currentTarget.value,
+							})
+						}
 						value={list.tabInput}
 						onKeyDown={(e) => {
 							if (e.key === 'Enter') {
@@ -81,9 +87,12 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 							<button
 								disabled={list.tabs.length === 1}
 								onClick={() => {
-									const newArr = [...list.tabs]
+									const newArr = list.tabs
 									newArr.splice(i, 1)
-									dispatch({ type: 'set-tabs', payload: newArr })
+									dispatch({
+										type: 'set-tabs',
+										payload: newArr,
+									})
 								}}>
 								<img
 									src={deleteImg}

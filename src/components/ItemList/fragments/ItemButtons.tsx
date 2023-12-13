@@ -11,8 +11,15 @@ import uncheck from '../../../images/_unchecked_ symbol.svg'
 import { Action, Item, List } from '../../../types/types'
 import { useEffect, useState } from 'react'
 import { symbolChange } from '../../../util/symbolChange'
+import { removeItem } from '../../../util/removeItem'
 
-export default function ItemButtons({ item, i, list, dispatch, onMobile }: ItemButtonsProps) {
+export default function ItemButtons({
+	item,
+	i,
+	list,
+	dispatch,
+	onMobile,
+}: ItemButtonsProps) {
 	const [isOpen, setIsOpen] = useState(false)
 
 	useEffect(() => {
@@ -42,7 +49,14 @@ export default function ItemButtons({ item, i, list, dispatch, onMobile }: ItemB
 					alt=''
 				/>
 			</button>
-			<div className={onMobile ? (isOpen ? styles.mobileFrag : styles.display) : styles.pcFrag}>
+			<div
+				className={
+					onMobile
+						? isOpen
+							? styles.mobileFrag
+							: styles.display
+						: styles.pcFrag
+				}>
 				<button
 					className={styles.deleteBtn}
 					onClick={() => {
@@ -52,7 +66,10 @@ export default function ItemButtons({ item, i, list, dispatch, onMobile }: ItemB
 							dispatch({ type: 'set-items', payload: [] })
 							window.localStorage.setItem('itemDat', '[]')
 						} else {
-							dispatch({ type: 'set-items', payload: newArr })
+							dispatch({
+								type: 'set-items',
+								payload: newArr,
+							})
 						}
 						setIsOpen(false)
 					}}>

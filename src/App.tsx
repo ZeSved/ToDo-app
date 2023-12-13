@@ -35,13 +35,17 @@ function App() {
 	useEffect(() => {
 		dispatch({
 			type: 'set-items',
-			payload: JSON.parse(window.localStorage.getItem('itemDat') ?? JSON.stringify(list.items)),
+			payload: JSON.parse(
+				window.localStorage.getItem('itemDat') ?? JSON.stringify(list.items)
+			),
 		})
 
 		function resize() {
 			const root = getComputedStyle(document.querySelector(':root')!)
 
-			setOnMobile(parseInt(root.width.slice(0, root.width.length - 2)) < MOBILE_THRESHOLD)
+			setOnMobile(
+				parseInt(root.width.slice(0, root.width.length - 2)) < MOBILE_THRESHOLD
+			)
 		}
 
 		resize()
@@ -83,7 +87,9 @@ function App() {
 			<div className='colorSheet'>
 				<svg
 					id='visual'
-					viewBox={`0 0 ${backgroundSVGLocation * 3.6} ${backgroundSVGLocation * 2}`}
+					viewBox={`0 0 ${backgroundSVGLocation * 3.6} ${
+						backgroundSVGLocation * 2
+					}`}
 					width={backgroundSVGLocation * 3.84 * 2}
 					height={backgroundSVGLocation * 2.14 * 2}
 					xmlns='http://www.w3.org/2000/svg'
