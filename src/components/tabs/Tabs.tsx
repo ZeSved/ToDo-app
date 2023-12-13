@@ -74,12 +74,14 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 			<div className={s.nav}>
 				{list.tabs.map((tab, i) => (
 					<div
-						onClick={() =>
+						onClick={() => {
 							dispatch({
 								type: 'set-tabs',
 								payload: targetCurrent(list.tabs, i),
 							})
-						}
+
+							// location.assign(tab.tabURL)
+						}}
 						className={tab.isSelected ? s.selected : s.not_selected}
 						key={i}>
 						<p>{tab.tabName}</p>
