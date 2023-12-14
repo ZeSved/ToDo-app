@@ -79,8 +79,6 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 								type: 'set-tabs',
 								payload: targetCurrent(list.tabs, i),
 							})
-
-							// location.assign(tab.tabURL)
 						}}
 						className={tab.isSelected ? s.selected : s.not_selected}
 						key={i}>

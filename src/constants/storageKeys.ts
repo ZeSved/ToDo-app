@@ -1,3 +1,4 @@
 export const storageKeys = {
-  main: 'itemData'
+  main: 'itemData',
+  tabs: 'tabData'
 }

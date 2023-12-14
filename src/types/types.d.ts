@@ -46,4 +46,5 @@ export type SubItems = {
 
 export type SavedData = {
 	items: Item[]
+	tabs: AppTabs[]
 }
