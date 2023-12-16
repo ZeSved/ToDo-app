@@ -29,9 +29,7 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 
 								dispatch({
 									type: 'set-items',
-									payload: JSON.parse(
-										window.localStorage.getItem(getTargetTab(list.tabs)) ?? '[]'
-									),
+									payload: JSON.parse(window.localStorage.getItem(getTargetTab(list.tabs)) ?? '[]'),
 								})
 							}
 						}}
@@ -42,9 +40,7 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 
 							dispatch({
 								type: 'set-items',
-								payload: JSON.parse(
-									window.localStorage.getItem(getTargetTab(list.tabs)) ?? '[]'
-								),
+								payload: JSON.parse(window.localStorage.getItem(getTargetTab(list.tabs)) ?? '[]'),
 							})
 						}}>
 						<img
@@ -75,6 +71,7 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 									payload: [],
 								})
 								window.localStorage.setItem(getTargetTab(list.tabs), '[]')
+								window.localStorage.clear()
 							}
 						}}>
 						<img
@@ -95,9 +92,7 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 
 							dispatch({
 								type: 'set-items',
-								payload: JSON.parse(
-									window.localStorage.getItem(getTargetTab(list.tabs)) ?? '[]'
-								),
+								payload: JSON.parse(window.localStorage.getItem(getTargetTab(list.tabs)) ?? '[]'),
 							})
 						}}
 						className={tab.isSelected ? s.selected : s.not_selected}
@@ -108,10 +103,8 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 								disabled={list.tabs.length === 1}
 								onClick={() => {
 									const newArr = list.tabs
+									window.localStorage.removeItem(`Tab ${list.tabs[i].tabName}`)
 									newArr.splice(i, 1)
-									window.localStorage.removeItem(
-										`Tab ${getTargetTab(list.tabs)}`
-									)
 									dispatch({
 										type: 'set-tabs',
 										payload: newArr,

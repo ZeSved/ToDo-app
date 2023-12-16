@@ -1,6 +1,6 @@
 import { Action, List } from "../types/types"
 import { addItem } from "./addItem"
-import { unselect } from "./targets"
+import { targetNone } from "./targets"
 
 export function inputChecker(
   input: string,

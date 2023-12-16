@@ -13,6 +13,7 @@ export function addItem(
       isSelected: true
     })
     dispatch({ type: 'set-tabs', payload: newArr })
+    window.localStorage.setItem('lastOpened', list.tabs[0].tabName)
   } else {
     const newArr = list.items
 

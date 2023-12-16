@@ -24,6 +24,6 @@ export function targetNone(arr: AppTabs[]) {
 	return newArr
 }
 
-export function targetSpecific(arr: AppTabs[]) {
+// export function targetSpecific(arr: AppTabs[]) {
 
-}
+// }

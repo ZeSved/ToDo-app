@@ -12,7 +12,6 @@ import ItemList from './components/ItemList/ItemList'
 import Stats from './components/Stats/Stats'
 import Tabs from './components/tabs/Tabs'
 import { getTargetTab } from './util/getTargetTab'
-import { targetCurrent } from './util/targets'
 
 const DEFAULT_LIST: List = {
 	favorite: false,
@@ -38,17 +37,14 @@ function App() {
 		dispatch({
 			type: 'set-tabs',
 			payload: JSON.parse(
-				window.localStorage.getItem(storageKeys.tabs) ??
-					JSON.stringify(list.tabs)
+				window.localStorage.getItem(storageKeys.tabs) ?? JSON.stringify(list.tabs)
 			),
 		})
-
-		// targetCurrent(list.tabs, )
 
 		dispatch({
 			type: 'set-items',
 			payload: JSON.parse(
-				window.localStorage.getItem(getTargetTab(list.tabs)) ??
+				window.localStorage.getItem(`Tab ${window.localStorage.getItem('lastOpened')}`) ??
 					JSON.stringify(list.items)
 			),
 		})
@@ -56,9 +52,7 @@ function App() {
 		function resize() {
 			const root = getComputedStyle(document.querySelector(':root')!)
 
-			setOnMobile(
-				parseInt(root.width.slice(0, root.width.length - 2)) < MOBILE_THRESHOLD
-			)
+			setOnMobile(parseInt(root.width.slice(0, root.width.length - 2)) < MOBILE_THRESHOLD)
 		}
 
 		resize()
@@ -67,13 +61,9 @@ function App() {
 	useEffect(() => {
 		if (
 			list.items.length > 0 &&
-			(window.localStorage.getItem(getTargetTab(list.tabs)) ?? list.items)
-				.length > 0
+			(window.localStorage.getItem(getTargetTab(list.tabs)) ?? list.items).length > 0
 		) {
-			window.localStorage.setItem(
-				getTargetTab(list.tabs),
-				JSON.stringify(list.items)
-			)
+			window.localStorage.setItem(getTargetTab(list.tabs), JSON.stringify(list.items))
 		}
 
 		if (
@@ -111,9 +101,7 @@ function App() {
 			<div className='colorSheet'>
 				<svg
 					id='visual'
-					viewBox={`0 0 ${backgroundSVGLocation * 3.6} ${
-						backgroundSVGLocation * 2
-					}`}
+					viewBox={`0 0 ${backgroundSVGLocation * 3.6} ${backgroundSVGLocation * 2}`}
 					width={backgroundSVGLocation * 3.84 * 2}
 					height={backgroundSVGLocation * 2.14 * 2}
 					xmlns='http://www.w3.org/2000/svg'
