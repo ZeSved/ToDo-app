@@ -1,5 +1,4 @@
 import { Action, List } from '../types/types'
-import { typeURL } from './getTargetURL'
 
 export function addItem(
   dispatch: React.Dispatch<Action>,
@@ -11,7 +10,6 @@ export function addItem(
 
     newArr.unshift({
       tabName: list.tabInput,
-      tabURL: typeURL(list.tabInput),
       isSelected: true
     })
     dispatch({ type: 'set-tabs', payload: newArr })

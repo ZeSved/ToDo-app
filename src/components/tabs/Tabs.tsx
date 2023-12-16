@@ -5,7 +5,7 @@ import { inputChecker } from '../../util/inputChecker'
 import send from '../../images/send.svg'
 import clear from '../../images/_clear_ symbol.svg'
 import deleteImg from '../../images/_delete_ symbol.svg'
-// import { removeItem } from '../../util/removeItem'
+import { getTargetTab } from '../../util/getTargetTab'
 
 export default function Tabs({ list, dispatch }: TabsProps) {
 	return (
@@ -26,12 +26,26 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 							if (e.key === 'Enter') {
 								e.preventDefault()
 								inputChecker(list.tabInput, dispatch, list)
+
+								dispatch({
+									type: 'set-items',
+									payload: JSON.parse(
+										window.localStorage.getItem(getTargetTab(list.tabs)) ?? '[]'
+									),
+								})
 							}
 						}}
 					/>
 					<button
 						onClick={() => {
 							inputChecker(list.tabInput, dispatch, list)
+
+							dispatch({
+								type: 'set-items',
+								payload: JSON.parse(
+									window.localStorage.getItem(getTargetTab(list.tabs)) ?? '[]'
+								),
+							})
 						}}>
 						<img
 							src={send}
@@ -52,7 +66,6 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 									payload: [
 										{
 											tabName: 'Untitled',
-											tabURL: 'https://todo.korell.dev/',
 											isSelected: true,
 										},
 									],
@@ -61,7 +74,7 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 									type: 'set-items',
 									payload: [],
 								})
-								window.localStorage.setItem('itemDat', '[]')
+								window.localStorage.setItem(getTargetTab(list.tabs), '[]')
 							}
 						}}>
 						<img
@@ -79,6 +92,13 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 								type: 'set-tabs',
 								payload: targetCurrent(list.tabs, i),
 							})
+
+							dispatch({
+								type: 'set-items',
+								payload: JSON.parse(
+									window.localStorage.getItem(getTargetTab(list.tabs)) ?? '[]'
+								),
+							})
 						}}
 						className={tab.isSelected ? s.selected : s.not_selected}
 						key={i}>
@@ -89,6 +109,9 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 								onClick={() => {
 									const newArr = list.tabs
 									newArr.splice(i, 1)
+									window.localStorage.removeItem(
+										`Tab ${getTargetTab(list.tabs)}`
+									)
 									dispatch({
 										type: 'set-tabs',
 										payload: newArr,

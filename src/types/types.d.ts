@@ -1,4 +1,4 @@
-import { URLProps } from "../util/getTargetURL"
+import { URLProps } from "../util/getTargetTab"
 
 export type Action =
 	| {
@@ -28,7 +28,6 @@ export type List = {
 
 export type AppTabs = {
 	tabName: string;
-	tabURL: string;
 	isSelected: boolean
 }
 

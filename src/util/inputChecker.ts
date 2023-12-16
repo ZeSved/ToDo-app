@@ -18,7 +18,7 @@ export function inputChecker(
   else if (input === list.tabInput) {
     if (input.trim().length === 0) return false
 
-    dispatch({ type: 'set-tabs', payload: unselect(list.tabs) })
+    dispatch({ type: 'set-tabs', payload: targetNone(list.tabs) })
     addItem(dispatch, list, true)
     dispatch({ type: 'set-tab-input', payload: '' })
   }
