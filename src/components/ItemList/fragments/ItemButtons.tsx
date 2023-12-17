@@ -11,15 +11,10 @@ import uncheck from '../../../images/_unchecked_ symbol.svg'
 import { Action, Item, List } from '../../../types/types'
 import { useEffect, useState } from 'react'
 import { symbolChange } from '../../../util/symbolChange'
+import { getTargetTab } from '../../../util/getTargetTab'
 // import { removeItem } from '../../../util/removeItem'
 
-export default function ItemButtons({
-	item,
-	i,
-	list,
-	dispatch,
-	onMobile,
-}: ItemButtonsProps) {
+export default function ItemButtons({ item, i, list, dispatch, onMobile }: ItemButtonsProps) {
 	const [isOpen, setIsOpen] = useState(false)
 
 	useEffect(() => {
@@ -49,14 +44,7 @@ export default function ItemButtons({
 					alt=''
 				/>
 			</button>
-			<div
-				className={
-					onMobile
-						? isOpen
-							? styles.mobileFrag
-							: styles.display
-						: styles.pcFrag
-				}>
+			<div className={onMobile ? (isOpen ? styles.mobileFrag : styles.display) : styles.pcFrag}>
 				<button
 					className={styles.deleteBtn}
 					onClick={() => {
@@ -64,7 +52,7 @@ export default function ItemButtons({
 						newArr.splice(i, 1)
 						if (newArr.length === 0) {
 							dispatch({ type: 'set-items', payload: [] })
-							window.localStorage.setItem('itemDat', '[]')
+							window.localStorage.setItem(getTargetTab(list.tabs), '[]')
 						} else {
 							dispatch({
 								type: 'set-items',

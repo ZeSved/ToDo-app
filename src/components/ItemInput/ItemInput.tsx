@@ -7,6 +7,7 @@ import nofav from '../../images/un-favorite logo (1).svg'
 import clear from '../../images/_clear_ symbol.svg'
 import send from '../../images/send.svg'
 import { inputChecker } from '../../util/inputChecker'
+import { getTargetTab } from '../../util/getTargetTab'
 
 export default function ItemInput({ list, dispatch, onMobile }: ItemInputProps) {
 	return (
@@ -56,7 +57,7 @@ export default function ItemInput({ list, dispatch, onMobile }: ItemInputProps) 
 							if (confirm('Are you sure you want to permanently delete all items?')) {
 								dispatch({ type: 'set-items', payload: [] })
 							}
-							window.localStorage.setItem('itemDat', '[]')
+							window.localStorage.setItem(getTargetTab(list.tabs), '[]')
 						} else {
 							alert('There are currently no items')
 						}

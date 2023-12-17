@@ -41,6 +41,9 @@ function App() {
 			),
 		})
 
+		window.localStorage.getItem('lastOpened') ??
+			window.localStorage.setItem('lastOpened', list.tabs[0].tabName)
+
 		dispatch({
 			type: 'set-items',
 			payload: JSON.parse(
@@ -67,8 +70,8 @@ function App() {
 		}
 
 		if (
-			list.tabs.length > 1 &&
-			(window.localStorage.getItem(storageKeys.tabs) ?? list.tabs).length > 1
+			list.tabs.length >= 1 &&
+			(window.localStorage.getItem(storageKeys.tabs) ?? list.tabs).length >= 1
 		) {
 			window.localStorage.setItem(storageKeys.tabs, JSON.stringify(list.tabs))
 		}
