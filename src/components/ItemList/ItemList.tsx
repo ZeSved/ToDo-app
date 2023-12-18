@@ -1,10 +1,8 @@
 import ItemButtons from './fragments/ItemButtons'
 
 import styles from './ItemList.module.scss'
-import '../placeholders/Placeholder.module.scss'
 
 import { Action, List } from '../../types/types'
-import Placeholders from '../placeholders/Placeholder'
 
 export default function ItemList({ list, dispatch, onMobile }: ItemListProps) {
 	return (
@@ -27,7 +25,11 @@ export default function ItemList({ list, dispatch, onMobile }: ItemListProps) {
 					</div>
 				</div>
 			))}
-			{list.items.length <= 5 && <Placeholders amount={list.items.length} />}
+			{list.items.length <= 4 && <div className={styles.placeholder} />}
+			{list.items.length <= 3 && <div className={styles.placeholder} />}
+			{list.items.length <= 2 && <div className={styles.placeholder} />}
+			{list.items.length <= 1 && <div className={styles.placeholder} />}
+			{list.items.length === 0 && <div className={styles.placeholder} />}
 		</div>
 	)
 }

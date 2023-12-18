@@ -6,9 +6,23 @@
 	padding: var(--gap-2);
 	flex-direction: column;
 	gap: var(--gap-3);
+
+	.placeholder {
+		background: linear-gradient(
+			90deg,
+			rgba(0, 208, 255, 0.838) 0%,
+			rgba(0, 208, 255, 0.332) 60%,
+			rgba(0, 0, 0, 0) 80%
+		);
+
+		padding: 1.8rem;
+
+		border: none;
+	}
 }
 
-.itemContainer {
+.itemContainer,
+.placeholder {
 	display: flex;
 
 	width: 100%;
