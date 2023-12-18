@@ -8,8 +8,17 @@ import clear from '../../images/_clear_ symbol.svg'
 import send from '../../images/send.svg'
 import { inputChecker } from '../../util/inputChecker'
 import { getTargetTab } from '../../util/getTargetTab'
+import Buttons from '../../fragments/Buttons'
 
 export default function ItemInput({ list, dispatch, onMobile }: ItemInputProps) {
+	const buttons = [
+		{
+			style: styles.send,
+			func: () => inputChecker(list.input, dispatch, list),
+			img: send,
+		},
+	]
+
 	return (
 		<>
 			<div className={onMobile ? styles.itemInputWrapperMobile : styles.itemInputWrapper}>
@@ -26,14 +35,7 @@ export default function ItemInput({ list, dispatch, onMobile }: ItemInputProps) 
 						}
 					}}
 				/>
-				<button
-					onClick={() => inputChecker(list.input, dispatch, list)}
-					className={styles.send}>
-					<img
-						src={send}
-						alt=''
-					/>
-				</button>
+				<Buttons btn={buttons} />
 				<div className={styles.dividerVertical} />
 				<button
 					className={styles.set_favorite}

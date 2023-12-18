@@ -1,4 +1,4 @@
-import Button from './Button'
+import Button from './Buttons'
 
 export default function ListItem({ item }: any) {
 	return (

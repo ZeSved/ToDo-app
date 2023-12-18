@@ -49,12 +49,6 @@ export default function Stats({ list }: StatsProps) {
 							<div className={styles.dividerVertical} />
 						</div>
 					))}
-					{list.items.length >= 8 && (
-						<p style={{ color: 'white' }}>
-							There are more than 8 items in this tab. Dividing items between multiple tabs is
-							recommended.
-						</p>
-					)}
 				</div>
 			</div>
 		</>
