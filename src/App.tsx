@@ -22,7 +22,6 @@ const DEFAULT_LIST: List = {
 }
 
 const MOBILE_THRESHOLD = 420
-const backgroundSVGLocation = 500
 
 function App() {
 	const [onMobile, setOnMobile] = useState(false)
@@ -99,9 +98,9 @@ function App() {
 			<div className='colorSheet'>
 				<svg
 					id='visual'
-					viewBox={`0 0 ${backgroundSVGLocation * 3.6} ${backgroundSVGLocation * 2}`}
-					width={backgroundSVGLocation * 3.84 * 2}
-					height={backgroundSVGLocation * 2.14 * 2}
+					viewBox={`0 0 ${window.innerWidth} ${window.innerHeight}`}
+					width={window.innerWidth * 2.2}
+					height={window.innerHeight * 2.2}
 					xmlns='http://www.w3.org/2000/svg'
 					version='1.1'>
 					<path
