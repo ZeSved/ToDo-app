@@ -18,12 +18,7 @@ const DEFAULT_LIST: List = {
 	input: '',
 	items: [],
 	tabInput: '',
-	tabs: [
-		{
-			tabName: 'Untitled',
-			isSelected: true,
-		},
-	],
+	tabs: [],
 }
 
 const MOBILE_THRESHOLD = 420

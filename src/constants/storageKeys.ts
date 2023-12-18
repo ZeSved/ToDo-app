@@ -1,4 +1,4 @@
 export const storageKeys = {
   main: 'itemData',
-  tabs: 'tabData'
+  tabs: 'Current tabs'
 }
