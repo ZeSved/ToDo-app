@@ -74,23 +74,27 @@ function App() {
 	return (
 		<div className='wrapper'>
 			<main className='main'>
-				<section className='tabs'>
-					<Tabs
-						dispatch={dispatch}
-						list={list}
-					/>
+				<section className='app'>
+					<div className='tabs'>
+						<Tabs
+							dispatch={dispatch}
+							list={list}
+						/>
+					</div>
+					<div className='main_app'>
+						<ItemInput
+							dispatch={dispatch}
+							list={list}
+							onMobile={onMobile}
+						/>
+						<ItemList
+							dispatch={dispatch}
+							list={list}
+							onMobile={onMobile}
+						/>
+					</div>
 				</section>
-				<section className='main_app'>
-					<ItemInput
-						dispatch={dispatch}
-						list={list}
-						onMobile={onMobile}
-					/>
-					<ItemList
-						dispatch={dispatch}
-						list={list}
-						onMobile={onMobile}
-					/>
+				<section className='stats'>
 					<Stats list={list} />
 				</section>
 			</main>

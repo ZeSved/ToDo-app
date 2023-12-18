@@ -27,6 +27,14 @@ export default function Stats({ list }: StatsProps) {
 			property: 'Checked: ',
 			value: stats[0],
 		},
+		{
+			property: 'Tabs: ',
+			value: list.tabs.length,
+		},
+		{
+			property: 'Current tab: ',
+			value: window.localStorage.getItem('lastOpened') ?? '...',
+		},
 	]
 
 	return (

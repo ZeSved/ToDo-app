@@ -41,24 +41,35 @@ body {
 	z-index: 2;
 
 	display: flex;
-	.main_app {
-		padding: var(--gap-3);
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		// background-color: transparent;
-		// border: var(--gap-1) solid var(--main-color);
-		background-color: var(--main-color);
-		border-radius: 0 var(--gap-4) var(--gap-4) 0;
+	flex-direction: column;
 
-		gap: var(--gap-3);
+	.app {
+		display: flex;
+
+		.main_app {
+			padding: var(--gap-3);
+			width: 100%;
+			display: flex;
+			flex-direction: column;
+			// background-color: transparent;
+			// border: var(--gap-1) solid var(--main-color);
+			background-color: var(--main-color);
+			border-radius: 0 var(--gap-4) 0 0;
+
+			gap: var(--gap-3);
+		}
+
+		.tabs {
+			display: flex;
+			flex-direction: column;
+			width: fit-content;
+			flex-grow: 1;
+			gap: var(--gap-2);
+		}
 	}
 
-	.tabs {
-		display: flex;
-		flex-direction: column;
-		width: fit-content;
-		flex-grow: 1;
-		gap: var(--gap-2);
+	.stats {
+		border: var(--gap-1) solid var(--main-color);
+		border-radius: var(--gap-4) 0 var(--gap-4) var(--gap-4);
 	}
 }

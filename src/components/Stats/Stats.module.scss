@@ -1,12 +1,6 @@
 @import '../../Main styles/root.scss';
 @import '../../Main styles/mixins.scss';
 
-.controlPanelContainer {
-	@include subWrapperItem;
-
-	background-color: black;
-}
-
 .info {
 	display: flex;
 	width: 100%;
@@ -15,9 +9,12 @@
 
 	background: transparent;
 
+	padding: var(--gap-2);
 	> div {
+		background-color: black;
+		border-radius: var(--gap-3);
 		> p {
-			padding: var(--gap-3) 1.5rem;
+			padding: var(--gap-2) var(--gap-3);
 			color: #ffffff;
 		}
 	}
