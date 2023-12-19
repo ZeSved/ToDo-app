@@ -1,8 +1,9 @@
 export default function Buttons({ btn }: ButtonsProps) {
 	return (
 		<div>
-			{btn.map((but) => (
+			{btn.map((but, i) => (
 				<button
+					key={i}
 					className={but.style}
 					onClick={but.func}>
 					{

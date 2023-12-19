@@ -1,5 +1,3 @@
-import { URLProps } from "../util/getTargetTab"
-
 export type Action =
 	| {
 		type: 'set-items'
