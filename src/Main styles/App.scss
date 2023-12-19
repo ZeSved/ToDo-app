@@ -57,6 +57,9 @@ body {
 			border-radius: 0 var(--gap-4) 0 0;
 
 			gap: var(--gap-3);
+
+			max-height: 852px;
+			overflow: hidden;
 		}
 
 		.tabs {
