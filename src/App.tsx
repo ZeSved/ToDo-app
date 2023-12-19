@@ -32,13 +32,7 @@ function App() {
 			type: 'set-tabs',
 			payload: JSON.parse(
 				window.localStorage.getItem(storageKeys.tabs) ??
-					JSON.stringify([
-						...list.tabs,
-						{
-							tabName: 'Untitled',
-							isSelected: true,
-						},
-					])
+					JSON.stringify(list.tabs)
 			),
 		})
 

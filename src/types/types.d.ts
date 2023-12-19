@@ -26,7 +26,8 @@ export type List = {
 
 export type AppTabs = {
 	tabName: string;
-	isSelected: boolean
+	isSelected: boolean,
+	allChecked: Boolean
 }
 
 export type Item = {
