@@ -56,6 +56,15 @@
 	padding-bottom: var(--gap-2);
 	height: 100%;
 
+	.checked {
+		background: linear-gradient(
+			-90deg,
+			#000000 50%,
+			var(--secondary-color) 70%,
+			var(--main-color) 100%
+		);
+	}
+
 	.selected,
 	.not_selected {
 		display: flex;
@@ -69,6 +78,9 @@
 		border-right: none;
 
 		> p {
+			background: rgba(0, 0, 0, 0.4);
+			padding: var(--gap-2) var(--gap-3);
+			border-radius: var(--gap-2);
 			color: white;
 		}
 

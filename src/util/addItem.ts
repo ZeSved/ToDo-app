@@ -10,6 +10,7 @@ export function addItem(
 
     newArr.unshift({
       tabName: list.tabInput,
+      allChecked: false,
       isSelected: true
     })
     dispatch({ type: 'set-tabs', payload: newArr })

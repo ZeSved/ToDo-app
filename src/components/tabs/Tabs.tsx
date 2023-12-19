@@ -29,9 +29,7 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 
 								dispatch({
 									type: 'set-items',
-									payload: JSON.parse(
-										window.localStorage.getItem(getTargetTab(list.tabs)) ?? '[]'
-									),
+									payload: JSON.parse(window.localStorage.getItem(getTargetTab(list.tabs)) ?? '[]'),
 								})
 							}
 						}}
@@ -42,9 +40,7 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 
 							dispatch({
 								type: 'set-items',
-								payload: JSON.parse(
-									window.localStorage.getItem(getTargetTab(list.tabs)) ?? '[]'
-								),
+								payload: JSON.parse(window.localStorage.getItem(getTargetTab(list.tabs)) ?? '[]'),
 							})
 						}}>
 						<img
@@ -97,12 +93,12 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 
 							dispatch({
 								type: 'set-items',
-								payload: JSON.parse(
-									window.localStorage.getItem(getTargetTab(list.tabs)) ?? '[]'
-								),
+								payload: JSON.parse(window.localStorage.getItem(getTargetTab(list.tabs)) ?? '[]'),
 							})
 						}}
-						className={tab.isSelected ? s.selected : s.not_selected}
+						className={`${tab.isSelected ? s.selected : s.not_selected} ${
+							tab.allChecked ? s.checked : s.unchecked
+						}`}
 						key={i}>
 						<p>{tab.tabName}</p>
 						<div className={s.buttons}>

@@ -14,13 +14,7 @@ import { symbolChange } from '../../../util/symbolChange'
 import { getTargetTab } from '../../../util/getTargetTab'
 // import { removeItem } from '../../../util/removeItem'
 
-export default function ItemButtons({
-	item,
-	i,
-	list,
-	dispatch,
-	onMobile,
-}: ItemButtonsProps) {
+export default function ItemButtons({ item, i, list, dispatch, onMobile }: ItemButtonsProps) {
 	const [isOpen, setIsOpen] = useState(false)
 
 	useEffect(() => {
@@ -40,21 +34,17 @@ export default function ItemButtons({
 	}, [item.favorite])
 
 	useEffect(() => {
+		const arr = list.tabs.findIndex((a) => a.tabName === window.localStorage.getItem('lastOpened'))
+
+		const tabArr = [...list.tabs]
+
 		if (list.items.filter((l) => l.checked === false).length === 0) {
-			const arr = list.tabs.findIndex(
-				(a) => a.tabName === window.localStorage.getItem('lastOpened')
-			)
-
-			const tabArr = [...list.tabs]
 			tabArr[arr].allChecked = true
-
-			dispatch({ type: 'set-tabs', payload: tabArr })
-			// list.tabs[
-			// 	list.tabs.findIndex(
-			// 		(a) => a.tabName === window.localStorage.getItem('lastOpened')
-			// 	)
-			// ].allChecked = true
+		} else {
+			tabArr[arr].allChecked = false
 		}
+
+		dispatch({ type: 'set-tabs', payload: tabArr })
 	}, [item.checked])
 
 	return (
@@ -68,14 +58,7 @@ export default function ItemButtons({
 					alt=''
 				/>
 			</button>
-			<div
-				className={
-					onMobile
-						? isOpen
-							? styles.mobileFrag
-							: styles.display
-						: styles.pcFrag
-				}>
+			<div className={onMobile ? (isOpen ? styles.mobileFrag : styles.display) : styles.pcFrag}>
 				<button
 					className={styles.deleteBtn}
 					onClick={() => {
