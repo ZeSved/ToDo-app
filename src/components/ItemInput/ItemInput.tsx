@@ -17,6 +17,25 @@ export default function ItemInput({ list, dispatch, onMobile }: ItemInputProps) 
 			func: () => inputChecker(list.input, dispatch, list),
 			img: send,
 		},
+		{
+			style: styles.set_favorite,
+			func: () => dispatch({ type: 'set-favorite', payload: !list.favorite }),
+			img: list.favorite ? fav : nofav,
+		},
+		{
+			style: styles.clear,
+			func: () => {
+				if (list.items.length > 0) {
+					if (confirm('Are you sure you want to permanently delete all items?')) {
+						dispatch({ type: 'set-items', payload: [] })
+					}
+					window.localStorage.setItem(getTargetTab(list.tabs), '[]')
+				} else {
+					alert('There are currently no items')
+				}
+			},
+			img: clear,
+		},
 	]
 
 	return (
@@ -36,40 +55,6 @@ export default function ItemInput({ list, dispatch, onMobile }: ItemInputProps) 
 					}}
 				/>
 				<Buttons btn={buttons} />
-				<div className={styles.dividerVertical} />
-				<button
-					className={styles.set_favorite}
-					onClick={() => dispatch({ type: 'set-favorite', payload: !list.favorite })}>
-					{list.favorite ? (
-						<img
-							src={fav}
-							alt=''
-						/>
-					) : (
-						<img
-							src={nofav}
-							alt=''
-						/>
-					)}
-				</button>
-				<div className={styles.dividerVertical} />
-				<button
-					onClick={() => {
-						if (list.items.length > 0) {
-							if (confirm('Are you sure you want to permanently delete all items?')) {
-								dispatch({ type: 'set-items', payload: [] })
-							}
-							window.localStorage.setItem(getTargetTab(list.tabs), '[]')
-						} else {
-							alert('There are currently no items')
-						}
-					}}
-					className={styles.clear}>
-					<img
-						src={clear}
-						alt=''
-					/>
-				</button>
 			</div>
 		</>
 	)

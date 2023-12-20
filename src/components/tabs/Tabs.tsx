@@ -6,8 +6,53 @@ import send from '../../images/send.svg'
 import clear from '../../images/_clear_ symbol.svg'
 import deleteImg from '../../images/_delete_ symbol.svg'
 import { getTargetTab } from '../../util/getTargetTab'
+import Buttons from '../../fragments/Buttons'
 
 export default function Tabs({ list, dispatch }: TabsProps) {
+	const buttons = [
+		{
+			func: () => {
+				inputChecker(list.tabInput, dispatch, list)
+
+				dispatch({
+					type: 'set-items',
+					payload: JSON.parse(window.localStorage.getItem(getTargetTab(list.tabs)) ?? '[]'),
+				})
+			},
+			img: send,
+			style: s.send,
+		},
+		{
+			func: () => {
+				if (
+					confirm(
+						'Are you sure you want to permanently delete all tabs? NOTE: This will also wipe all data from all tabs.'
+					)
+				) {
+					dispatch({
+						type: 'set-tabs',
+						payload: [
+							{
+								tabName: 'Untitled',
+								allChecked: false,
+								isSelected: true,
+							},
+						],
+					})
+					dispatch({
+						type: 'set-items',
+						payload: [],
+					})
+					window.localStorage.setItem(getTargetTab(list.tabs), '[]')
+					window.localStorage.clear()
+				}
+			},
+			img: clear,
+			disabled: list.tabs.length <= 1,
+			style: s.clear,
+		},
+	]
+
 	return (
 		<>
 			<div className={s.inputContainer}>
@@ -34,52 +79,7 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 							}
 						}}
 					/>
-					<button
-						onClick={() => {
-							inputChecker(list.tabInput, dispatch, list)
-
-							dispatch({
-								type: 'set-items',
-								payload: JSON.parse(window.localStorage.getItem(getTargetTab(list.tabs)) ?? '[]'),
-							})
-						}}>
-						<img
-							src={send}
-							alt=''
-						/>
-					</button>
-					<div />
-					<button
-						disabled={list.tabs.length <= 1}
-						onClick={() => {
-							if (
-								confirm(
-									'Are you sure you want to permanently delete all tabs? NOTE: This will also wipe all data from all tabs.'
-								)
-							) {
-								dispatch({
-									type: 'set-tabs',
-									payload: [
-										{
-											tabName: 'Untitled',
-											allChecked: false,
-											isSelected: true,
-										},
-									],
-								})
-								dispatch({
-									type: 'set-items',
-									payload: [],
-								})
-								window.localStorage.setItem(getTargetTab(list.tabs), '[]')
-								window.localStorage.clear()
-							}
-						}}>
-						<img
-							src={clear}
-							alt=''
-						/>
-					</button>
+					<Buttons btn={buttons} />
 				</div>
 			</div>
 			<div className={s.nav}>

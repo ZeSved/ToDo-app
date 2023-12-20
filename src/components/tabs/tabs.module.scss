@@ -15,7 +15,8 @@
 		background-color: black;
 		border-radius: var(--gap-3);
 
-		> button {
+		.clear,
+		.send {
 			@include button;
 
 			background-color: black;

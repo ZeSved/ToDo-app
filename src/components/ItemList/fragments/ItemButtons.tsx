@@ -11,11 +11,41 @@ import uncheck from '../../../images/_unchecked_ symbol.svg'
 import { Action, Item, List } from '../../../types/types'
 import { useEffect, useState } from 'react'
 import { symbolChange } from '../../../util/symbolChange'
-import { getTargetTab } from '../../../util/getTargetTab'
-// import { removeItem } from '../../../util/removeItem'
+import Buttons from '../../../fragments/Buttons'
 
 export default function ItemButtons({ item, i, list, dispatch, onMobile }: ItemButtonsProps) {
 	const [isOpen, setIsOpen] = useState(false)
+
+	const buttons = [
+		{
+			style: styles.deleteBtn,
+			func: () => {
+				const newArr = [...list.items]
+				newArr.splice(i, 1)
+				dispatch({
+					type: 'set-items',
+					payload: newArr,
+				})
+				setIsOpen(false)
+			},
+			img: del,
+		},
+		{
+			style: styles.favoriteBtn,
+			func: () => {
+				symbolChange(item, 'favorite', i, dispatch, list)
+				setIsOpen(false)
+			},
+			img: item.favorite ? fav : nofav,
+		},
+		{
+			style: styles.checkBtn,
+			func: () => {
+				symbolChange(item, 'checked', i, dispatch, list)
+			},
+			img: item.checked ? check : uncheck,
+		},
+	]
 
 	useEffect(() => {
 		const newArr = [...list.items]
@@ -59,67 +89,8 @@ export default function ItemButtons({ item, i, list, dispatch, onMobile }: ItemB
 				/>
 			</button>
 			<div className={onMobile ? (isOpen ? styles.mobileFrag : styles.display) : styles.pcFrag}>
-				<button
-					className={styles.deleteBtn}
-					onClick={() => {
-						const newArr = [...list.items]
-						newArr.splice(i, 1)
-						if (newArr.length === 0) {
-							dispatch({ type: 'set-items', payload: [] })
-							window.localStorage.setItem(getTargetTab(list.tabs), '[]')
-						} else {
-							dispatch({
-								type: 'set-items',
-								payload: newArr,
-							})
-						}
-						setIsOpen(false)
-					}}>
-					{
-						<img
-							src={del}
-							alt=''
-						/>
-					}
-				</button>
-				<div className={styles.dividerVertical} />
-				<button
-					className={styles.favoriteBtn}
-					onClick={() => {
-						symbolChange(item, 'favorite', i, dispatch, list)
-						setIsOpen(false)
-					}}>
-					{item.favorite ? (
-						<img
-							src={fav}
-							alt=''
-						/>
-					) : (
-						<img
-							src={nofav}
-							alt=''
-						/>
-					)}
-				</button>
+				<Buttons btn={buttons} />
 			</div>
-			<div className={styles.dividerVertical} />
-			<button
-				onClick={() => {
-					symbolChange(item, 'checked', i, dispatch, list)
-				}}
-				className={styles.checkBtn}>
-				{item.checked ? (
-					<img
-						src={check}
-						alt=''
-					/>
-				) : (
-					<img
-						src={uncheck}
-						alt=''
-					/>
-				)}
-			</button>
 		</>
 	)
 }

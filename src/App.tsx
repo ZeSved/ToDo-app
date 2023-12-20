@@ -31,8 +31,7 @@ function App() {
 		dispatch({
 			type: 'set-tabs',
 			payload: JSON.parse(
-				window.localStorage.getItem(storageKeys.tabs) ??
-					JSON.stringify(list.tabs)
+				window.localStorage.getItem(storageKeys.tabs) ?? JSON.stringify(list.tabs)
 			),
 		})
 
@@ -42,18 +41,15 @@ function App() {
 		dispatch({
 			type: 'set-items',
 			payload: JSON.parse(
-				window.localStorage.getItem(
-					`Tab ${window.localStorage.getItem('lastOpened')}`
-				) ?? JSON.stringify(list.items)
+				window.localStorage.getItem(`Tab ${window.localStorage.getItem('lastOpened')}`) ??
+					JSON.stringify(list.items)
 			),
 		})
 
 		function resize() {
 			const root = getComputedStyle(document.querySelector(':root')!)
 
-			setOnMobile(
-				parseInt(root.width.slice(0, root.width.length - 2)) < MOBILE_THRESHOLD
-			)
+			setOnMobile(parseInt(root.width.slice(0, root.width.length - 2)) < MOBILE_THRESHOLD)
 		}
 
 		resize()
@@ -61,14 +57,10 @@ function App() {
 
 	useEffect(() => {
 		if (
-			list.items.length > 0 &&
-			(window.localStorage.getItem(getTargetTab(list.tabs)) ?? list.items)
-				.length > 0
+			list.items.length >= 0 &&
+			(window.localStorage.getItem(getTargetTab(list.tabs)) ?? list.items).length >= 0
 		) {
-			window.localStorage.setItem(
-				getTargetTab(list.tabs),
-				JSON.stringify(list.items)
-			)
+			window.localStorage.setItem(getTargetTab(list.tabs), JSON.stringify(list.items))
 		}
 
 		if (

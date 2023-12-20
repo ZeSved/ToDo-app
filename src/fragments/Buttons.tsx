@@ -1,8 +1,9 @@
 export default function Buttons({ btn }: ButtonsProps) {
 	return (
-		<div>
+		<div style={{ display: 'flex' }}>
 			{btn.map((but, i) => (
 				<button
+					disabled={but.disabled}
 					key={i}
 					className={but.style}
 					onClick={but.func}>
@@ -23,7 +24,9 @@ interface ButtonsProps {
 }
 
 type Button = {
-	style: string
 	func: () => void
 	img: string
+	style?: string
+	disabled?: boolean
+	i?: number
 }
