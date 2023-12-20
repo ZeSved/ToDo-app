@@ -66,6 +66,8 @@ export default function ItemButtons({ item, i, list, dispatch, onMobile }: ItemB
 	useEffect(() => {
 		const arr = list.tabs.findIndex((a) => a.tabName === window.localStorage.getItem('lastOpened'))
 
+		if (arr === null || arr === undefined) return
+
 		const tabArr = [...list.tabs]
 
 		if (list.items.filter((l) => l.checked === false).length === 0) {

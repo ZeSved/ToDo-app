@@ -31,7 +31,15 @@ function App() {
 		dispatch({
 			type: 'set-tabs',
 			payload: JSON.parse(
-				window.localStorage.getItem(storageKeys.tabs) ?? JSON.stringify(list.tabs)
+				window.localStorage.getItem(storageKeys.tabs) ??
+					JSON.stringify([
+						...list.tabs,
+						{
+							tabName: 'Untitled',
+							allChecked: false,
+							isSelected: true,
+						},
+					])
 			),
 		})
 
