@@ -62,7 +62,7 @@ export default function ItemButtons({ item, i, list, dispatch }: ItemButtonsProp
 
 		if (arr === null || arr === undefined) return
 
-		const tabArr = [...list.tabs]
+		const tabArr = list.tabs
 
 		if (list.items.filter((l) => l.checked === false).length === 0) {
 			tabArr[arr].allChecked = true
