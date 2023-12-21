@@ -22,12 +22,10 @@ export function addItem(
       content: `${list.input}`,
       checked: false,
       favorite: list.favorite,
-      subItems: []
     }) : newArr.push({
       content: `${list.input}`,
       checked: false,
       favorite: list.favorite,
-      subItems: []
     })
     dispatch({ type: 'set-items', payload: newArr })
   }

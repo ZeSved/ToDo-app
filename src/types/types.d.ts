@@ -34,12 +34,6 @@ export type Item = {
 	checked: boolean
 	content: string
 	favorite: boolean
-	subItems: SubItems[]
-}
-
-export type SubItems = {
-	checked: boolean
-	content: string
 }
 
 export type SavedData = {
