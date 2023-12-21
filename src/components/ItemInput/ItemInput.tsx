@@ -10,7 +10,7 @@ import { inputChecker } from '../../util/inputChecker'
 import { getTargetTab } from '../../util/getTargetTab'
 import Buttons from '../../fragments/Buttons'
 
-export default function ItemInput({ list, dispatch, onMobile }: ItemInputProps) {
+export default function ItemInput({ list, dispatch }: ItemInputProps) {
 	const buttons = [
 		{
 			style: styles.send,
@@ -40,7 +40,7 @@ export default function ItemInput({ list, dispatch, onMobile }: ItemInputProps) 
 
 	return (
 		<>
-			<div className={onMobile ? styles.itemInputWrapperMobile : styles.itemInputWrapper}>
+			<div className={styles.itemInputWrapper}>
 				<input
 					type='text'
 					placeholder='Type here to begin...'
@@ -63,5 +63,4 @@ export default function ItemInput({ list, dispatch, onMobile }: ItemInputProps) 
 interface ItemInputProps {
 	dispatch: React.Dispatch<Action>
 	list: List
-	onMobile: boolean
 }

@@ -1,37 +1,47 @@
 @import '../../../Main styles/root.scss';
 @import '../../../Main styles/mixins.scss';
 
-.deleteBtn,
-.checkBtn,
-.favoriteBtn {
-	@include button;
+@include desktop {
+	.deleteBtn,
+	.checkBtn,
+	.favoriteBtn {
+		@include button;
+	}
+
+	.isOpen {
+		border: none;
+		cursor: pointer;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: var(--border-radius) 0 0 var(--border-radius);
+		background-color: #3f3f3f;
+	}
+
+	.isOpenImg {
+		padding: 0.9rem;
+		border-radius: var(--border-radius);
+		background-color: #3f3f3f;
+		rotate: 90deg;
+	}
+
+	.display {
+		display: none;
+	}
+
+	.mobileFrag {
+		display: flex;
+	}
+
+	.pcFrag {
+		display: flex;
+	}
 }
 
-.isOpen {
-	border: none;
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: var(--border-radius) 0 0 var(--border-radius);
-	background-color: #3f3f3f;
-}
-
-.isOpenImg {
-	padding: 0.9rem;
-	border-radius: var(--border-radius);
-	background-color: #3f3f3f;
-	rotate: 90deg;
-}
-
-.display {
-	display: none;
-}
-
-.mobileFrag {
-	display: flex;
-}
-
-.pcFrag {
-	display: flex;
+@include mobile {
+	.deleteBtn,
+	.checkBtn,
+	.favoriteBtn {
+		@include button;
+	}
 }

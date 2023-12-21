@@ -30,10 +30,12 @@ export default function Stats({ list }: StatsProps) {
 		{
 			property: 'Tabs: ',
 			value: list.tabs.length,
+			id: styles.tabs,
 		},
 		{
 			property: 'Current tab: ',
 			value: window.localStorage.getItem('lastOpened') ?? '...',
+			id: styles.current,
 		},
 	]
 
@@ -42,7 +44,9 @@ export default function Stats({ list }: StatsProps) {
 			<div className={styles.controlPanelContainer}>
 				<div className={styles.info}>
 					{infoArr.map((info, i) => (
-						<div key={i}>
+						<div
+							className={info.id}
+							key={i}>
 							<p>
 								{info.property} {info.value}
 							</p>
@@ -60,7 +64,7 @@ type StatsProps = {
 }
 
 type InfoArr = {
-	divider?: string
 	property: string
 	value: number | string
+	id?: string
 }

@@ -1,73 +1,141 @@
 @import '../../Main\ styles/mixins.scss';
 
-.container {
-	@include subWrapperItem;
+@include desktop {
+	.scrollContainer {
+		overflow-y: scroll;
+		max-height: 700px;
 
-	padding: var(--gap-2);
-	flex-direction: column;
-	gap: var(--gap-3);
+		.container {
+			@include subWrapperItem;
 
-	overflow-y: auto;
+			padding: var(--gap-2);
+			flex-direction: column;
+			gap: var(--gap-3);
 
-	.placeholder {
-		background: linear-gradient(
-			90deg,
-			rgba(0, 208, 255, 0.838) 0%,
-			rgba(0, 208, 255, 0.332) 60%,
-			rgba(0, 0, 0, 0) 80%
-		);
+			.placeholder {
+				background: linear-gradient(
+					90deg,
+					rgba(0, 208, 255, 0.838) 0%,
+					rgba(0, 208, 255, 0.332) 60%,
+					rgba(0, 0, 0, 0) 80%
+				);
 
-		padding: 1.8rem;
+				padding: 1.8rem;
 
-		border: none;
+				border: none;
+			}
+
+			.itemContainer,
+			.placeholder {
+				display: flex;
+
+				width: 100%;
+
+				border-radius: var(--gap-2);
+			}
+
+			.itemContainer {
+				display: flex;
+
+				width: 100%;
+
+				border-radius: var(--gap-2);
+				border: var(--gap-1) solid var(--main-color);
+
+				overflow: hidden;
+
+				.itemContent,
+				.itemContentChecked {
+					flex-grow: 1;
+					overflow-wrap: anywhere;
+
+					padding: var(--gap-3);
+
+					color: #ffffff;
+				}
+
+				.itemContent {
+					background: #000000;
+				}
+
+				.itemContentChecked {
+					background: linear-gradient(
+						90deg,
+						#000000 50%,
+						var(--secondary-color) 70%,
+						var(--main-color) 100%
+					);
+				}
+
+				.controls {
+					display: flex;
+
+					background-color: black;
+				}
+			}
+		}
 	}
+}
 
-	.itemContainer,
-	.placeholder {
-		display: flex;
+@include mobile {
+	.scrollContainer {
+		padding-top: 15%;
+		overflow-y: scroll;
+		max-height: 30rem;
 
-		width: 100%;
+		.container {
+			flex-direction: column;
+			// gap: var(--gap-3);
 
-		border-radius: var(--gap-2);
-	}
+			.placeholder {
+				display: none;
+			}
 
-	.itemContainer {
-		display: flex;
+			.itemContainer,
+			.placeholder {
+				display: flex;
 
-		width: 100%;
+				width: 100%;
 
-		border-radius: var(--gap-2);
-		border: var(--gap-1) solid var(--main-color);
+				// border-radius: var(--gap-2);
+			}
 
-		overflow: hidden;
+			.itemContainer {
+				display: flex;
 
-		.itemContent,
-		.itemContentChecked {
-			flex-grow: 1;
-			overflow-wrap: anywhere;
+				border-top: var(--gap-1) solid var(--main-color);
 
-			padding: var(--gap-3);
+				overflow: hidden;
 
-			color: #ffffff;
-		}
+				.itemContent,
+				.itemContentChecked {
+					flex-grow: 1;
+					overflow-wrap: anywhere;
 
-		.itemContent {
-			background: #000000;
-		}
+					padding: var(--gap-3);
 
-		.itemContentChecked {
-			background: linear-gradient(
-				90deg,
-				#000000 50%,
-				var(--secondary-color) 70%,
-				var(--main-color) 100%
-			);
-		}
+					color: #ffffff;
+				}
 
-		.controls {
-			display: flex;
+				.itemContent {
+					background: #000000;
+				}
 
-			background-color: black;
+				.itemContentChecked {
+					background: linear-gradient(
+						90deg,
+						#000000 50%,
+						var(--secondary-color) 70%,
+						var(--main-color) 100%
+					);
+				}
+
+				.controls {
+					display: flex;
+
+					background-color: black;
+				}
+			}
 		}
 	}
 }

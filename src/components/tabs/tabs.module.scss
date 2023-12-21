@@ -1,97 +1,27 @@
 @import '../../Main\ styles/root.scss';
 @import '../../Main\ styles/mixins.scss';
 
-.inputContainer {
-	background-color: var(--main-color);
-	padding: var(--gap-3);
-	border-radius: var(--gap-4) 0 0 var(--gap-4);
-	gap: var(--gap-1);
-
-	display: flex;
-
-	.tabInput {
-		display: flex;
+@include desktop {
+	.inputContainer {
+		background-color: var(--main-color);
+		padding: var(--gap-3);
+		border-radius: var(--gap-4) 0 0 var(--gap-4);
 		gap: var(--gap-1);
-		background-color: black;
-		border-radius: var(--gap-3);
 
-		.clear,
-		.send {
-			@include button;
-
-			background-color: black;
-			border-radius: var(--gap-3);
-
-			&:disabled {
-				cursor: default;
-
-				> img {
-					opacity: 0.6;
-				}
-			}
-		}
-
-		> input {
-			@include subWrapperItem;
-
-			outline: none;
-			border: none;
-
-			cursor: text;
-			width: 10rem;
-
-			border-radius: var(--gap-3);
-
-			color: white;
-
-			background-color: black;
-			padding: var(--gap-3);
-		}
-	}
-}
-
-.nav {
-	display: flex;
-	flex-direction: column;
-	gap: var(--gap-2);
-	padding-bottom: var(--gap-2);
-	height: 100%;
-
-	.checked {
-		background: linear-gradient(
-			-90deg,
-			#000000 50%,
-			var(--secondary-color) 70%,
-			var(--main-color) 100%
-		);
-	}
-
-	.selected,
-	.not_selected {
 		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		flex-grow: 1;
-		border-radius: var(--gap-3) 0 0 var(--gap-3);
-		padding: 0 var(--gap-3);
 
-		border: var(--gap-1) solid;
-		border-right: none;
-
-		> p {
-			background: rgba(0, 0, 0, 0.4);
-			padding: var(--gap-2) var(--gap-3);
-			border-radius: var(--gap-2);
-			color: white;
-		}
-
-		.buttons {
+		.tabInput {
 			display: flex;
-			align-items: center;
-			gap: var(--gap-4);
+			gap: var(--gap-1);
+			background-color: black;
+			border-radius: var(--gap-3);
 
-			> button {
+			.clear,
+			.send {
 				@include button;
+
+				background-color: black;
+				border-radius: var(--gap-3);
 
 				&:disabled {
 					cursor: default;
@@ -101,14 +31,100 @@
 					}
 				}
 			}
+
+			> input {
+				@include subWrapperItem;
+
+				outline: none;
+				border: none;
+
+				cursor: text;
+				width: 10rem;
+
+				border-radius: var(--gap-3);
+
+				color: white;
+
+				background-color: black;
+				padding: var(--gap-3);
+			}
 		}
 	}
 
-	.selected {
-		border-color: var(--main-color);
-	}
+	.nav {
+		display: flex;
+		flex-direction: column;
+		gap: var(--gap-2);
+		padding-bottom: var(--gap-2);
+		height: 100%;
 
-	.not_selected {
-		border-color: var(--secondary-color);
+		.checked {
+			background: linear-gradient(
+				-90deg,
+				#000000 50%,
+				var(--secondary-color) 70%,
+				var(--main-color) 100%
+			);
+		}
+
+		.selected,
+		.not_selected {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex-grow: 1;
+			border-radius: var(--gap-3) 0 0 var(--gap-3);
+			padding: 0 var(--gap-3);
+
+			border: var(--gap-1) solid;
+			border-right: none;
+
+			> p {
+				background: rgba(0, 0, 0, 0.4);
+				padding: var(--gap-2) var(--gap-3);
+				border-radius: var(--gap-2);
+				color: white;
+			}
+
+			.buttons {
+				display: flex;
+				align-items: center;
+				gap: var(--gap-4);
+
+				> button {
+					@include button;
+
+					&:disabled {
+						cursor: default;
+
+						> img {
+							opacity: 0.6;
+						}
+					}
+				}
+			}
+		}
+
+		.selected {
+			border-color: var(--main-color);
+		}
+
+		.not_selected {
+			border-color: var(--secondary-color);
+		}
+	}
+}
+
+@include mobile {
+	.buttons,
+	.checked,
+	.clear,
+	.inputContainer,
+	.nav,
+	.not_selected,
+	.selected,
+	.send,
+	.tabInput {
+		display: none;
 	}
 }

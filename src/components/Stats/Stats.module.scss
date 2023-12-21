@@ -1,21 +1,55 @@
 @import '../../Main styles/root.scss';
 @import '../../Main styles/mixins.scss';
 
-.info {
-	display: flex;
-	width: 100%;
-	justify-content: space-around;
-	align-items: center;
+@include desktop {
+	.info {
+		display: flex;
+		width: 100%;
+		justify-content: space-around;
+		align-items: center;
 
-	background: transparent;
+		background: transparent;
 
-	padding: var(--gap-2);
-	> div {
-		background-color: black;
-		border-radius: var(--gap-3);
-		> p {
-			padding: var(--gap-2) var(--gap-3);
-			color: #ffffff;
+		padding: var(--gap-2);
+		> div {
+			background-color: black;
+			border-radius: var(--gap-3);
+			> p {
+				padding: var(--gap-2) var(--gap-3);
+				color: #ffffff;
+			}
+		}
+	}
+}
+
+@include mobile {
+	.info {
+		position: absolute;
+		top: 90%;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		border-top: var(--gap-1) solid var(--main-color);
+
+		display: flex;
+		width: 100%;
+		justify-content: space-around;
+
+		background: black;
+
+		.tabs,
+		.current {
+			display: none;
+		}
+
+		> div {
+			background-color: black;
+			border-radius: var(--gap-3);
+
+			> p {
+				padding: var(--gap-3) var(--gap-1);
+				color: #ffffff;
+			}
 		}
 	}
 }

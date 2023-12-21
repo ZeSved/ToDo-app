@@ -1,7 +1,5 @@
 import styles from './ItemButtons.module.scss'
 
-import opened from '../../../images/dropdown_open.svg'
-import closed from '../../../images/dropdown_closed.svg'
 import del from '../../../images/_delete_ symbol.svg'
 import fav from '../../../images/favorite logo.svg'
 import nofav from '../../../images/un-favorite logo (1).svg'
@@ -9,13 +7,11 @@ import check from '../../../images/_checked_ symbol.svg'
 import uncheck from '../../../images/_unchecked_ symbol.svg'
 
 import { Action, Item, List } from '../../../types/types'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { symbolChange } from '../../../util/symbolChange'
 import Buttons from '../../../fragments/Buttons'
 
-export default function ItemButtons({ item, i, list, dispatch, onMobile }: ItemButtonsProps) {
-	const [isOpen, setIsOpen] = useState(false)
-
+export default function ItemButtons({ item, i, list, dispatch }: ItemButtonsProps) {
 	const buttons = [
 		{
 			style: styles.deleteBtn,
@@ -26,7 +22,6 @@ export default function ItemButtons({ item, i, list, dispatch, onMobile }: ItemB
 					type: 'set-items',
 					payload: newArr,
 				})
-				setIsOpen(false)
 			},
 			img: del,
 		},
@@ -34,7 +29,6 @@ export default function ItemButtons({ item, i, list, dispatch, onMobile }: ItemB
 			style: styles.favoriteBtn,
 			func: () => {
 				symbolChange(item, 'favorite', i, dispatch, list)
-				setIsOpen(false)
 			},
 			img: item.favorite ? fav : nofav,
 		},
@@ -81,16 +75,7 @@ export default function ItemButtons({ item, i, list, dispatch, onMobile }: ItemB
 
 	return (
 		<>
-			<button
-				className={onMobile ? styles.isOpen : styles.display}
-				onClick={() => setIsOpen(!isOpen)}>
-				<img
-					className={styles.isOpenImg}
-					src={isOpen ? opened : closed}
-					alt=''
-				/>
-			</button>
-			<div className={onMobile ? (isOpen ? styles.mobileFrag : styles.display) : styles.pcFrag}>
+			<div className={styles.pcFrag}>
 				<Buttons btn={buttons} />
 			</div>
 		</>
@@ -102,5 +87,4 @@ interface ItemButtonsProps {
 	i: number
 	dispatch: React.Dispatch<Action>
 	list: List
-	onMobile: boolean
 }

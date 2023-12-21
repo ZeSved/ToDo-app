@@ -1,41 +1,63 @@
 @import '../../Main styles/root.scss';
 @import '../../Main styles/mixins.scss';
 
-.itemInputWrapper {
-	@include subWrapperItem;
+@include desktop {
+	.itemInputWrapper {
+		@include subWrapperItem;
+	}
+
+	.itemInputWrapper > input {
+		background: transparent;
+		display: block;
+		border: none;
+		outline: none;
+
+		flex-grow: 1;
+
+		color: white;
+
+		padding: var(--gap-3);
+	}
+
+	.send,
+	.clear,
+	.set_favorite {
+		@include button;
+	}
 }
 
-// .itemInputWrapperMobile {
-// 	z-index: 4;
+@include mobile {
+	.itemInputWrapper {
+		background: black;
+		display: flex;
+		border: none;
+		outline: none;
+		width: 100%;
+		height: fit-content;
 
-// 	width: 100%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		top: 0;
+		z-index: 5;
+	}
 
-// 	border-radius: 7px;
-// 	border: 2px solid #3f3f3f;
-// 	overflow: hidden;
+	.itemInputWrapper > input {
+		background: transparent;
+		border: none;
+		outline: none;
 
-// 	display: flex;
-// 	position: fixed;
+		flex-grow: 1;
 
-// 	top: 10rem;
-// }
+		color: white;
 
-// .itemInputWrapperMobile > input,
-.itemInputWrapper > input {
-	background: transparent;
-	display: block;
-	border: none;
-	outline: none;
+		padding: var(--gap-3);
+	}
 
-	flex-grow: 1;
-
-	color: white;
-
-	padding: var(--gap-3);
-}
-
-.send,
-.clear,
-.set_favorite {
-	@include button;
+	.send,
+	.clear,
+	.set_favorite {
+		@include button;
+	}
 }

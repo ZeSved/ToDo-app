@@ -1,5 +1,8 @@
 @import './root.scss';
 
+$mobile-desktop-limit: 800px;
+$rounded-radius: 10px;
+
 @mixin subWrapperItem {
 	width: 100%;
 
@@ -20,4 +23,16 @@
 	padding: var(--gap-2);
 	height: fit-content;
 	width: fit-content;
+}
+
+@mixin mobile {
+	@media only screen and (max-width: $mobile-desktop-limit) {
+		@content;
+	}
+}
+
+@mixin desktop {
+	@media only screen and (min-width: $mobile-desktop-limit) {
+		@content;
+	}
 }

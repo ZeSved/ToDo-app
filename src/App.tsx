@@ -1,4 +1,4 @@
-import { useEffect, useReducer, useState } from 'react'
+import { useEffect, useReducer } from 'react'
 
 import './Main styles/App.scss'
 
@@ -21,10 +21,7 @@ const DEFAULT_LIST: List = {
 	tabs: [],
 }
 
-const MOBILE_THRESHOLD = 420
-
 function App() {
-	const [onMobile, setOnMobile] = useState(false)
 	const [list, dispatch] = useReducer(reducer, DEFAULT_LIST)
 
 	useEffect(() => {
@@ -53,14 +50,6 @@ function App() {
 					JSON.stringify(list.items)
 			),
 		})
-
-		function resize() {
-			const root = getComputedStyle(document.querySelector(':root')!)
-
-			setOnMobile(parseInt(root.width.slice(0, root.width.length - 2)) < MOBILE_THRESHOLD)
-		}
-
-		resize()
 	}, [])
 
 	useEffect(() => {
@@ -93,12 +82,10 @@ function App() {
 						<ItemInput
 							dispatch={dispatch}
 							list={list}
-							onMobile={onMobile}
 						/>
 						<ItemList
 							dispatch={dispatch}
 							list={list}
-							onMobile={onMobile}
 						/>
 					</div>
 				</section>
@@ -106,7 +93,7 @@ function App() {
 					<Stats list={list} />
 				</section>
 			</main>
-			<div className='blurSheet' />
+			{/* <div className='blurSheet' />
 			<div className='colorSheet'>
 				<svg
 					id='visual'
@@ -128,7 +115,7 @@ function App() {
 						d='M0 495L18.8 490.8C37.7 486.7 75.3 478.3 112.8 474.3C150.3 470.3 187.7 470.7 225.2 478.2C262.7 485.7 300.3 500.3 337.8 499.2C375.3 498 412.7 481 450.2 481.7C487.7 482.3 525.3 500.7 562.8 500.8C600.3 501 637.7 483 675.2 481.5C712.7 480 750.3 495 787.8 497.2C825.3 499.3 862.7 488.7 881.3 483.3L900 478L900 601L881.3 601C862.7 601 825.3 601 787.8 601C750.3 601 712.7 601 675.2 601C637.7 601 600.3 601 562.8 601C525.3 601 487.7 601 450.2 601C412.7 601 375.3 601 337.8 601C300.3 601 262.7 601 225.2 601C187.7 601 150.3 601 112.8 601C75.3 601 37.7 601 18.8 601L0 601Z'
 						fill='#018bb7'></path>
 				</svg>
-			</div>
+			</div> */}
 		</div>
 	)
 }
