@@ -58,9 +58,9 @@ export default function ItemButtons({ item, i, list, dispatch }: ItemButtonsProp
 	}, [item.favorite])
 
 	useEffect(() => {
-		const arr = list.tabs.findIndex((a) => a.tabName === window.localStorage.getItem('lastOpened'))
-
-		if (arr === null || arr === undefined) return
+		const arr = list.tabs.findIndex(
+			(a) => a.tabName === window.localStorage.getItem('lastOpened') ?? 'Untitled'
+		)
 
 		const tabArr = list.tabs
 

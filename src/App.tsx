@@ -40,8 +40,7 @@ function App() {
 			),
 		})
 
-		window.localStorage.getItem('lastOpened') ??
-			window.localStorage.setItem('lastOpened', list.tabs[0]?.tabName)
+		window.localStorage.setItem('lastOpened', list.tabs[0]?.tabName ?? 'Untitled')
 
 		dispatch({
 			type: 'set-items',
