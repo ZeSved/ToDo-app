@@ -12,6 +12,12 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 	const buttons = [
 		{
 			func: () => {
+				if (list.tabs.filter((o) => o.tabName === list.tabInput).length > 0) {
+					alert(
+						`There already exists a tab named "${list.tabInput}", please choose a different name or delete the tab.`
+					)
+					return
+				}
 				inputChecker(list.tabInput, dispatch, list)
 
 				dispatch({
@@ -70,6 +76,13 @@ export default function Tabs({ list, dispatch }: TabsProps) {
 						onKeyDown={(e) => {
 							if (e.key === 'Enter') {
 								e.preventDefault()
+								if (list.tabs.filter((o) => o.tabName === list.tabInput).length > 0) {
+									alert(
+										`There already exists a tab named "${list.tabInput}", please choose a different name or delete the tab.`
+									)
+									return
+								}
+
 								inputChecker(list.tabInput, dispatch, list)
 
 								dispatch({
